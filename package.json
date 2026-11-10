@@ -4,16 +4,23 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "build": "next build && node scripts/fix-export-segments.mjs",
+    "preview": "node scripts/serve-out.mjs",
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "node --import ./tests/register.mjs --test --disable-warning=MODULE_TYPELESS_PACKAGE_JSON \"tests/*.test.ts\"",
+    "test:export": "node --import ./tests/register.mjs --test --disable-warning=MODULE_TYPELESS_PACKAGE_JSON \"tests/export/*.test.ts\"",
+    "test:e2e": "playwright test",
+    "check": "bun run lint && bun run typecheck && bun run test && bun run build && bun run test:export && bun run test:e2e"
   },
   "dependencies": {
+    "lucide-react": "^1.71.0",
     "next": "16.4.6",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
   "devDependencies": {
+    "@playwright/test": "1.63.0",
     "@tailwindcss/turbopack": "4.3.3",
     "@types/node": "^20",
     "@types/react": "^19",
