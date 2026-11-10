@@ -1,26 +1,171 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Dark mode follows the `.dark` class on <html>, set before paint by the theme script. */
+@custom-variant dark (&:where(.dark, .dark *));
 
+/* Fonts come from next/font variables set on <html>. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), var(--font-body), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  /* Brand scale built around the official AtajoLab green (#0f6e62 = 600). */
+  --color-brand-50: #effaf6;
+  --color-brand-100: #d8f1e9;
+  --color-brand-200: #b3e2d5;
+  --color-brand-300: #82ccbb;
+  --color-brand-400: #4fae9b;
+  --color-brand-500: #2b9080;
+  --color-brand-600: #0f6e62;
+  --color-brand-700: #0d5c53;
+  --color-brand-800: #0d4a44;
+  --color-brand-900: #0c3d38;
+  --color-brand-950: #062421;
+
+  /* Fixed tints for text on the always-dark brand bands. Not changed by the theme. */
+  --color-mint-100: #d8f1e9;
+  --color-mint-200: #b3e2d5;
+
+  /* Text on a brand-600 background. */
+  --color-on-brand: #ffffff;
+
+  /* Neutrals with a slight green tint, so greys feel part of the brand. */
+  --color-page: #ffffff;
+  --color-card: #ffffff;
+  --color-ink: #13211e;
+  --color-ink-soft: #33433f;
+  --color-muted: #586763;
+  --color-line: #e1e7e4;
+  --color-line-strong: #c9d3cf;
+  --color-surface: #f5f8f7;
+  --color-paper: #fbfcfb;
+
+  --shadow-card: 0 1px 2px rgb(19 33 30 / 0.04), 0 10px 30px -16px rgb(19 33 30 / 0.18);
+  --shadow-float: 0 2px 6px rgb(19 33 30 / 0.06), 0 24px 48px -20px rgb(19 33 30 / 0.28);
+
+  --animate-fade-up: fade-up 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/*
+ * Dark palette. Not an inversion: deep green-tinted greys for surfaces, and a
+ * brighter version of the brand green so text, icons and buttons keep contrast.
+ * The 600 step stays the "primary" role (buttons, active chips) with dark text on top.
+ */
+.dark {
+  --color-brand-50: #0f2925;
+  --color-brand-100: #143a34;
+  --color-brand-200: #1c4f47;
+  --color-brand-300: #2a6d61;
+  --color-brand-400: #3a9483;
+  --color-brand-500: #4cb5a0;
+  --color-brand-600: #3cc1a6;
+  --color-brand-700: #6dd3bd;
+  --color-brand-800: #9ae2d1;
+  --color-brand-900: #0b3531;
+  --color-brand-950: #072320;
+
+  --color-on-brand: #04201c;
+
+  --color-page: #0a1211;
+  --color-card: #111c1b;
+  --color-ink: #e8f0ee;
+  --color-ink-soft: #c2d0cc;
+  --color-muted: #93a5a0;
+  --color-line: #1f2d2a;
+  --color-line-strong: #2f413d;
+  --color-surface: #0e1817;
+  --color-paper: #0c1514;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.35), 0 10px 30px -16px rgb(0 0 0 / 0.6);
+  --shadow-float: 0 2px 6px rgb(0 0 0 / 0.35), 0 24px 48px -20px rgb(0 0 0 / 0.7);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-page);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-brand-200);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 3px;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Thin technical grid used behind hero areas. Follows the theme's brand color. */
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--color-brand-600) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--color-brand-600) 8%, transparent) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@utility bg-dots {
+  background-image: radial-gradient(color-mix(in oklab, var(--color-brand-600) 18%, transparent) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+@utility mask-fade {
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
 }
