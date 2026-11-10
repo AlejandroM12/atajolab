@@ -46,7 +46,7 @@ export const microappSources: MicroappSource[] = [
       {
         src: "/images/microapps/atajolab-qr/editor.webp",
         width: 880,
-        height: 600,
+        height: 540,
         alt: {
           es: "Editor de AtajoLab QR con un cartel de ejemplo para una cafetería y estilos sugeridos a la izquierda.",
           en: "AtajoLab QR editor showing a sample sign for a café, with suggested styles on the left.",

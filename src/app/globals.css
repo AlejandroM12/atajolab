@@ -30,6 +30,9 @@
   /* Text on a brand-600 background. */
   --color-on-brand: #ffffff;
 
+  /* "Lab" in the wordmark. */
+  --color-logo-accent: #0f6e62;
+
   /* Neutrals with a slight green tint, so greys feel part of the brand. */
   --color-page: #ffffff;
   --color-card: #ffffff;
@@ -56,6 +59,23 @@
       transform: translateY(0);
     }
   }
+}
+
+/*
+ * AtajoLab mark gradients (three stops per part). Light backgrounds use deeper
+ * shades of the official greens so the edges hold on white; dark backgrounds
+ * use the original artwork colors.
+ */
+:root {
+  --logo-leg-1: #6fe04f;
+  --logo-leg-2: #1fc27a;
+  --logo-leg-3: #04a07c;
+  --logo-fold-1: #0f6e62;
+  --logo-fold-2: #11845f;
+  --logo-fold-3: #2fb055;
+  --logo-foot-1: #039672;
+  --logo-foot-2: #14ad72;
+  --logo-foot-3: #46cf5c;
 }
 
 /*
@@ -90,6 +110,17 @@
 
   --shadow-card: 0 1px 2px rgb(0 0 0 / 0.35), 0 10px 30px -16px rgb(0 0 0 / 0.6);
   --shadow-float: 0 2px 6px rgb(0 0 0 / 0.35), 0 24px 48px -20px rgb(0 0 0 / 0.7);
+
+  --color-logo-accent: #5ee36a;
+  --logo-leg-1: #9ffb66;
+  --logo-leg-2: #3fe58a;
+  --logo-leg-3: #00bf8f;
+  --logo-fold-1: #077a62;
+  --logo-fold-2: #14a067;
+  --logo-fold-3: #3fd05d;
+  --logo-foot-1: #03b07c;
+  --logo-foot-2: #22d184;
+  --logo-foot-3: #5cec78;
 }
 
 @layer base {

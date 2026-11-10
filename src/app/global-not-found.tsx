@@ -27,7 +27,7 @@ export default function GlobalNotFound() {
           <div aria-hidden="true" className="bg-grid mask-fade absolute inset-0" />
           <div className="relative mx-auto w-full max-w-4xl px-4 py-20 sm:px-6">
             <div className="flex justify-center">
-              <LogoMark className="size-11" />
+              <LogoMark className="h-10" />
             </div>
             <p className="mt-6 text-center font-display text-sm font-semibold text-brand-700">Error 404</p>
             <div className="mt-8 grid gap-6 sm:grid-cols-2">

@@ -20,6 +20,7 @@ import type { Locale } from "@/i18n/config";
 import { getDictionary, type Dictionary } from "@/i18n/dictionaries";
 import { pagePath } from "@/i18n/routes";
 import { LogoMark } from "@/components/layout/logo";
+import { MARK_VIEWBOX, markParts } from "@/lib/brand-mark";
 import { cn } from "@/lib/utils";
 
 /**
@@ -108,7 +109,7 @@ function ShortcutPanel({ locale, t, className }: { locale: Locale; t: HomeText; 
         className="flex items-center justify-between border-t border-line px-4 py-2.5 text-xs text-muted"
       >
         <span className="flex items-center gap-2 font-semibold text-ink-soft">
-          <LogoMark className="size-4 rounded-[3px]" />
+          <LogoMark className="h-3" />
           AtajoLab
         </span>
         <span>{t.shortcuts.footer}</span>
@@ -252,18 +253,16 @@ function BrandBackdrop() {
   return (
     <svg
       aria-hidden="true"
-      viewBox="0 0 32 32"
-      className="pointer-events-none absolute top-1/2 left-1/2 hidden w-[108%] -translate-x-1/2 -translate-y-1/2 text-brand-200/60 sm:block"
+      viewBox={MARK_VIEWBOX}
+      className="pointer-events-none absolute top-1/2 left-1/2 hidden w-[108%] -translate-x-1/2 -translate-y-1/2 overflow-visible text-brand-200/60 sm:block"
       fill="none"
+      stroke="currentColor"
+      strokeWidth="0.3"
+      strokeLinejoin="round"
     >
-      <rect x="1" y="1" width="30" height="30" rx="9" stroke="currentColor" strokeWidth="0.12" />
-      <path
-        d="M8.5 16h11M15.5 11.5 20.5 16l-5 4.5"
-        stroke="currentColor"
-        strokeWidth="0.35"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      {markParts.map(({ id, d }) => (
+        <path key={id} d={d} />
+      ))}
     </svg>
   );
 }

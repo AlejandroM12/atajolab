@@ -94,6 +94,10 @@ docs/DEPLOY.md         Deployment guide (Cloudflare Pages)
 
 Light, dark and system. The choice is stored in `localStorage` (`atajolab-theme`) and applied by a tiny inline script before the first paint, so there is no flash of the wrong theme. Colors are CSS variables redefined under `.dark` in `src/app/globals.css`.
 
+## Brand assets
+
+The "A" mark is an inline SVG (`src/lib/brand-mark.ts`, rendered by `LogoMark`). Its gradients read `--logo-*` variables from `globals.css`: deeper greens on light backgrounds, the original artwork colors on dark ones. Static versions live in `public/brand/` (horizontal logo and mark for light and dark backgrounds, square icon in SVG and 512 px PNG); the favicon is `src/app/icon.svg` and the Open Graph image is `public/og.png`.
+
 ## Adding a microapp
 
 Add an entry to `src/data/microapps.ts` with its texts in both languages. The library, filters, tool pages, sitemap and metadata pick it up. Rules enforced by the tests:

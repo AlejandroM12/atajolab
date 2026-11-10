@@ -36,7 +36,7 @@ export function HomeView({ locale }: { locale: Locale }) {
         name: site.name,
         url: site.url,
         email: site.email,
-        logo: absoluteUrl("/icon.svg"),
+        logo: absoluteUrl("/brand/atajolab-icon-512.png"),
         description: t.meta.siteDescription,
       },
       {
