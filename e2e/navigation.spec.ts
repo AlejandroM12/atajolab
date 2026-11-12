@@ -23,28 +23,28 @@ for (const theme of ["light", "dark"] as const) {
 test("desktop header navigation works in both languages", async ({ page, isMobile }) => {
   test.skip(isMobile, "desktop navigation only");
   await page.goto("/es/");
-  await page.locator("header").getByRole("link", { name: "Proyectos" }).click();
-  await expect(page).toHaveURL(/\/es\/proyectos\/$/);
-  await expect(page.locator("header").getByRole("link", { name: "Proyectos" })).toHaveAttribute("aria-current", "page");
+  await page.locator("header").getByRole("link", { name: "Servicios" }).click();
+  await expect(page).toHaveURL(/\/es\/soluciones\/$/);
+  await expect(page.locator("header").getByRole("link", { name: "Servicios" })).toHaveAttribute("aria-current", "page");
 
   await page.goto("/en/");
-  await page.locator("header").getByRole("link", { name: "FAQ" }).click();
-  await expect(page).toHaveURL(/\/en\/faq\/$/);
+  await page.locator("header").getByRole("link", { name: "Tools" }).click();
+  await expect(page).toHaveURL(/\/en\/microapps\/$/);
 });
 
 test("mobile menu opens, navigates and closes", async ({ page, isMobile }) => {
   test.skip(!isMobile, "mobile menu only");
   await page.goto("/en/");
   await page.getByRole("button", { name: "Open menu" }).click();
-  await page.locator("header").getByRole("link", { name: "Solutions" }).click();
+  await page.locator("header").getByRole("link", { name: "Services" }).click();
   await expect(page).toHaveURL(/\/en\/solutions\/$/);
   await expect(page.getByRole("button", { name: "Open menu" })).toHaveAttribute("aria-expanded", "false");
 });
 
 test("contact page offers a real mailto link", async ({ page }) => {
   await page.goto("/en/contact/");
-  const href = await page.getByRole("link", { name: "Write an email" }).getAttribute("href");
-  expect(href).toMatch(/^mailto:atajolab\.tools@gmail\.com\?subject=Inquiry/);
+  const href = await page.getByRole("link", { name: "I need a custom solution" }).getAttribute("href");
+  expect(href).toMatch(/^mailto:atajolab\.tools@gmail\.com\?subject=Custom%20solution%20inquiry/);
 });
 
 test("skip link is the first focusable element", async ({ page, isMobile }) => {

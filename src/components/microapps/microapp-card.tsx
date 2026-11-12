@@ -5,7 +5,6 @@ import type { Microapp } from "@/types/microapp";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { microappPath } from "@/i18n/routes";
-import { getCategory } from "@/data/categories";
 import { getMicroappCta, isActionableCta } from "@/lib/microapp-cta";
 import { cn } from "@/lib/utils";
 import { MicroappArtwork } from "./microapp-artwork";
@@ -55,15 +54,18 @@ export function MicroappCard({ app, locale, headingLevel: Heading = "h3", priori
       </div>
 
       <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <p className="text-xs font-semibold tracking-wide text-brand-700 uppercase">
-          {getCategory(app.category, locale).label}
-        </p>
-        <Heading className="mt-2 text-lg leading-snug font-semibold text-ink">
+        <p className="text-sm font-semibold text-brand-700">{app.name}</p>
+        <Heading className="mt-1.5 text-xl leading-snug font-semibold text-ink">
           <Link href={microappPath(app.slug, locale)} className="rounded after:absolute after:inset-0 after:content-['']">
-            {app.name}
+            {app.headline}
           </Link>
         </Heading>
         <p className="mt-2 text-[0.95rem] leading-relaxed text-muted">{app.shortDescription}</p>
+        {app.audience[0] && (
+          <p className="mt-3 text-sm leading-snug text-ink-soft">
+            <span className="font-semibold">{t.labels.audience}:</span> {app.audience[0].replace(/\.$/, "")}
+          </p>
+        )}
 
         <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-5">
           <PricingBadge app={app} locale={locale} />

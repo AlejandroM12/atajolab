@@ -1,6 +1,6 @@
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { allRoutes, pagePath, pagePaths } from "@/i18n/routes";
+import { allRoutes, howWeWorkPath, pagePath, pagePaths } from "@/i18n/routes";
 import type { NavItem } from "@/types/content";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/shared/container";
@@ -13,10 +13,10 @@ import { NavLinks } from "./nav-links";
 export function mainNav(locale: Locale): NavItem[] {
   const t = getDictionary(locale).nav;
   return [
+    { label: t.home, href: pagePath("home", locale) },
     { label: t.microapps, href: pagePath("microapps", locale) },
     { label: t.solutions, href: pagePath("solutions", locale) },
-    { label: t.projects, href: pagePath("projects", locale) },
-    { label: t.faq, href: pagePath("faq", locale) },
+    { label: t.howWeWork, href: howWeWorkPath(locale) },
     { label: t.contact, href: pagePath("contact", locale) },
   ];
 }

@@ -11,12 +11,12 @@ test("the root forwards to the Spanish home", async ({ page, consoleErrors }) =>
 
 test("switching language keeps the section", async ({ page, consoleErrors }) => {
   await page.goto("/es/soluciones/");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Software pensado para tu forma de trabajar");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Creamos la solución que necesitás");
 
   await page.locator(languageNav("Idioma")).getByRole("link", { name: "English" }).click();
   await expect(page).toHaveURL(/\/en\/solutions\/$/);
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Software built around the way you work");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("We build the solution you need");
 
   await page.locator(languageNav("Language")).getByRole("link", { name: "Español" }).click();
   await expect(page).toHaveURL(/\/es\/soluciones\/$/);
@@ -25,10 +25,10 @@ test("switching language keeps the section", async ({ page, consoleErrors }) => 
 
 test("localized microapp slugs map to each other", async ({ page }) => {
   await page.goto("/es/microapps/agenda-turnos/");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Agenda de turnos");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Ordená los turnos de tu negocio");
   await page.locator(languageNav("Idioma")).getByRole("link", { name: "English" }).click();
   await expect(page).toHaveURL(/\/en\/microapps\/appointment-scheduler\/$/);
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Appointment Scheduler");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Keep your appointments organized");
   await expect(page.getByText("Coming soon").first()).toBeVisible();
 });
 

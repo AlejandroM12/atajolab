@@ -98,7 +98,7 @@ export function SolutionsView({ locale }: { locale: Locale }) {
         <Container>
           <SectionHeader id="proceso" eyebrow={t.processEyebrow} title={t.processTitle} />
           <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {t.steps.map((step, index) => (
+            {dict.home.how.custom.steps.map((step, index) => (
               <li key={step.title} className="relative rounded-2xl border border-line bg-card p-6">
                 <span className="font-display text-sm font-semibold text-brand-600 tabular-nums">
                   {String(index + 1).padStart(2, "0")}

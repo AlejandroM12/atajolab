@@ -8,6 +8,7 @@ import { site } from "@/data/site";
 import { Hero } from "@/components/home/hero";
 import { FeaturedMicroapps } from "@/components/home/featured-microapps";
 import { Benefits } from "@/components/home/benefits";
+import { HowWeWork } from "@/components/home/how-we-work";
 import { CustomDevelopment } from "@/components/home/custom-development";
 import { FeaturedCase } from "@/components/home/featured-case";
 import { FaqPreview } from "@/components/home/faq-preview";
@@ -55,8 +56,9 @@ export function HomeView({ locale }: { locale: Locale }) {
       <JsonLd data={structuredData} />
       <Hero locale={locale} />
       <FeaturedMicroapps locale={locale} />
-      <Benefits locale={locale} />
       <CustomDevelopment locale={locale} />
+      <Benefits locale={locale} />
+      <HowWeWork locale={locale} />
       <FeaturedCase locale={locale} />
       <FaqPreview locale={locale} />
       <CtaBanner locale={locale} />

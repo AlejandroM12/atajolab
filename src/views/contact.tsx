@@ -24,7 +24,8 @@ export function contactMetadata(locale: Locale): Metadata {
 export function ContactView({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const t = dict.contact;
-  const mailtoHref = `mailto:${site.email}?subject=${encodeURIComponent(t.mailSubject)}&body=${encodeURIComponent(t.mailBody.join("\n"))}`;
+  const mailto = (subject: string, body: string[]) =>
+    `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body.join("\n"))}`;
 
   return (
     <>
@@ -53,9 +54,19 @@ export function ContactView({ locale }: { locale: Locale }) {
             </a>
             <p className="mt-4 leading-relaxed text-muted">{t.emailHelp}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href={mailtoHref} locale={locale} size="lg" icon={<Mail aria-hidden="true" className="size-4" />}>
-                {t.write}
+              <ButtonLink
+                href={mailto(t.customSubject, t.customBody)}
+                locale={locale}
+                size="lg"
+                icon={<Mail aria-hidden="true" className="size-4" />}
+              >
+                {t.customLabel}
               </ButtonLink>
+              <ButtonLink href={mailto(t.toolSubject, t.toolBody)} locale={locale} size="lg" variant="secondary">
+                {t.toolLabel}
+              </ButtonLink>
+            </div>
+            <div className="mt-3">
               <CopyEmailButton email={site.email} labels={{ copy: t.copy, copied: t.copied, error: t.copyError }} />
             </div>
           </div>
@@ -79,7 +90,11 @@ export function ContactView({ locale }: { locale: Locale }) {
                 </li>
               ))}
             </ul>
-            <p className="mt-8 border-t border-line pt-6 text-sm leading-relaxed text-muted">
+            <div className="mt-8 border-t border-line pt-6">
+              <h3 className="font-semibold text-ink">{t.nextTitle}</h3>
+              <p className="mt-1.5 leading-relaxed text-muted">{t.nextText}</p>
+            </div>
+            <p className="mt-6 text-sm leading-relaxed text-muted">
               {t.faqBefore}{" "}
               <Link href={pagePath("faq", locale)} className="font-semibold text-brand-700 hover:underline">
                 {t.faqLink}

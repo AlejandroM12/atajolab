@@ -40,7 +40,7 @@ export function microappMetadata(slug: string, locale: Locale): Metadata {
   if (!app) return {};
   return pageMetadata({
     locale,
-    title: app.seoTitle ?? app.name,
+    title: app.seoTitle ?? `${app.name}: ${app.headline}`,
     description: app.seoDescription ?? app.shortDescription,
     paths: microappPaths(app.id),
     // Upcoming tools stay out of search results (in every language) until they exist.
@@ -89,7 +89,8 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
                 {category.label}
               </Link>
             </div>
-            <h1 className="mt-5 text-[2.1rem] leading-[1.1] font-semibold text-ink sm:text-5xl">{app.name}</h1>
+            <p className="mt-5 text-base font-semibold text-brand-700">{app.name}</p>
+            <h1 className="mt-1.5 text-[2.1rem] leading-[1.1] font-semibold text-ink sm:text-5xl">{app.headline}</h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">{app.shortDescription}</p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">

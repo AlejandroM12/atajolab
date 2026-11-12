@@ -5,10 +5,16 @@ import { usePathname } from "next/navigation";
 import type { NavItem } from "@/types/content";
 import { cn, stripTrailingSlash } from "@/lib/utils";
 
+/**
+ * Whether `href` is the current section. Anchors (`/es/#como-trabajamos`) are never "current",
+ * and the home page only matches itself, not every page below it.
+ */
 export function isActive(pathname: string, href: string) {
+  if (href.includes("#")) return false;
   const current = stripTrailingSlash(pathname);
   const target = stripTrailingSlash(href);
-  return current === target || current.startsWith(`${target}/`);
+  const isHome = target.split("/").filter(Boolean).length <= 1;
+  return current === target || (!isHome && current.startsWith(`${target}/`));
 }
 
 /** Desktop navigation with the current section highlighted. */

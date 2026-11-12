@@ -30,12 +30,11 @@ export function SiteFooter({ locale }: { locale: Locale }) {
         <nav aria-label={t.footer.sections}>
           <h2 className="text-sm font-semibold text-ink">{t.footer.navigation}</h2>
           <ul className="mt-4 space-y-2.5 text-sm">
-            <li>
-              <Link href={pagePath("home", locale)} className="text-muted hover:text-brand-700">
-                {t.nav.home}
-              </Link>
-            </li>
-            {mainNav(locale).map((item) => (
+            {[
+              ...mainNav(locale),
+              { label: t.nav.projects, href: pagePath("projects", locale) },
+              { label: t.nav.faq, href: pagePath("faq", locale) },
+            ].map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="text-muted hover:text-brand-700">
                   {item.label}
