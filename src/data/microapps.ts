@@ -262,7 +262,7 @@ export const microappSources: MicroappSource[] = [
     category: "ventas",
     pricingModel: "ONE_TIME",
     status: "COMING_SOON",
-    featured: true,
+    featured: false,
     images: [],
     features: {
       es: [
@@ -282,37 +282,45 @@ export const microappSources: MicroappSource[] = [
     },
   },
   {
-    id: "agenda-turnos",
-    slug: { es: "agenda-turnos", en: "appointment-scheduler" },
+    id: "agendia",
+    slug: { es: "agendia", en: "agendia" },
     icon: "calendar",
-    name: { es: "Agenda de turnos", en: "Appointment Scheduler" },
-    headline: { es: "Ordená los turnos de tu negocio", en: "Keep your appointments organized" },
+    name: { es: "Agendia", en: "Agendia" },
+    headline: { es: "Que tus clientes reserven turno online", en: "Let your clients book appointments online" },
     shortDescription: {
-      es: "Un lugar para tus turnos, tus clientes y los horarios en los que atendés, accesible desde el navegador.",
-      en: "One place for your appointments, your clients and the hours you're available, right from your browser.",
+      es: "Organizá tus turnos en un solo lugar, dejá que tus clientes reserven online y mandales recordatorios.",
+      en: "Keep your appointments in one place, let your clients book online and send them reminders.",
     },
     fullDescription: {
       es: [
-        "Estamos preparando una agenda para organizar turnos, registrar clientes y administrar los horarios de atención de un negocio o profesional.",
+        "Estamos preparando Agendia para que tengas todos tus turnos en un solo lugar, tus clientes puedan reservar online y reciban recordatorios.",
         comingSoonNote.es,
       ],
       en: [
-        "We're preparing a scheduler to organize appointments, keep track of clients and manage availability for a business or professional.",
+        "We're preparing Agendia so you can keep all your appointments in one place, your clients can book online and they get reminders.",
         comingSoonNote.en,
       ],
     },
     category: "gestion",
     pricingModel: "SUBSCRIPTION",
     status: "COMING_SOON",
-    featured: false,
+    featured: true,
     images: [],
     features: {
-      es: ["Agenda de turnos.", "Registro de clientes.", "Manejo de tus horarios de atención."],
-      en: ["Appointment calendar.", "Client records.", "Management of your opening hours."],
+      es: ["Gestión de turnos.", "Reservas online para tus clientes.", "Recordatorios."],
+      en: ["Appointment management.", "Online booking for your clients.", "Reminders."],
     },
     benefits: {
-      es: ["Tener los turnos en un solo lugar.", "Ordenar la disponibilidad de la semana."],
-      en: ["All your appointments in one place.", "An organized view of your week."],
+      es: [
+        "Tener los turnos en un solo lugar.",
+        "Que tus clientes reserven sin tener que escribirte.",
+        "Recordarles su turno sin hacerlo a mano.",
+      ],
+      en: [
+        "All your appointments in one place.",
+        "Clients can book without having to message you.",
+        "Remind them of their appointment without doing it by hand.",
+      ],
     },
     audience: {
       es: ["Profesionales que trabajan con turnos.", "Consultorios, estudios y centros de estética."],

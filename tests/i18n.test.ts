@@ -63,9 +63,9 @@ test("localized page paths", () => {
 });
 
 test("localized detail slugs", () => {
-  assert.deepEqual(microappPaths("agenda-turnos"), {
-    es: "/es/microapps/agenda-turnos/",
-    en: "/en/microapps/appointment-scheduler/",
+  assert.deepEqual(microappPaths("agendia"), {
+    es: "/es/microapps/agendia/",
+    en: "/en/microapps/agendia/",
   });
   assert.deepEqual(projectPaths("adhera"), { es: "/es/proyectos/adhera/", en: "/en/projects/adhera/" });
 });

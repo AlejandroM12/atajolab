@@ -5,7 +5,7 @@ import { projectSources } from "../data/projects";
 
 /**
  * Localized URLs. Every route exists once per language, with its own slug:
- * /es/soluciones/ ↔ /en/solutions/, /es/microapps/agenda-turnos/ ↔ /en/microapps/appointment-scheduler/.
+ * /es/soluciones/ ↔ /en/solutions/, /es/microapps/calculadora-costos-precios/ ↔ /en/microapps/cost-pricing-calculator/.
  */
 
 export type PageKey = "home" | "microapps" | "solutions" | "projects" | "contact" | "faq";

@@ -20,7 +20,7 @@ test("every localized route is exported as index.html", () => {
 });
 
 test("routes of one language do not exist in the other", () => {
-  for (const missing of ["/en/soluciones/", "/es/solutions/", "/en/proyectos/", "/es/projects/", "/en/contacto/", "/es/faq/", "/en/microapps/agenda-turnos/"]) {
+  for (const missing of ["/en/soluciones/", "/es/solutions/", "/en/proyectos/", "/es/projects/", "/en/contacto/", "/es/faq/", "/en/microapps/agenda-turnos/", "/en/microapps/appointment-scheduler/"]) {
     assert.ok(!existsSync(htmlFor(missing)), `${missing} should not exist`);
   }
 });
@@ -62,8 +62,7 @@ test("sitemap lists both languages with alternates and skips upcoming tools", ()
   assert.ok(sitemap.includes("<loc>https://atajolab.dev/es/</loc>"));
   assert.ok(sitemap.includes("<loc>https://atajolab.dev/en/solutions/</loc>"));
   assert.ok(sitemap.includes('hreflang="x-default"'));
-  assert.ok(!sitemap.includes("agenda-turnos"), "upcoming tool in sitemap");
-  assert.ok(!sitemap.includes("appointment-scheduler"), "upcoming tool in sitemap");
+  assert.ok(!sitemap.includes("agendia"), "upcoming tool in sitemap");
 });
 
 test("robots.txt points to the sitemap", () => {

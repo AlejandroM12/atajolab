@@ -2,3 +2,7 @@
 # The root goes to the default language. The exported / page also forwards in the browser,
 # so other static hosts work without this file.
 /  /es/  301
+
+# Agendia replaces the former "Agenda de turnos" placeholder page.
+/es/microapps/agenda-turnos/  /es/microapps/agendia/  301
+/en/microapps/appointment-scheduler/  /en/microapps/agendia/  301

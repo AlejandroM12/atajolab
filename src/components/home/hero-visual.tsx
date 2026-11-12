@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Calculator, Command, Star, Wrench, type LucideIcon } from "lucide-react";
+import { ArrowRight, Calculator, CalendarDays, Command, Star, Wrench, type LucideIcon } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { catalogParams } from "@/i18n/catalog-params";
@@ -18,7 +18,9 @@ import { MARK_VIEWBOX, markParts } from "@/lib/brand-mark";
 export function HeroVisual({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const t = dict.home.choices;
-  const qr = getMicroapps(locale).find((app) => app.id === "atajolab-qr");
+  const apps = getMicroapps(locale);
+  const qr = apps.find((app) => app.id === "atajolab-qr");
+  const agendia = apps.find((app) => app.id === "agendia");
   const upcomingHref =
     pagePath("microapps", locale) + filtersToSearch({ ...EMPTY_FILTERS, status: "COMING_SOON" }, catalogParams[locale]);
 
@@ -28,6 +30,12 @@ export function HeroVisual({ locale }: { locale: Locale }) {
       icon: Star,
       ...t.reviews,
       tag: qr?.status === "AVAILABLE" ? { label: dict.labels.status.AVAILABLE, tone: "success" } : undefined,
+    },
+    {
+      href: microappPaths("agendia")[locale],
+      icon: CalendarDays,
+      ...t.appointments,
+      tag: agendia?.status === "COMING_SOON" ? { label: dict.labels.status.COMING_SOON, tone: "amber" } : undefined,
     },
     {
       href: upcomingHref,

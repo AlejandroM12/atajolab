@@ -24,11 +24,11 @@ test("switching language keeps the section", async ({ page, consoleErrors }) => 
 });
 
 test("localized microapp slugs map to each other", async ({ page }) => {
-  await page.goto("/es/microapps/agenda-turnos/");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Ordená los turnos de tu negocio");
+  await page.goto("/es/microapps/agendia/");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Que tus clientes reserven turno online");
   await page.locator(languageNav("Idioma")).getByRole("link", { name: "English" }).click();
-  await expect(page).toHaveURL(/\/en\/microapps\/appointment-scheduler\/$/);
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Keep your appointments organized");
+  await expect(page).toHaveURL(/\/en\/microapps\/agendia\/$/);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Let your clients book appointments online");
   await expect(page.getByText("Coming soon").first()).toBeVisible();
 });
 

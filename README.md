@@ -84,7 +84,7 @@ docs/DEPLOY.md         Deployment guide (Cloudflare Pages)
 
 ## Internationalization
 
-- Each page exists once per language with its own URL and slug, e.g. `/es/soluciones/` ↔ `/en/solutions/`, `/es/microapps/agenda-turnos/` ↔ `/en/microapps/appointment-scheduler/`.
+- Each page exists once per language with its own URL and slug, e.g. `/es/soluciones/` ↔ `/en/solutions/`, `/es/microapps/calculadora-costos-precios/` ↔ `/en/microapps/cost-pricing-calculator/`.
 - Routes are generated at build time with `generateStaticParams`; there is no middleware.
 - Interface texts live in `src/i18n/dictionaries/` (`es.ts` defines the shape, `en.ts` must match it). Content texts live next to the data in `src/data/`.
 - The language switcher keeps the current page and translates catalog filters (`?categoria=finanzas` ↔ `?category=finance`).
