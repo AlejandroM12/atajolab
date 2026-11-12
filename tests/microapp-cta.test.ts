@@ -9,6 +9,7 @@ function app(overrides: Partial<Microapp>): Microapp {
     id: "x",
     slug: "x",
     name: "X",
+    headline: "X",
     shortDescription: "",
     fullDescription: [],
     category: "finanzas",
@@ -70,6 +71,6 @@ test("checkout needs enabled flag, url and a confirmed price", () => {
 test("every CTA kind has a label in both languages", () => {
   assert.equal(getDictionary("es").labels.cta["use-free"], "Usar gratis");
   assert.equal(getDictionary("es").labels.cta["coming-soon"], "Próximamente");
-  assert.equal(getDictionary("en").labels.cta["open-app"], "Open tool");
+  assert.equal(getDictionary("en").labels.cta["open-app"], "Get started");
   assert.equal(getDictionary("en").labels.cta["coming-soon"], "Coming soon");
 });

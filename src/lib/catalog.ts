@@ -56,11 +56,11 @@ export function normalizeText(value: string): string {
     .trim();
 }
 
-/** Every word of the query must appear in the name or the short description. */
+/** Every word of the query must appear in the name, the headline or the short description. */
 export function matchesQuery(app: Microapp, query: string): boolean {
   const terms = normalizeText(query).split(" ").filter(Boolean);
   if (terms.length === 0) return true;
-  const haystack = normalizeText(`${app.name} ${app.shortDescription}`);
+  const haystack = normalizeText(`${app.name} ${app.headline} ${app.shortDescription}`);
   return terms.every((term) => haystack.includes(term));
 }
 

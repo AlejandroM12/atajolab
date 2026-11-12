@@ -142,8 +142,8 @@ export const projectSources: ProjectSource[] = [
       en: "Our own product: a web editor for QR code signs that link to Google reviews and Google Maps locations.",
     },
     description: {
-      es: "AtajoLab QR es la primera microapp de AtajoLab: una herramienta web para armar carteles con código QR que llevan a las reseñas de Google o a la ubicación de un negocio en Google Maps.",
-      en: "AtajoLab QR is AtajoLab's first microapp: a web tool for building QR code signs that link to a business's Google reviews or its location on Google Maps.",
+      es: "AtajoLab QR es la primera herramienta de AtajoLab: sirve para armar carteles con código QR que llevan a las reseñas de Google o a la ubicación de un negocio en Google Maps.",
+      en: "AtajoLab QR is AtajoLab's first tool: a web tool for building QR code signs that link to a business's Google reviews or its location on Google Maps.",
     },
     sections: {
       es: [

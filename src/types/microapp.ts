@@ -67,6 +67,8 @@ interface MicroappBase {
 export interface Microapp extends MicroappBase {
   slug: string;
   name: string;
+  /** The problem it solves, in plain words. Used as the title in cards and on the detail page. */
+  headline: string;
   shortDescription: string;
   /** Paragraphs for the detail page. */
   fullDescription: string[];
@@ -93,6 +95,7 @@ export interface MicroappImageSource {
 export interface MicroappSource extends MicroappBase {
   slug: Localized<string>;
   name: Localized<string>;
+  headline: Localized<string>;
   shortDescription: Localized<string>;
   fullDescription: Localized<string[]>;
   images: MicroappImageSource[];

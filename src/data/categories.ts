@@ -15,10 +15,10 @@ export interface CategoryInfo {
 }
 
 export const categorySources: CategorySource[] = [
-  { id: "marketing", label: { es: "Marketing local", en: "Local marketing" }, param: { es: "marketing", en: "marketing" } },
+  { id: "marketing", label: { es: "Clientes y reseñas", en: "Customers & reviews" }, param: { es: "marketing", en: "marketing" } },
   { id: "finanzas", label: { es: "Costos y precios", en: "Costs & pricing" }, param: { es: "finanzas", en: "finance" } },
-  { id: "ventas", label: { es: "Ventas", en: "Sales" }, param: { es: "ventas", en: "sales" } },
-  { id: "gestion", label: { es: "Gestión", en: "Operations" }, param: { es: "gestion", en: "operations" } },
+  { id: "ventas", label: { es: "Ventas y presupuestos", en: "Sales & quotes" }, param: { es: "ventas", en: "sales" } },
+  { id: "gestion", label: { es: "Organización", en: "Organization" }, param: { es: "gestion", en: "operations" } },
 ];
 
 export function getCategories(locale: Locale): CategoryInfo[] {

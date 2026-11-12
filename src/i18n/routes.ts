@@ -24,6 +24,13 @@ export function pagePath(page: PageKey, locale: Locale): string {
   return segment ? `/${locale}/${segment}/` : `/${locale}/`;
 }
 
+/** Anchor of the "how we work" section on the home page. */
+export const HOW_WE_WORK_ID = "como-trabajamos";
+
+export function howWeWorkPath(locale: Locale): string {
+  return `${pagePath("home", locale)}#${HOW_WE_WORK_ID}`;
+}
+
 export function microappPath(slug: string, locale: Locale): string {
   return `${pagePath("microapps", locale)}${slug}/`;
 }

@@ -4,70 +4,65 @@ import type { FaqItem, FaqSource } from "../types/content";
 /**
  * Answers must not promise refunds, permanent access, guaranteed uptime
  * or commercial policies that are not defined yet.
+ * Groups keep their ids ("microapps", "desarrollo"); the visible labels live in the dictionaries.
  */
 export const faqSources: FaqSource[] = [
   {
     id: "que-es-una-microapp",
     group: "microapps",
-    question: { es: "¿Qué es una microapp?", en: "What is a microapp?" },
+    question: { es: "¿Qué son las herramientas de AtajoLab?", en: "What are AtajoLab's tools?" },
     answer: {
-      es: "Es una herramienta web chica y enfocada en un problema concreto: armar un cartel QR, calcular un precio, preparar un presupuesto. En lugar de un sistema grande con muchas funciones, cada microapp hace una cosa y apunta a hacerla bien.",
-      en: "It's a small web tool focused on one specific problem: making a QR sign, working out a price, preparing a quote. Instead of a large system with lots of features, each microapp does one thing and aims to do it well.",
+      es: "Son aplicaciones web chicas y fáciles de usar, pensadas para resolver una tarea concreta de tu negocio: armar un cartel para pedir reseñas, calcular un precio, preparar un presupuesto. En lugar de un programa grande con mil funciones, cada una se ocupa de una sola cosa. Internamente las llamamos microapps.",
+      en: "They're small, easy-to-use web apps built to handle one specific task in your business: making a sign to ask for reviews, working out a price, preparing a quote. Instead of one big program with a thousand features, each one takes care of a single thing. Internally we call them microapps.",
     },
     home: true,
   },
   {
     id: "instalar",
     group: "microapps",
-    question: { es: "¿Necesito instalar algo?", en: "Do I need to install anything?" },
+    question: { es: "¿Tengo que instalar algo?", en: "Do I need to install anything?" },
     answer: {
-      es: "No. Las microapps se abren desde el navegador, como cualquier página web. No hace falta descargar ni instalar programas.",
-      en: "No. Microapps open in your browser, like any website. There's nothing to download or install.",
+      es: "No. Las herramientas se abren desde el navegador, como cualquier página web. No hace falta descargar ni instalar programas.",
+      en: "No. The tools open in your browser, like any website. There's nothing to download or install.",
     },
     home: true,
   },
   {
     id: "celular",
     group: "microapps",
-    question: { es: "¿Las herramientas funcionan desde el celular?", en: "Do the tools work on a phone?" },
+    question: { es: "¿Se pueden usar desde el celular?", en: "Can I use them from my phone?" },
     answer: {
-      es: "Sí. Las diseñamos para que se puedan usar desde el celular, la tablet o la computadora. Algunas tareas, como editar un diseño en detalle, pueden resultar más cómodas en una pantalla grande.",
-      en: "Yes. We design them to work on phones, tablets and computers. Some tasks, like detailed design editing, can be more comfortable on a larger screen.",
+      es: "Sí. Las diseñamos para usarlas desde el celular, la tablet o la computadora. Algunas tareas, como retocar un diseño en detalle, pueden resultar más cómodas en una pantalla grande.",
+      en: "Yes. We design them to work on phones, tablets and computers. Some tasks, like fine-tuning a design, can be more comfortable on a larger screen.",
     },
     home: true,
   },
   {
     id: "gratis-o-pago",
     group: "microapps",
-    question: {
-      es: "¿Qué diferencia hay entre una herramienta gratuita y una de pago?",
-      en: "What's the difference between free and paid tools?",
-    },
+    question: { es: "¿Son gratis o se pagan?", en: "Are they free or paid?" },
     answer: {
-      es: "Las gratuitas se usan sin costo. Las de pago pueden ser de pago único o por suscripción, y cada ficha indica qué modalidad tiene. El precio y las condiciones de cada herramienta se informan dentro de la propia herramienta antes de pagar.",
-      en: "Free tools cost nothing to use. Paid tools are either a one-time purchase or a subscription, and each tool page says which. Pricing and terms are shown inside the tool before you pay.",
+      es: "Depende de la herramienta. Algunas son gratuitas y otras son de pago único o por suscripción: en la ficha de cada una te indicamos cuál es su modalidad. El precio y las condiciones se muestran dentro de la herramienta antes de pagar.",
+      en: "It depends on the tool. Some are free and others are a one-time purchase or a subscription: each tool's page says which. Pricing and terms are shown inside the tool before you pay.",
     },
     home: true,
   },
   {
     id: "como-acceder",
     group: "microapps",
-    question: { es: "¿Cómo se accede a una microapp?", en: "How do I access a microapp?" },
+    question: { es: "¿Cómo empiezo a usar una herramienta?", en: "How do I start using a tool?" },
     answer: {
-      es: "Desde la biblioteca de microapps entrás a la ficha de cada herramienta. Si está disponible, el botón de la ficha abre la aplicación en su propia dirección web. Las que todavía están en desarrollo figuran como “Próximamente”.",
-      en: "From the microapp library, open the page of the tool you want. If it's available, the button on that page opens the app at its own web address. Tools still in development are marked “Coming soon”.",
+      es: "Entrá a la ficha de la herramienta que te interesa. Si ya está disponible, el botón de la ficha la abre en su propia dirección web. Las que todavía estamos preparando figuran como “Próximamente” y no se pueden usar todavía.",
+      en: "Open the page of the tool you're interested in. If it's available, the button on that page opens it at its own web address. The ones we're still preparing are marked “Coming soon” and can't be used yet.",
     },
   },
   {
     id: "internet",
     group: "microapps",
-    question: {
-      es: "¿Las herramientas requieren conexión a internet?",
-      en: "Do the tools need an internet connection?",
-    },
+    question: { es: "¿Necesito internet?", en: "Do I need an internet connection?" },
     answer: {
-      es: "Sí. Las microapps funcionan desde el navegador y necesitan conexión para cargarse y, en general, para usarse. Si en el futuro alguna herramienta funciona sin conexión, lo vamos a indicar en su ficha.",
-      en: "Yes. Microapps run in the browser and need a connection to load and, in general, to be used. If a tool ever works offline, we'll say so on its page.",
+      es: "Sí. Las herramientas funcionan desde el navegador y necesitan conexión para cargarse y, en general, para usarse. Si en el futuro alguna funciona sin conexión, lo vamos a indicar en su ficha.",
+      en: "Yes. The tools run in the browser and need a connection to load and, in general, to be used. If one ever works offline, we'll say so on its page.",
     },
   },
   {
@@ -78,17 +73,20 @@ export const faqSources: FaqSource[] = [
       en: "Why does a tool take a while to open the first time?",
     },
     answer: {
-      es: "Algunas herramientas y demos están alojadas en servidores que se suspenden cuando no reciben visitas. En esos casos, la primera carga puede demorar hasta un minuto. Después funcionan con normalidad. Lo indicamos en la ficha de cada una.",
+      es: "Algunas herramientas y demos están en servidores que se suspenden cuando no reciben visitas. En esos casos, la primera carga puede demorar hasta un minuto. Después funcionan con normalidad. Lo avisamos en la ficha de cada una.",
       en: "Some tools and demos run on servers that sleep when they get no visits. In those cases the first load can take up to a minute; after that they work normally. We note this on each tool's page.",
     },
   },
   {
     id: "desarrollo-a-medida",
     group: "desarrollo",
-    question: { es: "¿Puedo solicitar una aplicación personalizada?", en: "Can I request a custom application?" },
+    question: {
+      es: "¿Pueden hacerme algo que no está entre las herramientas?",
+      en: "Can you build something that isn't among your tools?",
+    },
     answer: {
-      es: "Sí. Además de las microapps, desarrollamos aplicaciones web, sistemas de gestión, automatizaciones e integraciones a medida. Escribinos contando qué necesitás y lo conversamos.",
-      en: "Yes. Besides microapps, we build custom web applications, management systems, automations and integrations. Write to us about what you need and we'll talk it through.",
+      es: "Sí. Si lo que necesitás no existe todavía, escribinos y lo conversamos. Desarrollamos soluciones a medida: una web o aplicación propia, un sistema para ordenar tu trabajo, automatizaciones para ahorrar tiempo y conexiones entre las herramientas que ya usás.",
+      en: "Yes. If what you need doesn't exist yet, write to us and we'll talk it through. We build custom solutions: your own website or app, a system to organize your work, automations to save time and connections between the tools you already use.",
     },
     home: true,
   },
@@ -96,21 +94,22 @@ export const faqSources: FaqSource[] = [
     id: "que-contar",
     group: "desarrollo",
     question: {
-      es: "¿Qué tengo que contar para pedir un desarrollo?",
-      en: "What should I include when asking for a project?",
+      es: "¿Qué tengo que contarles para empezar?",
+      en: "What do I need to tell you to get started?",
     },
     answer: {
-      es: "Con una descripción simple alcanza para empezar: qué problema querés resolver, cómo lo resolvés hoy, quiénes van a usar la herramienta y si hay alguna fecha que te importe. No hace falta tener un documento técnico.",
-      en: "A simple description is enough to start: the problem you want to solve, how you handle it today, who will use the tool and any dates that matter to you. You don't need a technical document.",
+      es: "Con una descripción simple alcanza: qué querés resolver, cómo lo hacés hoy, quiénes lo van a usar y si hay alguna fecha que te importe. No hace falta saber si necesitás una aplicación, una página o una automatización, ni tener un documento técnico: eso lo vemos juntos.",
+      en: "A simple description is enough: what you want to solve, how you handle it today, who will use it and any dates that matter to you. You don't need to know whether you need an app, a website or an automation, or have a technical document: we work that out together.",
     },
+    home: true,
   },
   {
     id: "presupuesto",
     group: "desarrollo",
-    question: { es: "¿Cuánto cuesta un desarrollo a medida?", en: "How much does custom development cost?" },
+    question: { es: "¿Cuánto cuesta una solución a medida?", en: "How much does a custom solution cost?" },
     answer: {
-      es: "Depende del alcance de cada proyecto. Después de entender qué necesitás, te enviamos una propuesta con el alcance, las etapas y el costo, para que decidas con la información completa.",
-      en: "It depends on the scope of each project. Once we understand what you need, we send you a proposal with the scope, phases and cost, so you can decide with all the information.",
+      es: "Depende de lo que haya que hacer en cada caso. Cuando entendemos qué necesitás, te enviamos una propuesta con el alcance, las etapas y el costo, para que decidas con toda la información.",
+      en: "It depends on what each project involves. Once we understand what you need, we send you a proposal with the scope, phases and cost, so you can decide with all the information.",
     },
   },
 ];
