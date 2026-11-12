@@ -106,7 +106,7 @@ export const projectSources: ProjectSource[] = [
     ],
     links: [
       {
-        label: { es: "Ver demo", en: "View demo" },
+        label: { es: "Probar la demo", en: "Try the demo" },
         href: "https://adhera.atajolab.dev",
         note: {
           es: "La demo está en un servidor que se suspende cuando no tiene visitas. La primera carga puede tardar hasta un minuto.",
@@ -118,12 +118,12 @@ export const projectSources: ProjectSource[] = [
       es: [
         "La demo pública simula una conversación de WhatsApp desde el navegador. No está conectada a WhatsApp.",
         "Todos los nombres y datos que aparecen en la demo y en estas capturas son ficticios.",
-        "Adhera es un caso de desarrollo a medida y no se vende como producto en este sitio.",
+        "Adhera es un proyecto propio de AtajoLab, creado como demostración. No es una implementación para un cliente ni un producto a la venta.",
       ],
       en: [
         "The public demo simulates a WhatsApp conversation in the browser. It is not connected to WhatsApp.",
         "All names and data shown in the demo and in these screenshots are fictional.",
-        "Adhera is a custom development case study and is not sold as a product on this site.",
+        "Adhera is an AtajoLab project built as a demonstration. It is not an implementation for a client or a product for sale.",
       ],
     },
     featured: true,

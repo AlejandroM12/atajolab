@@ -13,6 +13,10 @@ import { ColdStartNote } from "@/components/shared/cold-start-note";
 import { ProjectDisclaimers } from "@/components/projects/project-disclaimers";
 import { displayHost } from "@/lib/utils";
 
+/**
+ * Adhera: an own project, working and public, shown as a demo of what AtajoLab can build.
+ * It is not a client delivery and not a product on sale, and the copy says so.
+ */
 export function FeaturedCase({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const t = dict.home.caseStudy;
@@ -45,30 +49,33 @@ export function FeaturedCase({ locale }: { locale: Locale }) {
             </h2>
             <Badge tone="brand">{t.badge}</Badge>
           </div>
-          <p className="mt-4 text-lg leading-relaxed text-muted">{project.description}</p>
-          <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
-            {project.features.slice(0, 6).map((feature) => (
-              <li key={feature} className="flex items-start gap-2.5 text-[0.95rem] text-ink-soft">
+          <p className="mt-4 font-display text-xl leading-snug font-semibold text-ink-soft">{t.headline}</p>
+          <p className="mt-4 text-lg leading-relaxed text-muted">{t.intro}</p>
+          <ul className="mt-6 space-y-2.5">
+            {t.points.map((point) => (
+              <li key={point} className="flex items-start gap-2.5 text-[0.95rem] text-ink-soft">
                 <Check aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-brand-600" />
-                {feature.replace(/\.$/, "")}
+                {point}
               </li>
             ))}
           </ul>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <p className="mt-6 text-sm leading-relaxed text-muted">{t.note}</p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            {demo && (
+              <ButtonLink href={demo.href} locale={locale}>
+                {demo.label}
+              </ButtonLink>
+            )}
             <ButtonLink
               href={projectPath(project.slug, locale)}
               locale={locale}
+              variant="secondary"
               icon={<ArrowRight aria-hidden="true" className="size-4" />}
             >
               {t.cta}
             </ButtonLink>
-            {demo && (
-              <ButtonLink href={demo.href} locale={locale} variant="secondary">
-                {demo.label}
-              </ButtonLink>
-            )}
           </div>
-          {demo?.note && <ColdStartNote className="mt-4" text={demo.note} />}
+          {demo?.note && <ColdStartNote className="mt-3" text={demo.note} />}
           <ProjectDisclaimers items={project.disclaimers} title={dict.disclaimersTitle} className="mt-6" />
           <Link
             href={pagePath("projects", locale)}
