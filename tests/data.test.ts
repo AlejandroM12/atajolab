@@ -108,3 +108,15 @@ test("resolved catalogs differ by language but keep the same tools", () => {
 test("FAQ ids are unique", () => {
   assert.equal(new Set(faqSources.map((f) => f.id)).size, faqSources.length);
 });
+
+test("Agendia is upcoming, has no price and states its commercial model in both languages", () => {
+  const agendia = microappSources.find((app) => app.id === "agendia");
+  assert.ok(agendia);
+  assert.equal(agendia.status, "COMING_SOON");
+  assert.equal(agendia.price, undefined);
+  assert.equal(agendia.appUrl, undefined);
+  assert.match(agendia.pricingLabel?.es ?? "", /mensual.*compra única/);
+  assert.match(agendia.pricingLabel?.en ?? "", /subscription.*one-time/i);
+  assert.match(agendia.pricingNote?.es ?? "", /instalación independiente/);
+  assert.match(agendia.pricingNote?.en ?? "", /independent installation/);
+});

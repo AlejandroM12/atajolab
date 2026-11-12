@@ -79,6 +79,10 @@ export interface Microapp extends MicroappBase {
   benefits: string[];
   /** Who it is for. */
   audience: string[];
+  /** Replaces the generic label of the pricing model when a tool offers more than one way to pay. */
+  pricingLabel?: string;
+  /** Extra commercial detail for the detail page. Never a price. */
+  pricingNote?: string;
   seoTitle?: string;
   seoDescription?: string;
 }
@@ -102,6 +106,8 @@ export interface MicroappSource extends MicroappBase {
   features: Localized<string[]>;
   benefits: Localized<string[]>;
   audience: Localized<string[]>;
+  pricingLabel?: Localized<string>;
+  pricingNote?: Localized<string>;
   seoTitle?: Localized<string>;
   seoDescription?: Localized<string>;
 }

@@ -285,7 +285,7 @@ export const es = {
     processTitle: "De tu idea a una solución en uso",
     exampleLabel: "Una demo de lo que podemos crear",
     exampleTitle: "Adhera: preentrevistas online y un panel para los asesores",
-    exampleCta: "Ver el caso",
+    exampleCta: "Ver el proyecto",
     bannerTitle: "Contanos qué querés resolver",
     bannerDescription:
       "No hace falta un documento técnico: con una descripción del problema y de cómo lo resolvés hoy alcanza para empezar a conversar.",
@@ -301,11 +301,11 @@ export const es = {
     listLabel: "Lista de proyectos",
     kinds: { CUSTOM_DEVELOPMENT: "Demo funcional", OWN_PRODUCT: "Herramienta propia" },
     stack: "Tecnologías",
-    viewCase: "Ver el caso",
+    viewCase: "Ver el proyecto",
     bannerTitle: "¿Querés algo parecido para tu negocio?",
   },
   project: {
-    metaTitle: (name: string) => `${name}: caso de estudio`,
+    metaTitle: (name: string) => `${name}: proyecto de AtajoLab`,
     highlights: "Qué hace",
     stack: "Tecnologías",
     screenshots: "Capturas",

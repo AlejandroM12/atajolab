@@ -6,3 +6,5 @@
 # Agendia replaces the former "Agenda de turnos" placeholder page.
 /es/microapps/agenda-turnos/  /es/microapps/agendia/  301
 /en/microapps/appointment-scheduler/  /en/microapps/agendia/  301
+/es/microapps/agenda-turnos  /es/microapps/agendia/  301
+/en/microapps/appointment-scheduler  /en/microapps/agendia/  301

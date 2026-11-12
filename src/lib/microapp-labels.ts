@@ -4,7 +4,7 @@ import { intlLocale, type Locale } from "../i18n/config";
 
 /** Pricing label. For tools that are not available yet, it is marked as planned. */
 export function pricingLabel(app: Microapp, t: Dictionary): string {
-  const label = t.labels.pricing[app.pricingModel];
+  const label = app.pricingLabel ?? t.labels.pricing[app.pricingModel];
   return app.status === "AVAILABLE" ? label : `${label} · ${t.labels.planned}`;
 }
 

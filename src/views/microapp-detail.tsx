@@ -228,7 +228,7 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
             <div className="bg-paper p-4">
               <dt className="text-muted">{m.pricingModel}</dt>
               <dd className="mt-1 font-semibold text-ink">
-                {t.labels.pricing[app.pricingModel]}
+                {app.pricingLabel ?? t.labels.pricing[app.pricingModel]}
                 {!available && ` ${m.planned}`}
               </dd>
             </div>
@@ -237,6 +237,8 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
               <dd className="mt-1 font-semibold text-ink">{price ?? (available ? m.priceInApp : m.priceTbd)}</dd>
             </div>
           </dl>
+
+          {app.pricingNote && <p className="text-sm leading-relaxed text-muted">{app.pricingNote}</p>}
 
           {project && (
             <Link

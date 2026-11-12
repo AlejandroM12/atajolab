@@ -128,8 +128,8 @@ export const projectSources: ProjectSource[] = [
     },
     featured: true,
     seoDescription: {
-      es: "Caso de estudio: Adhera, plataforma de preentrevistas conversacionales para procesos de afiliación con panel de gestión para asesores.",
-      en: "Case study: Adhera, a conversational pre-interview platform for membership enrollment with a management dashboard for advisors.",
+      es: "Demo funcional: Adhera, un proyecto propio de AtajoLab para gestionar preentrevistas de afiliación, con un panel para asesores.",
+      en: "Working demo: Adhera, an AtajoLab project for managing membership pre-interviews, with a dashboard for advisors.",
     },
   },
   {

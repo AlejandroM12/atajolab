@@ -303,6 +303,11 @@ export const microappSources: MicroappSource[] = [
     },
     category: "gestion",
     pricingModel: "SUBSCRIPTION",
+    pricingLabel: { es: "Suscripción mensual o compra única", en: "Monthly subscription or one-time purchase" },
+    pricingNote: {
+      es: "Se podrá contratar como suscripción mensual o como compra única con instalación independiente. Los precios y las condiciones todavía no están definidos.",
+      en: "It will be available as a monthly subscription or as a one-time purchase with its own independent installation. Prices and terms are not defined yet.",
+    },
     status: "COMING_SOON",
     featured: true,
     images: [],
@@ -351,6 +356,8 @@ export function resolveMicroapp(source: MicroappSource, locale: Locale): Microap
     features: source.features[locale],
     benefits: source.benefits[locale],
     audience: source.audience[locale],
+    pricingLabel: source.pricingLabel?.[locale],
+    pricingNote: source.pricingNote?.[locale],
     seoTitle: source.seoTitle?.[locale],
     seoDescription: source.seoDescription?.[locale],
   };

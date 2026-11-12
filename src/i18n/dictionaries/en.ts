@@ -280,7 +280,7 @@ export const en: Dictionary = {
     processTitle: "From your idea to a solution in use",
     exampleLabel: "A demo of what we can build",
     exampleTitle: "Adhera: online pre-interviews and a dashboard for advisors",
-    exampleCta: "See the case",
+    exampleCta: "See the project",
     bannerTitle: "Tell us what you want to solve",
     bannerDescription:
       "You don't need a technical document: a description of the problem and how you handle it today is enough to start the conversation.",
@@ -296,11 +296,11 @@ export const en: Dictionary = {
     listLabel: "Project list",
     kinds: { CUSTOM_DEVELOPMENT: "Working demo", OWN_PRODUCT: "Our own tool" },
     stack: "Technology",
-    viewCase: "See the case",
+    viewCase: "See the project",
     bannerTitle: "Want something like this for your business?",
   },
   project: {
-    metaTitle: (name: string) => `${name} case study`,
+    metaTitle: (name: string) => `${name}: an AtajoLab project`,
     highlights: "What it does",
     stack: "Technology",
     screenshots: "Screenshots",
