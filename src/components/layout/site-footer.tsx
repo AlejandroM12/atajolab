@@ -6,6 +6,7 @@ import { microappPath, pagePath } from "@/i18n/routes";
 import { catalogParams } from "@/i18n/catalog-params";
 import { filtersToSearch, EMPTY_FILTERS } from "@/lib/catalog";
 import { site, socialLinks } from "@/data/site";
+import { isExternalUrl } from "@/lib/utils";
 import { getMicroapps } from "@/data/microapps";
 import { Container } from "@/components/shared/container";
 import { Logo } from "./logo";
@@ -36,9 +37,16 @@ export function SiteFooter({ locale }: { locale: Locale }) {
               { label: t.nav.faq, href: pagePath("faq", locale) },
             ].map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-muted hover:text-brand-700">
-                  {item.label}
-                </Link>
+                {isExternalUrl(item.href) ? (
+                  <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-brand-700">
+                    {item.label}
+                    <span className="sr-only">{t.a11y.opensInNewTab}</span>
+                  </a>
+                ) : (
+                  <Link href={item.href} className="text-muted hover:text-brand-700">
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

@@ -7,6 +7,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { Container } from "@/components/shared/container";
 import { PageHeader } from "@/components/shared/page-header";
 import { CtaBanner } from "@/components/shared/cta-banner";
+import { ShopBanner } from "@/components/shared/shop-showcase";
 import { MicroappCatalog } from "@/components/microapps/microapp-catalog";
 
 export function microappsMetadata(locale: Locale): Metadata {
@@ -36,6 +37,7 @@ export function MicroappsView({ locale }: { locale: Locale }) {
           <MicroappCatalog apps={apps} locale={locale} contactHref={pagePath("contact", locale)} />
         </Container>
       </section>
+      <ShopBanner locale={locale} />
       <CtaBanner locale={locale} title={t.catalog.bannerTitle} description={t.catalog.bannerDescription} />
     </>
   );

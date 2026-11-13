@@ -65,6 +65,20 @@ test("sitemap lists both languages with alternates and skips upcoming tools", ()
   assert.ok(!sitemap.includes("agendia"), "upcoming tool in sitemap");
 });
 
+test("the store is linked from the home and the catalog in both languages", () => {
+  const cta = { es: "Explorar la tienda", en: "Explore the store" };
+  for (const locale of locales) {
+    for (const route of [`/${locale}/`, `/${locale}/microapps/`]) {
+      const html = read(route);
+      assert.match(html, /<a href="https:\/\/tienda\.atajolab\.dev\/" target="_blank" rel="noopener noreferrer"/, route);
+      assert.ok(html.includes(cta[locale]), `store CTA on ${route}`);
+      assert.ok(html.includes("/images/shop/productos-qr-nfc.webp"), `store image on ${route}`);
+    }
+  }
+  assert.ok(!read("/en/").includes("Explorar la tienda"), "Spanish CTA on the English home");
+  assert.ok(existsSync(join(outDir, "images", "shop", "productos-qr-nfc.webp")));
+});
+
 test("robots.txt points to the sitemap", () => {
   assert.match(readFileSync(join(outDir, "robots.txt"), "utf8"), /Sitemap: https:\/\/atajolab\.dev\/sitemap\.xml/);
 });

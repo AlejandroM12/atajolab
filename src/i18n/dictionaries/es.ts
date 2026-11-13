@@ -25,6 +25,7 @@ export const es = {
   nav: {
     home: "Inicio",
     microapps: "Herramientas",
+    shop: "Tienda",
     solutions: "Servicios",
     howWeWork: "Cómo trabajamos",
     projects: "Proyectos",
@@ -63,7 +64,7 @@ export const es = {
   home: {
     metaTitle: "AtajoLab: herramientas y soluciones a medida para tu negocio",
     metaDescription:
-      "Herramientas fáciles de usar para conseguir reseñas, ordenar tu trabajo y ahorrar tiempo. Y soluciones a medida para comercios, profesionales y pymes.",
+      "Herramientas fáciles de usar para conseguir reseñas, ordenar tu trabajo y ahorrar tiempo. Soluciones a medida y productos QR y NFC personalizados para tu negocio.",
     hero: {
       eyebrow: "Para comercios, profesionales y empresas",
       titleLine1: "Tu negocio puede funcionar mejor.",
@@ -188,6 +189,25 @@ export const es = {
       description: "Si te queda alguna duda, escribinos y te respondemos por correo.",
       action: "Ver todas las preguntas",
     },
+  },
+  shop: {
+    eyebrow: "Tienda",
+    headline: "Productos QR y NFC personalizados para conectar tu negocio con tus clientes.",
+    intro:
+      "AtajoLab Shop es nuestra tienda de productos físicos con tecnología QR y NFC para negocios, restaurantes, eventos y profesionales. Elegís el producto, lo personalizás y hacés tu pedido por WhatsApp.",
+    benefits: [
+      "Conseguí reseñas de Google: tus clientes llegan directo a dejar su opinión.",
+      "Compartí tu menú digital para que lo abran desde el celular.",
+      "Conectá a tus clientes con tus redes sociales y tus datos de contacto.",
+      "Personalizá los productos para tu negocio o tu evento.",
+    ],
+    cta: "Explorar la tienda",
+    imageAlt:
+      "Productos de AtajoLab Shop: un soporte para mostrador con código QR para dejar reseñas, un cartel de mesa con QR para ver el menú, una tarjeta NFC y un sticker QR.",
+    note: "Se abre en tienda.atajolab.dev.",
+    bannerTitle: "¿Buscás productos físicos con QR y NFC?",
+    bannerText:
+      "En AtajoLab Shop encontrás soportes, tarjetas y stickers personalizados para tu negocio o tu evento.",
   },
   labels: {
     pricing: { FREE: "Gratis", ONE_TIME: "Pago único", SUBSCRIPTION: "Suscripción" },

@@ -3,15 +3,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Menu, X } from "lucide-react";
 import type { NavItem } from "@/types/content";
-import { cn } from "@/lib/utils";
+import { cn, isExternalUrl } from "@/lib/utils";
 import { isActive } from "./nav-links";
 
 interface MobileNavProps {
   items: NavItem[];
   cta: NavItem;
-  labels: { open: string; close: string; nav: string };
+  labels: { open: string; close: string; nav: string; newTab: string };
 }
 
 /** Mobile menu: toggle button + full-width panel. Closes on navigation and Escape. */
@@ -68,20 +68,37 @@ export function MobileNav({ items, cta, labels }: MobileNavProps) {
           <ul className="flex flex-col">
             {items.map((item) => {
               const active = isActive(pathname, item.href);
+              const className = cn(
+                "flex items-center justify-between py-4 font-display text-xl font-medium",
+                active ? "text-brand-700" : "text-ink",
+              );
               return (
                 <li key={item.href} className="border-b border-line">
-                  <Link
-                    href={item.href}
-                    aria-current={active ? "page" : undefined}
-                    onClick={() => setOpen(false)}
-                    className={cn(
-                      "flex items-center justify-between py-4 font-display text-xl font-medium",
-                      active ? "text-brand-700" : "text-ink",
-                    )}
-                  >
-                    {item.label}
-                    <ArrowRight aria-hidden="true" className="size-5 text-line-strong" />
-                  </Link>
+                  {isExternalUrl(item.href) ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setOpen(false)}
+                      className={className}
+                    >
+                      <span>
+                        {item.label}
+                        <span className="sr-only">{labels.newTab}</span>
+                      </span>
+                      <ArrowUpRight aria-hidden="true" className="size-5 text-line-strong" />
+                    </a>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      aria-current={active ? "page" : undefined}
+                      onClick={() => setOpen(false)}
+                      className={className}
+                    >
+                      {item.label}
+                      <ArrowRight aria-hidden="true" className="size-5 text-line-strong" />
+                    </Link>
+                  )}
                 </li>
               );
             })}

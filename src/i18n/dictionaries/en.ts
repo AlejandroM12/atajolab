@@ -20,6 +20,7 @@ export const en: Dictionary = {
   nav: {
     home: "Home",
     microapps: "Tools",
+    shop: "Shop",
     solutions: "Services",
     howWeWork: "How we work",
     projects: "Projects",
@@ -58,7 +59,7 @@ export const en: Dictionary = {
   home: {
     metaTitle: "AtajoLab: tools and custom solutions for your business",
     metaDescription:
-      "Easy-to-use tools to collect reviews, organize your work and save time, plus custom solutions for shops, professionals and small businesses.",
+      "Easy-to-use tools to collect reviews, organize your work and save time, plus custom solutions and personalized QR and NFC products for your business.",
     hero: {
       eyebrow: "For shops, professionals and companies",
       titleLine1: "Your business can run better.",
@@ -183,6 +184,24 @@ export const en: Dictionary = {
       description: "If you still have a question, email us and we'll get back to you.",
       action: "See all questions",
     },
+  },
+  shop: {
+    eyebrow: "Store",
+    headline: "Personalized QR and NFC products that connect your business with your customers.",
+    intro:
+      "AtajoLab Shop is our store of physical products with QR and NFC technology for businesses, restaurants, events and professionals. Pick a product, personalize it and place your order over WhatsApp.",
+    benefits: [
+      "Get Google reviews: customers land right where they leave their opinion.",
+      "Share your digital menu so guests can open it on their phone.",
+      "Connect customers with your social media and contact details.",
+      "Personalize products for your business or your event.",
+    ],
+    cta: "Explore the store",
+    imageAlt:
+      "AtajoLab Shop products: a counter stand with a QR code for leaving reviews, a table sign with a QR code for the menu, an NFC card and a QR sticker.",
+    note: "Opens tienda.atajolab.dev. The store is in Spanish.",
+    bannerTitle: "Looking for physical QR and NFC products?",
+    bannerText: "AtajoLab Shop has personalized stands, cards and stickers for your business or your event.",
   },
   labels: {
     pricing: { FREE: "Free", ONE_TIME: "One-time purchase", SUBSCRIPTION: "Subscription" },

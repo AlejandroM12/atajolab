@@ -4,7 +4,7 @@ import { htmlLang } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { pagePaths } from "@/i18n/routes";
 import { absoluteUrl, pageMetadata } from "@/lib/metadata";
-import { site } from "@/data/site";
+import { shop, site } from "@/data/site";
 import { Hero } from "@/components/home/hero";
 import { FeaturedMicroapps } from "@/components/home/featured-microapps";
 import { Benefits } from "@/components/home/benefits";
@@ -13,6 +13,7 @@ import { CustomDevelopment } from "@/components/home/custom-development";
 import { FeaturedCase } from "@/components/home/featured-case";
 import { FaqPreview } from "@/components/home/faq-preview";
 import { CtaBanner } from "@/components/shared/cta-banner";
+import { ShopShowcase } from "@/components/shared/shop-showcase";
 import { JsonLd } from "@/components/shared/json-ld";
 
 export function homeMetadata(locale: Locale): Metadata {
@@ -48,6 +49,15 @@ export function HomeView({ locale }: { locale: Locale }) {
         inLanguage: htmlLang[locale],
         publisher: { "@id": `${site.url}/#organization` },
       },
+      {
+        "@type": "OnlineStore",
+        "@id": `${site.url}/#shop`,
+        name: shop.name,
+        url: shop.url,
+        description: t.shop.headline,
+        image: absoluteUrl(shop.image.src),
+        parentOrganization: { "@id": `${site.url}/#organization` },
+      },
     ],
   };
 
@@ -56,6 +66,7 @@ export function HomeView({ locale }: { locale: Locale }) {
       <JsonLd data={structuredData} />
       <Hero locale={locale} />
       <FeaturedMicroapps locale={locale} />
+      <ShopShowcase locale={locale} />
       <CustomDevelopment locale={locale} />
       <Benefits locale={locale} />
       <HowWeWork locale={locale} />

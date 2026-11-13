@@ -2,6 +2,7 @@ import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { allRoutes, howWeWorkPath, pagePath, pagePaths } from "@/i18n/routes";
 import type { NavItem } from "@/types/content";
+import { shop } from "@/data/site";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/shared/container";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
@@ -15,6 +16,7 @@ export function mainNav(locale: Locale): NavItem[] {
   return [
     { label: t.home, href: pagePath("home", locale) },
     { label: t.microapps, href: pagePath("microapps", locale) },
+    { label: t.shop, href: shop.url },
     { label: t.solutions, href: pagePath("solutions", locale) },
     { label: t.howWeWork, href: howWeWorkPath(locale) },
     { label: t.contact, href: pagePath("contact", locale) },
@@ -34,7 +36,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
       <Container className="flex h-16 items-center justify-between gap-3">
         <Logo locale={locale} />
         <nav aria-label={t.a11y.mainNav} className="hidden lg:block">
-          <NavLinks items={desktopItems} />
+          <NavLinks items={desktopItems} newTabHint={t.a11y.opensInNewTab} />
         </nav>
         <div className="flex items-center gap-1.5">
           <LanguageSwitcher
@@ -54,7 +56,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           <MobileNav
             items={nav}
             cta={{ label: t.nav.mobileCta, href: contactHref }}
-            labels={{ open: t.a11y.openMenu, close: t.a11y.closeMenu, nav: t.a11y.mainNav }}
+            labels={{ open: t.a11y.openMenu, close: t.a11y.closeMenu, nav: t.a11y.mainNav, newTab: t.a11y.opensInNewTab }}
           />
         </div>
       </Container>
