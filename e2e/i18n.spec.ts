@@ -33,10 +33,10 @@ test("localized microapp slugs map to each other", async ({ page }) => {
 });
 
 test("catalog filters survive the language switch", async ({ page }) => {
-  await page.goto("/es/microapps/?categoria=finanzas&estado=proximamente");
+  await page.goto("/es/microapps/?categoria=finanzas");
   await expect(page.locator("main ul.grid > li")).toHaveCount(2);
   await page.locator(languageNav("Idioma")).getByRole("link", { name: "English" }).click();
-  await expect(page).toHaveURL(/\/en\/microapps\/\?category=finance&status=coming-soon$/);
+  await expect(page).toHaveURL(/\/en\/microapps\/\?category=finance$/);
   await expect(page.locator("main ul.grid > li")).toHaveCount(2);
   await expect(page.getByRole("radio", { name: /Costs & pricing/ })).toBeChecked();
 });

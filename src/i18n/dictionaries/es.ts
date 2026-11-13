@@ -49,7 +49,7 @@ export const es = {
     sections: "Secciones del sitio",
     navigation: "Navegación",
     microapps: "Herramientas",
-    upcoming: "Próximamente",
+    allMicroapps: "Ver todas",
     contact: "Contacto",
     madeIn: "Hecho en Argentina.",
   },
@@ -231,7 +231,7 @@ export const es = {
   catalog: {
     metaTitle: "Soluciones listas para usar",
     metaDescription:
-      "Microapps y herramientas web listas para usar: conseguí reseñas en Google, calculá precios, armá presupuestos y ordená tus turnos. Filtrá por tema, forma de pago y disponibilidad.",
+      "Microapps y herramientas web listas para usar: conseguí reseñas en Google, calculá precios, armá presupuestos y ordená tus turnos. Buscá por nombre o elegí un tema.",
     eyebrow: "Herramientas",
     title: "Soluciones listas para usar",
     intro:
@@ -243,16 +243,13 @@ export const es = {
     searchPlaceholder: "Por ejemplo: reseñas, precios, turnos…",
     clearSearch: "Borrar búsqueda",
     category: "Tema",
-    pricing: "Forma de pago",
-    status: "Disponibilidad",
-    allFeminine: "Todas",
-    allMasculine: "Todos",
+    all: "Todas",
     results: (count: number, filtered: boolean) =>
-      `${count === 1 ? "herramienta" : "herramientas"}${filtered ? " con estos filtros" : " para elegir"}`,
-    clearFilters: "Limpiar filtros",
+      `${count === 1 ? "herramienta" : "herramientas"}${filtered ? (count === 1 ? " encontrada" : " encontradas") : " para elegir"}`,
+    showAll: "Ver todas las herramientas",
     toolsHeading: "Herramientas",
-    emptyTitle: "No encontramos herramientas con esos filtros",
-    emptyBefore: "Probá con otra palabra o quitá algún filtro. Si lo que buscás todavía no existe,",
+    emptyTitle: "No encontramos herramientas",
+    emptyBefore: "Probá con otra palabra o con otro tema. Si lo que buscás todavía no existe,",
     emptyLink: "contanos qué necesitás",
     bannerTitle: "¿No encontrás lo que necesitás?",
     bannerDescription:

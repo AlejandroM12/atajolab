@@ -3,8 +3,6 @@ import { Mail } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { microappPath, pagePath } from "@/i18n/routes";
-import { catalogParams } from "@/i18n/catalog-params";
-import { filtersToSearch, EMPTY_FILTERS } from "@/lib/catalog";
 import { site, socialLinks } from "@/data/site";
 import { isExternalUrl } from "@/lib/utils";
 import { getMicroapps } from "@/data/microapps";
@@ -17,8 +15,6 @@ export function SiteFooter({ locale }: { locale: Locale }) {
   // The site is exported as static HTML, so the year is the build year.
   const year = new Date().getFullYear();
   const availableApps = getMicroapps(locale).filter((app) => app.status === "AVAILABLE");
-  const upcomingHref =
-    pagePath("microapps", locale) + filtersToSearch({ ...EMPTY_FILTERS, status: "COMING_SOON" }, catalogParams[locale]);
 
   return (
     <footer className="border-t border-line bg-paper">
@@ -63,8 +59,8 @@ export function SiteFooter({ locale }: { locale: Locale }) {
               </li>
             ))}
             <li>
-              <Link href={upcomingHref} className="text-muted hover:text-brand-700">
-                {t.footer.upcoming}
+              <Link href={pagePath("microapps", locale)} className="text-muted hover:text-brand-700">
+                {t.footer.allMicroapps}
               </Link>
             </li>
           </ul>

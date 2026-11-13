@@ -1,12 +1,7 @@
-import type {
-  Microapp,
-  MicroappCategory,
-  MicroappStatus,
-  PricingModel,
-} from "../types/microapp";
+import type { Microapp, MicroappCategory, MicroappStatus } from "../types/microapp";
 
 /**
- * Pure catalog logic: filtering, sorting and the mapping between filters and
+ * Pure catalog logic: search, topic filter, sorting and the mapping between filters and
  * URL query parameters. Parameter names and values are localized
  * (`?categoria=finanzas` in Spanish, `?category=finance` in English) through
  * a `CatalogParamConfig`, defined per language in `src/i18n/catalog-params.ts`.
@@ -15,8 +10,6 @@ import type {
 export interface CatalogFilters {
   query: string;
   category: MicroappCategory | null;
-  pricing: PricingModel | null;
-  status: MicroappStatus | null;
 }
 
 export interface CategoryParam {
@@ -25,17 +18,13 @@ export interface CategoryParam {
 }
 
 export interface CatalogParamConfig {
-  keys: { query: string; category: string; pricing: string; status: string };
+  keys: { query: string; category: string };
   categories: readonly CategoryParam[];
-  pricing: Record<PricingModel, string>;
-  status: Record<MicroappStatus, string>;
 }
 
 export const EMPTY_FILTERS: CatalogFilters = {
   query: "",
   category: null,
-  pricing: null,
-  status: null,
 };
 
 export const MAX_QUERY_LENGTH = 80;
@@ -68,8 +57,6 @@ export function filterMicroapps(apps: readonly Microapp[], filters: CatalogFilte
   return apps.filter(
     (app) =>
       (filters.category === null || app.category === filters.category) &&
-      (filters.pricing === null || app.pricingModel === filters.pricing) &&
-      (filters.status === null || app.status === filters.status) &&
       matchesQuery(app, filters.query),
   );
 }
@@ -84,18 +71,7 @@ export function sortMicroapps(apps: readonly Microapp[]): Microapp[] {
 }
 
 export function hasActiveFilters(filters: CatalogFilters): boolean {
-  return (
-    filters.query.trim() !== "" ||
-    filters.category !== null ||
-    filters.pricing !== null ||
-    filters.status !== null
-  );
-}
-
-function reverseLookup<T extends string>(map: Record<T, string>, value: string | null): T | null {
-  if (!value) return null;
-  const entry = (Object.entries(map) as [T, string][]).find(([, param]) => param === value);
-  return entry ? entry[0] : null;
+  return filters.query.trim() !== "" || filters.category !== null;
 }
 
 /** Reads filters from URL params. Unknown values are ignored instead of breaking the page. */
@@ -107,8 +83,6 @@ export function parseFilters(
   return {
     query: (params.get(config.keys.query) ?? "").slice(0, MAX_QUERY_LENGTH),
     category: config.categories.find((c) => c.param === categoryParam)?.id ?? null,
-    pricing: reverseLookup(config.pricing, params.get(config.keys.pricing)),
-    status: reverseLookup(config.status, params.get(config.keys.status)),
   };
 }
 
@@ -121,8 +95,6 @@ export function filtersToSearch(filters: CatalogFilters, config: CatalogParamCon
     const param = config.categories.find((c) => c.id === filters.category)?.param;
     if (param) params.set(config.keys.category, param);
   }
-  if (filters.pricing) params.set(config.keys.pricing, config.pricing[filters.pricing]);
-  if (filters.status) params.set(config.keys.status, config.status[filters.status]);
   const search = params.toString();
   return search ? `?${search}` : "";
 }

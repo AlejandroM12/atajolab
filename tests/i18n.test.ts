@@ -36,7 +36,8 @@ test("no dictionary text is empty, and arrays have the same length", () => {
 
 test("dictionary functions work in both languages", () => {
   assert.equal(es.catalog.results(1, false), "herramienta para elegir");
-  assert.equal(en.catalog.results(2, true), "tools match these filters");
+  assert.equal(en.catalog.results(2, true), "tools found");
+  assert.equal(es.catalog.results(1, true), "herramienta encontrada");
   assert.match(es.catalog.counts(1, 4), /1 disponible.*4 en preparación/);
   assert.match(en.catalog.counts(1, 4), /1 tool is available and 4 are on the way/);
 });

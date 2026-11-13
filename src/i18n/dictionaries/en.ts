@@ -44,7 +44,7 @@ export const en: Dictionary = {
     sections: "Site sections",
     navigation: "Navigation",
     microapps: "Tools",
-    upcoming: "Coming soon",
+    allMicroapps: "See all",
     contact: "Contact",
     madeIn: "Made in Argentina.",
   },
@@ -225,7 +225,7 @@ export const en: Dictionary = {
   catalog: {
     metaTitle: "Ready-to-use solutions",
     metaDescription:
-      "Microapps and web tools ready to use: get Google reviews, work out prices, write quotes and organize appointments. Filter by topic, payment type and availability.",
+      "Microapps and web tools ready to use: get Google reviews, work out prices, write quotes and organize appointments. Search by name or pick a topic.",
     eyebrow: "Tools",
     title: "Ready-to-use solutions",
     intro:
@@ -237,16 +237,13 @@ export const en: Dictionary = {
     searchPlaceholder: "For example: reviews, prices, appointments…",
     clearSearch: "Clear search",
     category: "Topic",
-    pricing: "Payment",
-    status: "Availability",
-    allFeminine: "All",
-    allMasculine: "All",
+    all: "All",
     results: (count: number, filtered: boolean) =>
-      `${count === 1 ? "tool" : "tools"}${filtered ? " match these filters" : " to choose from"}`,
-    clearFilters: "Clear filters",
+      `${count === 1 ? "tool" : "tools"}${filtered ? " found" : " to choose from"}`,
+    showAll: "See all tools",
     toolsHeading: "Tools",
-    emptyTitle: "No tools match these filters",
-    emptyBefore: "Try another word or remove a filter. If what you're looking for doesn't exist yet,",
+    emptyTitle: "We couldn't find any tools",
+    emptyBefore: "Try another word or another topic. If what you're looking for doesn't exist yet,",
     emptyLink: "tell us what you need",
     bannerTitle: "Can't find what you need?",
     bannerDescription:

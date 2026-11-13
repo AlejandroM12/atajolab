@@ -47,11 +47,12 @@ test("search with several words requires all of them", () => {
   ]);
 });
 
-test("filters combine: category + pricing + status", () => {
-  const filters = { ...EMPTY_FILTERS, category: "finanzas" as const, pricing: "FREE" as const, status: "COMING_SOON" as const };
-  assert.equal(filterMicroapps(es, filters).length, 2);
-  assert.equal(filterMicroapps(en, filters).length, 2);
-  assert.equal(filterMicroapps(es, { ...EMPTY_FILTERS, category: "marketing", pricing: "FREE" }).length, 0);
+test("search and topic combine", () => {
+  assert.equal(filterMicroapps(es, { ...EMPTY_FILTERS, category: "finanzas" }).length, 2);
+  assert.deepEqual(names(filterMicroapps(es, { query: "hora", category: "finanzas" })), ["Calculadora de tarifa por hora"]);
+  assert.deepEqual(names(filterMicroapps(en, { query: "hourly", category: "finanzas" })), ["Hourly Rate Calculator"]);
+  assert.equal(filterMicroapps(es, { query: "calculadora", category: "marketing" }).length, 0);
+  assert.equal(hasActiveFilters({ query: "", category: "marketing" }), true);
 });
 
 test("available tools come first", () => {
@@ -62,27 +63,27 @@ test("available tools come first", () => {
 });
 
 test("Spanish filters round-trip through localized URL params", () => {
-  const filters = { query: "presupuestos", category: "ventas" as const, pricing: "ONE_TIME" as const, status: "COMING_SOON" as const };
+  const filters = { query: "presupuestos", category: "ventas" as const };
   const search = filtersToSearch(filters, catalogParams.es);
-  assert.equal(search, "?q=presupuestos&categoria=ventas&modelo=pago-unico&estado=proximamente");
+  assert.equal(search, "?q=presupuestos&categoria=ventas");
   assert.deepEqual(parseFilters(new URLSearchParams(search), catalogParams.es), filters);
 });
 
 test("English filters round-trip through localized URL params", () => {
-  const filters = { query: "quote", category: "ventas" as const, pricing: "ONE_TIME" as const, status: "COMING_SOON" as const };
+  const filters = { query: "quote", category: "ventas" as const };
   const search = filtersToSearch(filters, catalogParams.en);
-  assert.equal(search, "?q=quote&category=sales&pricing=one-time&status=coming-soon");
+  assert.equal(search, "?q=quote&category=sales");
   assert.deepEqual(parseFilters(new URLSearchParams(search), catalogParams.en), filters);
 });
 
 test("switching language keeps the filters", () => {
   assert.equal(
-    translateSearch("?categoria=finanzas&modelo=gratis&estado=proximamente", catalogParams.es, catalogParams.en),
-    "?category=finance&pricing=free&status=coming-soon",
+    translateSearch("?q=hora&categoria=finanzas", catalogParams.es, catalogParams.en),
+    "?q=hora&category=finance",
   );
   assert.equal(
-    translateSearch("?q=qr&category=marketing&status=available", catalogParams.en, catalogParams.es),
-    "?q=qr&categoria=marketing&estado=disponible",
+    translateSearch("?q=qr&category=marketing", catalogParams.en, catalogParams.es),
+    "?q=qr&categoria=marketing",
   );
   assert.equal(translateSearch("", catalogParams.es, catalogParams.en), "");
 });
@@ -93,12 +94,14 @@ test("empty filters produce an empty query string", () => {
 });
 
 test("unknown or other-language URL values are ignored and long queries are cut", () => {
-  const parsed = parseFilters(
-    new URLSearchParams(`?categoria=nope&modelo=free&estado=x&q=${"a".repeat(200)}`),
-    catalogParams.es,
-  );
+  const parsed = parseFilters(new URLSearchParams(`?categoria=nope&q=${"a".repeat(200)}`), catalogParams.es);
   assert.equal(parsed.category, null);
-  assert.equal(parsed.pricing, null, "English value in a Spanish URL is ignored");
-  assert.equal(parsed.status, null);
   assert.equal(parsed.query.length, 80);
+  assert.equal(parseFilters(new URLSearchParams("?categoria=finance"), catalogParams.es).category, null, "English value in a Spanish URL");
+});
+
+test("links to the removed payment and availability filters open the whole catalog", () => {
+  const parsed = parseFilters(new URLSearchParams("?modelo=suscripcion&estado=proximamente"), catalogParams.es);
+  assert.deepEqual(parsed, EMPTY_FILTERS);
+  assert.equal(translateSearch("?pricing=free&status=coming-soon", catalogParams.en, catalogParams.es), "");
 });
