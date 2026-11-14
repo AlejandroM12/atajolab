@@ -162,6 +162,21 @@ export const en: Dictionary = {
         action: "Tell us what you need",
       },
     },
+    agendia: {
+      eyebrow: "Appointments and online booking",
+      headline: "Organize your appointments, automate your bookings and spend more time on your business.",
+      intro:
+        "Agendia is an appointment management platform for professionals, entrepreneurs and businesses that work by appointment. You manage your schedule, take bookings online and give your clients a page that looks like your business.",
+      benefits: [
+        "Online bookings 24 hours a day, with nothing for your clients to install.",
+        "Your booking page with your logo, cover image, colors and typeface.",
+        "Automatic reminders by email.",
+        "Clients view, cancel or reschedule their appointment from their own link.",
+      ],
+      primary: "Get to know Agendia",
+      secondary: "Try it free for 7 days",
+      note: "7-day trial with every feature. Agendia opens at agendia.atajolab.dev.",
+    },
     caseStudy: {
       eyebrow: "See what we can build",
       badge: "Working demo",
@@ -252,6 +267,13 @@ export const en: Dictionary = {
   microapp: {
     whatItIs: "How it helps",
     whatWeAreBuilding: "What we're preparing",
+    problems: "Problems it solves",
+    howItWorks: "How it works",
+    plansTitle: "Pricing and plans",
+    plansIntro: "Two ways to have it, with the same features.",
+    oneTimePayment: "one-time payment",
+    seePlans: "See plans",
+    officialLinks: "Official links",
     screenshots: "Screenshots",
     screenshotsNote: "Images of the tool with sample data.",
     features: "What's included",

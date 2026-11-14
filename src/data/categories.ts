@@ -18,7 +18,7 @@ export const categorySources: CategorySource[] = [
   { id: "marketing", label: { es: "Clientes y reseñas", en: "Customers & reviews" }, param: { es: "marketing", en: "marketing" } },
   { id: "finanzas", label: { es: "Costos y precios", en: "Costs & pricing" }, param: { es: "finanzas", en: "finance" } },
   { id: "ventas", label: { es: "Ventas y presupuestos", en: "Sales & quotes" }, param: { es: "ventas", en: "sales" } },
-  { id: "gestion", label: { es: "Organización", en: "Organization" }, param: { es: "gestion", en: "operations" } },
+  { id: "gestion", label: { es: "Gestión de turnos y reservas online", en: "Appointment and online booking management" }, param: { es: "gestion", en: "operations" } },
 ];
 
 export function getCategories(locale: Locale): CategoryInfo[] {

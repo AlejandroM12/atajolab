@@ -57,12 +57,14 @@ test("upcoming microapps are noindex in both languages; available ones are index
   }
 });
 
-test("sitemap lists both languages with alternates and skips upcoming tools", () => {
+test("sitemap lists both languages with alternates, includes Agendia and skips upcoming tools", () => {
   const sitemap = readFileSync(join(outDir, "sitemap.xml"), "utf8");
   assert.ok(sitemap.includes("<loc>https://atajolab.dev/es/</loc>"));
   assert.ok(sitemap.includes("<loc>https://atajolab.dev/en/solutions/</loc>"));
   assert.ok(sitemap.includes('hreflang="x-default"'));
-  assert.ok(!sitemap.includes("agendia"), "upcoming tool in sitemap");
+  assert.ok(sitemap.includes("<loc>https://atajolab.dev/es/microapps/agendia/</loc>"), "Agendia missing from sitemap");
+  assert.ok(sitemap.includes("<loc>https://atajolab.dev/en/microapps/agendia/</loc>"), "Agendia missing from sitemap");
+  assert.ok(!sitemap.includes("calculadora-costos-precios"), "upcoming tool in sitemap");
 });
 
 test("the store is linked from the home and the catalog in both languages", () => {
@@ -77,6 +79,26 @@ test("the store is linked from the home and the catalog in both languages", () =
   }
   assert.ok(!read("/en/").includes("Explorar la tienda"), "Spanish CTA on the English home");
   assert.ok(existsSync(join(outDir, "images", "shop", "productos-qr-nfc.webp")));
+});
+
+test("Agendia is launched: official links, structured data and no coming-soon wording", () => {
+  const official = 'href="https://agendia.atajolab.dev';
+  for (const locale of locales) {
+    // Everything above the list of other tools, which still shows tools that are coming soon.
+    const full = read(microappPaths("agendia")[locale]);
+    const page = full.slice(0, full.indexOf('id="otras"'));
+    assert.ok(page.includes(`${official}"`) || page.includes(`${official}/"`), `official link ${locale}`);
+    assert.ok(page.includes(`${official}/registro"`), `trial link ${locale}`);
+    assert.ok(page.includes(`${official}/precios"`), `pricing link ${locale}`);
+    assert.match(page, /"@type":"SoftwareApplication"/, `structured data ${locale}`);
+    assert.match(page, /"priceCurrency":"ARS"/, `offers ${locale}`);
+    assert.doesNotMatch(page, /Próximamente|Coming soon|En desarrollo/i, `coming soon wording ${locale}`);
+    assert.doesNotMatch(page, /Sin tarjeta|No card/i, `card wording ${locale}`);
+  }
+  assert.match(read("/es/"), /Conocer Agendia/);
+  assert.match(read("/en/"), /Get to know Agendia/);
+  assert.match(read("/es/"), /Probar 7 días gratis/);
+  assert.match(read("/en/"), /Try it free for 7 days/);
 });
 
 test("robots.txt points to the sitemap", () => {

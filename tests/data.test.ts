@@ -76,7 +76,7 @@ test("tools that are not available have no price, no app link and no checkout", 
   }
 });
 
-test("no checkout is enabled and no price is published in this phase", () => {
+test("no checkout is enabled and no single price is set; public plans live in `plans`", () => {
   for (const app of microappSources) {
     assert.notEqual(app.checkout?.enabled, true, app.id);
     assert.equal(app.price, undefined, app.id);
@@ -109,14 +109,29 @@ test("FAQ ids are unique", () => {
   assert.equal(new Set(faqSources.map((f) => f.id)).size, faqSources.length);
 });
 
-test("Agendia is upcoming, has no price and states its commercial model in both languages", () => {
+test("Agendia is available, links to its official site and only shows prices that are public there", () => {
   const agendia = microappSources.find((app) => app.id === "agendia");
   assert.ok(agendia);
-  assert.equal(agendia.status, "COMING_SOON");
-  assert.equal(agendia.price, undefined);
-  assert.equal(agendia.appUrl, undefined);
-  assert.match(agendia.pricingLabel?.es ?? "", /mensual.*compra única/);
-  assert.match(agendia.pricingLabel?.en ?? "", /subscription.*one-time/i);
-  assert.match(agendia.pricingNote?.es ?? "", /instalación independiente/);
-  assert.match(agendia.pricingNote?.en ?? "", /independent installation/);
+  assert.equal(agendia.status, "AVAILABLE");
+  assert.equal(agendia.appUrl, "https://agendia.atajolab.dev");
+  assert.equal(agendia.trial?.href, "https://agendia.atajolab.dev/registro");
+  assert.equal(agendia.trial?.label.es, "Probar 7 días gratis");
+  assert.deepEqual(agendia.plans?.map((plan) => [plan.id, plan.price, plan.billingPeriod]), [
+    ["profesional", 14000, "MONTHLY"],
+    ["licencia", 199000, undefined],
+  ]);
+  for (const key of ["problems", "steps", "features", "audience", "benefits"] as const) {
+    assert.equal(agendia[key]?.es.length, agendia[key]?.en.length, key);
+  }
+  assert.equal(agendia.steps?.es.length, 3);
+  assert.equal(agendia.features.es.length, 12);
+});
+
+test("Agendia never promises features that do not exist and never mentions a card", () => {
+  const agendia = microappSources.find((app) => app.id === "agendia");
+  assert.ok(agendia);
+  const text = strings(agendia).join(" ");
+  assert.doesNotMatch(text, /próximamente|coming soon|en desarrollo|in development/i);
+  assert.doesNotMatch(text, /tarjeta de (crédito|débito)|credit card|sin tarjeta|no card/i);
+  assert.doesNotMatch(text, /recordatorios?[^.]*whatsapp|whatsapp[^.]*reminders?|dominio propio|custom domain/i);
 });

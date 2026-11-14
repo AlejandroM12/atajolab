@@ -31,7 +31,12 @@ export function HeroVisual({ locale }: { locale: Locale }) {
       href: microappPaths("agendia")[locale],
       icon: CalendarDays,
       ...t.appointments,
-      tag: agendia?.status === "COMING_SOON" ? { label: dict.labels.status.COMING_SOON, tone: "amber" } : undefined,
+      tag:
+        agendia?.status === "AVAILABLE"
+          ? { label: dict.labels.status.AVAILABLE, tone: "success" }
+          : agendia?.status === "COMING_SOON"
+            ? { label: dict.labels.status.COMING_SOON, tone: "amber" }
+            : undefined,
     },
     {
       href: pagePath("microapps", locale),

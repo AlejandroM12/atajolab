@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Check, Clock, Sparkles, Users } from "lucide-react";
+import { AlertCircle, ArrowRight, ArrowUpRight, Check, Clock, Sparkles, Users } from "lucide-react";
 import type { Locale } from "@/i18n/config";
-import { locales } from "@/i18n/config";
+import { htmlLang, intlLocale, locales } from "@/i18n/config";
+import type { Microapp } from "@/types/microapp";
 import { getDictionary } from "@/i18n/dictionaries";
 import { catalogParams } from "@/i18n/catalog-params";
 import { microappPaths, pagePath, projectPath } from "@/i18n/routes";
@@ -13,10 +14,13 @@ import { getCategory } from "@/data/categories";
 import { site } from "@/data/site";
 import { getMicroappCta, isActionableCta } from "@/lib/microapp-cta";
 import { formatPrice, isIndexable } from "@/lib/microapp-labels";
+import { absoluteUrl } from "@/lib/metadata";
 import { pageMetadata } from "@/lib/metadata";
 import { EMPTY_FILTERS, filtersToSearch } from "@/lib/catalog";
 import { displayHost } from "@/lib/utils";
+import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/shared/container";
+import { JsonLd } from "@/components/shared/json-ld";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { ColdStartNote } from "@/components/shared/cold-start-note";
 import { CtaBanner } from "@/components/shared/cta-banner";
@@ -24,6 +28,7 @@ import { MicroappArtwork } from "@/components/microapps/microapp-artwork";
 import { PricingBadge, StatusBadge } from "@/components/microapps/microapp-badges";
 import { MicroappCtaButton } from "@/components/microapps/microapp-cta-button";
 import { MicroappGallery } from "@/components/microapps/microapp-gallery";
+import { ProductStage, StageGallery } from "@/components/microapps/product-stage";
 import { MicroappCard } from "@/components/microapps/microapp-card";
 
 /** Static params for `/[lang]/microapps/[slug]`: every tool in every language, with its localized slug. */
@@ -63,9 +68,12 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
   const categoryHref =
     pagePath("microapps", locale) + filtersToSearch({ ...EMPTY_FILTERS, category: app.category }, catalogParams[locale]);
   const host = app.appUrl ? displayHost(app.appUrl) : undefined;
+  const staged = app.imageStyle === "stage";
+  const structuredData = app.plans && app.appUrl ? softwareData(app, locale) : null;
 
   return (
     <>
+      {structuredData && <JsonLd data={structuredData} />}
       <header className="relative overflow-hidden border-b border-line bg-paper">
         <div aria-hidden="true" className="bg-grid mask-fade absolute inset-0 opacity-70" />
         <Container className="relative grid gap-10 py-10 sm:py-14 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:py-16">
@@ -95,6 +103,11 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <MicroappCtaButton app={app} locale={locale} size="lg" />
+              {app.trial && available && (
+                <ButtonLink href={app.trial.href} locale={locale} size="lg" variant="secondary">
+                  {app.trial.label}
+                </ButtonLink>
+              )}
               {app.demoUrl && available && (
                 <a
                   href={app.demoUrl}
@@ -113,7 +126,7 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
                 {host && (
                   <p className="text-sm text-muted">
                     {m.opensAt} <span className="font-medium text-ink-soft">{host}</span>.
-                    {app.pricingModel !== "FREE" && !price && ` ${m.priceNote}`}
+                    {app.pricingModel !== "FREE" && !price && !app.pricingNote && ` ${m.priceNote}`}
                   </p>
                 )}
                 {app.hosting?.coldStart && <ColdStartNote text={t.coldStart} />}
@@ -142,6 +155,8 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
               <div className="aspect-[4/3] overflow-hidden rounded-2xl border border-line shadow-card">
                 <MicroappArtwork app={app} />
               </div>
+            ) : staged ? (
+              <ProductStage images={app.images} mark={app.logo ? { src: app.logo, name: app.name } : undefined} />
             ) : (
               <MicroappGallery images={app.images.slice(0, 1)} url={host} />
             )}
@@ -162,14 +177,56 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
             </div>
           </section>
 
-          {app.images.length > 1 && (
+          {app.problems && (
+            <section aria-labelledby="problemas">
+              <h2 id="problemas" className="text-2xl font-semibold text-ink sm:text-3xl">
+                {m.problems}
+              </h2>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                {app.problems.map((problem) => (
+                  <li
+                    key={problem}
+                    className="flex items-start gap-3 rounded-xl border border-line bg-surface p-4 text-[0.95rem] leading-relaxed text-ink-soft"
+                  >
+                    <AlertCircle aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-amber-600 dark:text-amber-400" />
+                    {problem}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {app.steps && (
+            <section aria-labelledby="como-funciona">
+              <h2 id="como-funciona" className="text-2xl font-semibold text-ink sm:text-3xl">
+                {m.howItWorks}
+              </h2>
+              <ol className="mt-6 grid gap-4 sm:grid-cols-3">
+                {app.steps.map((step, index) => (
+                  <li key={step.title} className="rounded-2xl border border-line bg-card p-5 shadow-card">
+                    <span className="font-display text-sm font-semibold text-brand-600 tabular-nums">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="mt-2 text-lg font-semibold text-ink">{step.title}</h3>
+                    <p className="mt-1.5 leading-relaxed text-muted">{step.text}</p>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
+
+          {(staged ? app.images.length > 0 : app.images.length > 1) && (
             <section aria-labelledby="capturas">
               <h2 id="capturas" className="text-2xl font-semibold text-ink sm:text-3xl">
                 {m.screenshots}
               </h2>
               <p className="mt-2 text-muted">{m.screenshotsNote}</p>
               <div className="mt-6">
-                <MicroappGallery images={app.images.slice(1)} url={host} />
+                {staged ? (
+                  <StageGallery images={app.images} />
+                ) : (
+                  <MicroappGallery images={app.images.slice(1)} url={host} />
+                )}
               </div>
             </section>
           )}
@@ -191,6 +248,37 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
               ))}
             </ul>
           </section>
+
+          {app.plans && (
+            <section aria-labelledby="precios" className="scroll-mt-24">
+              <h2 id="precios" className="text-2xl font-semibold text-ink sm:text-3xl">
+                {m.plansTitle}
+              </h2>
+              <p className="mt-2 text-muted">{m.plansIntro}</p>
+              <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+                {app.plans.map((plan) => (
+                  <li key={plan.id} className="flex flex-col rounded-2xl border border-line bg-card p-6 shadow-card">
+                    <h3 className="text-lg font-semibold text-ink">{plan.name}</h3>
+                    <p className="mt-2 font-display text-3xl font-semibold text-ink">
+                      {planPrice(plan.price, plan.currency, locale)}
+                      <span className="ml-1.5 text-base font-medium text-muted">
+                        {plan.billingPeriod ? t.labels.perMonth : m.oneTimePayment}
+                      </span>
+                    </p>
+                    <ul className="mt-4 space-y-2">
+                      {plan.details.map((detail) => (
+                        <li key={detail} className="flex items-start gap-2.5 text-[0.95rem] leading-relaxed text-ink-soft">
+                          <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-brand-600" />
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+              {app.pricingNote && <p className="mt-4 text-sm leading-relaxed text-muted">{app.pricingNote}</p>}
+            </section>
+          )}
         </div>
 
         <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
@@ -234,11 +322,41 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
             </div>
             <div className="bg-paper p-4">
               <dt className="text-muted">{m.price}</dt>
-              <dd className="mt-1 font-semibold text-ink">{price ?? (available ? m.priceInApp : m.priceTbd)}</dd>
+              <dd className="mt-1 font-semibold text-ink">
+                {app.plans ? (
+                  <a href="#precios" className="text-brand-700 hover:underline">
+                    {m.seePlans}
+                  </a>
+                ) : (
+                  (price ?? (available ? m.priceInApp : m.priceTbd))
+                )}
+              </dd>
             </div>
           </dl>
 
-          {app.pricingNote && <p className="text-sm leading-relaxed text-muted">{app.pricingNote}</p>}
+          {app.pricingNote && !app.plans && <p className="text-sm leading-relaxed text-muted">{app.pricingNote}</p>}
+
+          {app.officialLinks && (
+            <div className="rounded-2xl border border-line bg-card p-6 shadow-card">
+              <h2 className="text-lg font-semibold text-ink">{m.officialLinks}</h2>
+              <ul className="mt-4 space-y-2.5">
+                {app.officialLinks.map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 font-semibold text-brand-700 hover:underline"
+                    >
+                      {link.label}
+                      <ArrowUpRight aria-hidden="true" className="size-4" />
+                      <span className="sr-only">{t.a11y.opensInNewTab}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {project && (
             <Link
@@ -278,4 +396,34 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
       <CtaBanner locale={locale} />
     </>
   );
+}
+
+function planPrice(amount: number, currency: "ARS" | "USD", locale: Locale): string {
+  return new Intl.NumberFormat(intlLocale[locale], { style: "currency", currency, maximumFractionDigits: 0 }).format(amount);
+}
+
+/** Structured data for a tool that has public plans: the product, its features and what it costs. */
+function softwareData(app: Microapp, locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "@id": `${absoluteUrl(microappPaths(app.id)[locale])}#software`,
+    name: app.name,
+    description: app.seoDescription ?? app.shortDescription,
+    url: app.appUrl,
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    inLanguage: htmlLang[locale],
+    featureList: app.features,
+    image: app.images[0] ? absoluteUrl(app.images[0].src) : undefined,
+    publisher: { "@id": `${site.url}/#organization` },
+    offers: app.plans?.map((plan) => ({
+      "@type": "Offer",
+      name: plan.name,
+      price: plan.price,
+      priceCurrency: plan.currency,
+      url: app.appUrl,
+      availability: "https://schema.org/InStock",
+    })),
+  };
 }

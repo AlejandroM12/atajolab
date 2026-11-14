@@ -11,7 +11,7 @@ test("Spanish search and topics update the list and the URL", async ({ page, con
   await expect(page.locator(cards)).toHaveCount(2);
 
   await page.getByLabel("Buscar herramientas").fill("");
-  await page.getByRole("radio", { name: "Organización" }).check({ force: true });
+  await page.getByRole("radio", { name: "Gestión de turnos y reservas online" }).check({ force: true });
   await expect(page).toHaveURL(/\?categoria=gestion$/);
   await expect(page.locator(cards)).toHaveCount(1);
   await expect(page.locator(cards).first()).toContainText("Agendia");
@@ -52,8 +52,8 @@ test("filters in the URL are applied on load", async ({ page }) => {
 
 test("only the search box and topic chips filter the catalog, without counters", async ({ page }) => {
   for (const [path, topics, removed] of [
-    ["/es/microapps/", ["Todas", "Clientes y reseñas", "Costos y precios", "Ventas y presupuestos", "Organización"], /Forma de pago|Disponibilidad/],
-    ["/en/microapps/", ["All", "Customers & reviews", "Costs & pricing", "Sales & quotes", "Organization"], /Payment|Availability/],
+    ["/es/microapps/", ["Todas", "Clientes y reseñas", "Costos y precios", "Ventas y presupuestos", "Gestión de turnos y reservas online"], /Forma de pago|Disponibilidad/],
+    ["/en/microapps/", ["All", "Customers & reviews", "Costs & pricing", "Sales & quotes", "Appointment and online booking management"], /Payment|Availability/],
   ] as const) {
     await page.goto(path);
     const group = page.getByRole("group");
@@ -76,7 +76,7 @@ test("on a phone the topics scroll sideways without widening the page", async ({
   expect(pageOverflow).toBeLessThanOrEqual(0);
 
   // The last chip is off screen at first and still reachable.
-  await page.getByRole("radio", { name: "Organización" }).check({ force: true });
+  await page.getByRole("radio", { name: "Gestión de turnos y reservas online" }).check({ force: true });
   await expect(page.locator(cards)).toHaveCount(1);
 });
 

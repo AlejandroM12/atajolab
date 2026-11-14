@@ -167,6 +167,21 @@ export const es = {
         action: "Contanos qué necesitás",
       },
     },
+    agendia: {
+      eyebrow: "Turnos y reservas online",
+      headline: "Organizá tus turnos, automatizá tus reservas y dedicá más tiempo a tu negocio.",
+      intro:
+        "Agendia es una plataforma de gestión de turnos para profesionales, emprendedores y negocios que trabajan con citas. Administrás tu agenda, recibís reservas online y le ofrecés a tus clientes una página con la imagen de tu negocio.",
+      benefits: [
+        "Reservas online las 24 horas, sin que tus clientes instalen nada.",
+        "Tu página de reservas con tu logo, tu portada, tus colores y tu tipografía.",
+        "Recordatorios automáticos por correo electrónico.",
+        "Tus clientes consultan, cancelan o reprograman su turno desde su enlace.",
+      ],
+      primary: "Conocer Agendia",
+      secondary: "Probar 7 días gratis",
+      note: "7 días de prueba con todas las funciones. Agendia se abre en agendia.atajolab.dev.",
+    },
     caseStudy: {
       eyebrow: "Conocé lo que podemos crear",
       badge: "Demo funcional",
@@ -258,6 +273,13 @@ export const es = {
   microapp: {
     whatItIs: "Cómo te ayuda",
     whatWeAreBuilding: "Qué estamos preparando",
+    problems: "Qué problemas resuelve",
+    howItWorks: "Cómo funciona",
+    plansTitle: "Información comercial",
+    plansIntro: "Dos formas de tenerla, con las mismas funciones.",
+    oneTimePayment: "pago único",
+    seePlans: "Ver planes",
+    officialLinks: "Enlaces oficiales",
     screenshots: "Capturas",
     screenshotsNote: "Imágenes de la herramienta con datos de ejemplo.",
     features: "Qué incluye",

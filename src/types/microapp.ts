@@ -43,6 +43,27 @@ export interface HostingInfo {
   coldStart?: boolean;
 }
 
+/** A way to pay for a tool, with a price that is published on the tool's own site. */
+export interface MicroappPlan {
+  id: string;
+  name: string;
+  price: number;
+  currency: Currency;
+  /** Set for subscriptions; one-time payments leave it out. */
+  billingPeriod?: BillingPeriod;
+  details: string[];
+}
+
+export interface MicroappStep {
+  title: string;
+  text: string;
+}
+
+export interface MicroappLink {
+  label: string;
+  href: string;
+}
+
 /** Fields shared by every language. */
 interface MicroappBase {
   id: string;
@@ -61,6 +82,10 @@ interface MicroappBase {
   hosting?: HostingInfo;
   /** Related case study id in `src/data/projects.ts`. */
   projectId?: string;
+  /** "browser" frames screenshots as app windows; "stage" shows product cards on the product's own backdrop. */
+  imageStyle?: "browser" | "stage";
+  /** The product's own mark, shown on the stage. */
+  logo?: string;
 }
 
 /** A microapp resolved for one language: what components render. */
@@ -83,6 +108,18 @@ export interface Microapp extends MicroappBase {
   pricingLabel?: string;
   /** Extra commercial detail for the detail page. Never a price. */
   pricingNote?: string;
+  /** Replaces the label of the main button when it opens the tool. */
+  ctaLabel?: string;
+  /** Problems the tool solves, in the customer's words. */
+  problems?: string[];
+  /** How it works, in a few steps. */
+  steps?: MicroappStep[];
+  /** Plans and prices, only when they are public on the tool's site. */
+  plans?: MicroappPlan[];
+  /** Secondary button next to the main one, e.g. a free trial. */
+  trial?: MicroappLink;
+  /** Links to the tool's own site. */
+  officialLinks?: MicroappLink[];
   seoTitle?: string;
   seoDescription?: string;
 }
@@ -108,6 +145,17 @@ export interface MicroappSource extends MicroappBase {
   audience: Localized<string[]>;
   pricingLabel?: Localized<string>;
   pricingNote?: Localized<string>;
+  ctaLabel?: Localized<string>;
+  problems?: Localized<string[]>;
+  steps?: Localized<MicroappStep[]>;
+  plans?: MicroappPlanSource[];
+  trial?: { label: Localized<string>; href: string };
+  officialLinks?: { label: Localized<string>; href: string }[];
   seoTitle?: Localized<string>;
   seoDescription?: Localized<string>;
+}
+
+export interface MicroappPlanSource extends Omit<MicroappPlan, "name" | "details"> {
+  name: Localized<string>;
+  details: Localized<string[]>;
 }

@@ -29,7 +29,7 @@ test("localized microapp slugs map to each other", async ({ page }) => {
   await page.locator(languageNav("Idioma")).getByRole("link", { name: "English" }).click();
   await expect(page).toHaveURL(/\/en\/microapps\/agendia\/$/);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Let your clients book appointments online");
-  await expect(page.getByText("Coming soon").first()).toBeVisible();
+  await expect(page.getByText("Available").first()).toBeVisible();
 });
 
 test("catalog filters survive the language switch", async ({ page }) => {

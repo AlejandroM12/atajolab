@@ -24,7 +24,7 @@ export function MicroappCtaButton({
 }) {
   const t = getDictionary(locale).labels;
   const cta = getMicroappCta(app);
-  const label = t.cta[cta.kind];
+  const label = app.ctaLabel ?? t.cta[cta.kind];
 
   switch (cta.kind) {
     case "use-free":
