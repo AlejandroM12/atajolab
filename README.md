@@ -1,111 +1,161 @@
 # AtajoLab
 
-Official website of **AtajoLab**, an Argentine studio that builds microapps (small, focused web tools), process automation and custom software for businesses and professionals.
+[![Site](https://img.shields.io/badge/site-atajolab.dev-0B6E4F?style=flat-square)](https://atajolab.dev)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38BDF8?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![Bun](https://img.shields.io/badge/Bun-1.4-FBF0DF?style=flat-square&logo=bun&logoColor=black)](https://bun.sh)
 
-The site presents two lines of work:
+Sitio oficial de **[AtajoLab](https://atajolab.dev)**: un estudio argentino que crea **herramientas web simples** (microapps) y **software a medida** para comercios, profesionales y pymes.
 
-- **Microapp library**: free, one-time purchase and subscription tools. Each tool runs as its own app on its own subdomain (e.g. `qr.atajolab.dev`); this site lists them and links to them.
-- **Custom development**: web applications, management systems, automation, API integrations, dashboards and internal tools, with case studies.
+> *Tu negocio puede funcionar mejor. Nosotros te ayudamos.*
 
-It is a fully static site (no backend, database, authentication or payments), available in **Spanish (es-AR)** and **English**, with **light and dark** themes.
+Disponible en **español (es-AR)** e **inglés**, con tema **claro / oscuro / sistema**. Es un sitio 100% estático: sin backend, base de datos, autenticación ni pagos en este repositorio.
 
-## Stack
+---
 
-- [Next.js 16](https://nextjs.org) (App Router, `output: "export"`) and React 19
-- TypeScript (strict)
-- Tailwind CSS 4
-- Lucide icons
-- Node's built-in test runner for unit tests, Playwright for end-to-end tests
-- [Bun](https://bun.sh) as package manager
+## Qué es AtajoLab
 
-## Requirements
+AtajoLab ofrece dos líneas de trabajo:
 
-- Node.js 20.9 or newer (22+ recommended)
-- Bun 1.4 or newer
+| Línea | Qué es | Ejemplo |
+| --- | --- | --- |
+| **Biblioteca de microapps** | Herramientas enfocadas (gratuitas, pago único o suscripción). Cada una vive en su propio subdominio; este sitio las lista y enlaza. | [AtajoLab QR](https://qr.atajolab.dev), [Agendia](https://agendia.atajolab.dev) |
+| **Desarrollo a medida** | Apps web, sistemas de gestión, automatizaciones, integraciones, paneles e herramientas internas, con casos reales. | [Adhera](https://adhera.atajolab.dev) |
+| **Tienda física** | Productos QR y NFC personalizados (sitio aparte). | [tienda.atajolab.dev](https://tienda.atajolab.dev) |
 
-## Getting started
+---
+
+## Stack tecnológico
+
+| Capa | Tecnología |
+| --- | --- |
+| Framework | [Next.js 16](https://nextjs.org) (App Router, `output: "export"`) |
+| UI | [React 19](https://react.dev) + [Tailwind CSS 4](https://tailwindcss.com) |
+| Lenguaje | [TypeScript](https://www.typescriptlang.org) (strict) |
+| Iconos | [Lucide](https://lucide.dev) |
+| Empaquetado | [Bun](https://bun.sh) |
+| Tests unitarios | Node.js built-in test runner |
+| Tests E2E | [Playwright](https://playwright.dev) |
+| Deploy | Estático → [Cloudflare Pages](https://pages.cloudflare.com) (ver [`docs/DEPLOY.md`](docs/DEPLOY.md)) |
+
+---
+
+## Características del sitio
+
+- **Bilingüe de verdad**: cada página tiene URL y slug propios (`/es/soluciones/` ↔ `/en/solutions/`), con `hreflang`, canonical y Open Graph localizados.
+- **Catálogo de microapps** con filtros, estados (disponible / próximamente) y páginas de detalle generadas desde un único archivo de datos.
+- **Casos de proyectos** y páginas de servicios / contacto / FAQ.
+- **Tema claro, oscuro y sistema** sin flash al cargar (script inline + `localStorage`).
+- **SEO estático**: `sitemap.xml`, `robots.txt`, 404 bilingüe, exportación completa a `out/`.
+
+---
+
+## Requisitos
+
+- **Node.js** 20.9+ (22 recomendado)
+- **Bun** 1.4+
+
+## Empezar
 
 ```bash
 bun install
 bun dev
 ```
 
-Open http://localhost:3000. The root forwards to `/es/`; the English site lives under `/en/`.
+Abrí [http://localhost:3000](http://localhost:3000). La raíz redirige a `/es/`; el sitio en inglés está en `/en/`.
 
-To see the site exactly as it is published (static files in `out/`):
+Para ver exactamente lo que se publica (archivos estáticos en `out/`):
 
 ```bash
 bun run build
-bun run preview      # serves out/ at http://127.0.0.1:4173
+bun run preview   # sirve out/ en http://127.0.0.1:4173
 ```
+
+---
 
 ## Scripts
 
-| Script | What it does |
+| Script | Qué hace |
 | --- | --- |
-| `bun dev` | Development server |
-| `bun run build` | Static export to `out/` |
-| `bun run preview` | Serves `out/` like a static host (no dependencies) |
+| `bun dev` | Servidor de desarrollo |
+| `bun run build` | Export estático a `out/` |
+| `bun run preview` | Sirve `out/` como un host estático |
 | `bun run lint` | ESLint |
-| `bun run typecheck` | Generates route types and runs `tsc --noEmit` |
-| `bun run test` | Unit tests: catalog logic, routing, dictionaries, metadata, data integrity |
-| `bun run test:export` | Checks the exported site in `out/` (routes, hreflang, noindex, sitemap, 404) |
-| `bun run test:e2e` | Browser tests against `out/` (language switch, theme, filters, navigation, 404) |
-| `bun run check` | All of the above, in order |
+| `bun run typecheck` | Tipos de rutas + `tsc --noEmit` |
+| `bun run test` | Tests unitarios (catálogo, routing, diccionarios, metadata) |
+| `bun run test:export` | Valida el sitio exportado en `out/` |
+| `bun run test:e2e` | Tests de navegador contra `out/` |
+| `bun run check` | Lint + types + tests + build + export + e2e |
 
-End-to-end tests need a Chromium build for Playwright: `bunx playwright install chromium` (once).
+Para E2E, una sola vez: `bunx playwright install chromium`.
 
-## Project structure
+---
+
+## Estructura del proyecto
 
 ```
 src/
   app/
-    [lang]/            Localized routes; root layout with <html lang>
-      page.tsx         Home (/es/, /en/)
-      microapps/       Library and tool pages (/es/microapps/…, /en/microapps/…)
+    [lang]/                 Rutas localizadas + layout con <html lang>
+      page.tsx              Home (/es/, /en/)
+      microapps/            Biblioteca y detalle de herramientas
       soluciones/ · solutions/
-      proyectos/ · projects/       (+ [slug] case studies)
+      proyectos/ · projects/   (+ [slug] casos)
       contacto/ · contact/
       preguntas-frecuentes/ · faq/
-    (root)/            "/" forwards to /es/ without a server
-    global-not-found.tsx   Bilingual 404 page
-    sitemap.ts, robots.ts, icon.svg, apple-icon.png
-  views/               Page bodies shared by both languages
-  components/          layout, home, microapps, projects, solutions, shared, theme, ui
-  data/                Catalog, projects, services and FAQ — every text in both languages
-  i18n/                Locales, typed dictionaries, localized routes, catalog URL params
-  lib/                 Pure logic (filters, CTA rules, labels), metadata, fonts
-  types/               Data models
-tests/                 Unit tests (node:test) and static export checks
-e2e/                   Playwright tests
-scripts/               Post-build fix and static preview server
-docs/DEPLOY.md         Deployment guide (Cloudflare Pages)
+    (root)/                 "/" → /es/ sin servidor
+    global-not-found.tsx    404 bilingüe
+    sitemap.ts, robots.ts, icon.svg
+  views/                    Cuerpos de página compartidos por idioma
+  components/               layout, home, microapps, projects, solutions, theme, ui
+  data/                     Catálogo, proyectos, servicios, FAQ (textos en ES + EN)
+  i18n/                     Locales, diccionarios tipados, rutas y params del catálogo
+  lib/                      Lógica pura, metadata, tipografías
+  types/                    Modelos de datos
+tests/                      Unitarios + chequeos del export
+e2e/                        Playwright
+scripts/                    Fix post-build + preview estático
+docs/DEPLOY.md              Guía de deploy (Cloudflare Pages)
 ```
 
-## Internationalization
+---
 
-- Each page exists once per language with its own URL and slug, e.g. `/es/soluciones/` ↔ `/en/solutions/`, `/es/microapps/calculadora-costos-precios/` ↔ `/en/microapps/cost-pricing-calculator/`.
-- Routes are generated at build time with `generateStaticParams`; there is no middleware.
-- Interface texts live in `src/i18n/dictionaries/` (`es.ts` defines the shape, `en.ts` must match it). Content texts live next to the data in `src/data/`.
-- The language switcher keeps the current page and translates catalog filters (`?categoria=finanzas` ↔ `?category=finance`).
-- Every page declares its canonical URL, `hreflang` alternates (`es-AR`, `en`, `x-default` → Spanish) and a localized Open Graph locale. The sitemap lists both languages.
+## Internacionalización
 
-## Themes
+- Cada página existe una vez por idioma, con su propia URL y slug.
+- Las rutas se generan en build con `generateStaticParams` (sin middleware).
+- Textos de interfaz: `src/i18n/dictionaries/` (`es.ts` define la forma; `en.ts` debe coincidir).
+- Contenido (microapps, proyectos, etc.): junto a los datos en `src/data/`.
+- El selector de idioma conserva la página actual y traduce filtros del catálogo (`?categoria=finanzas` ↔ `?category=finance`).
+- Canonical, `hreflang` (`es-AR`, `en`, `x-default` → español) y Open Graph localizado en cada página. El sitemap lista ambos idiomas.
 
-Light, dark and system. The choice is stored in `localStorage` (`atajolab-theme`) and applied by a tiny inline script before the first paint, so there is no flash of the wrong theme. Colors are CSS variables redefined under `.dark` in `src/app/globals.css`.
+## Temas
 
-## Brand assets
+Claro, oscuro y sistema. La preferencia se guarda en `localStorage` (`atajolab-theme`) y se aplica con un script inline antes del primer paint. Los colores son variables CSS bajo `.dark` en `src/app/globals.css`.
 
-The "A" mark is an inline SVG (`src/lib/brand-mark.ts`, rendered by `LogoMark`). Its gradients read `--logo-*` variables from `globals.css`: deeper greens on light backgrounds, the original artwork colors on dark ones. Static versions live in `public/brand/` (horizontal logo and mark for light and dark backgrounds, square icon in SVG and 512 px PNG); the favicon is `src/app/icon.svg` and the Open Graph image is `public/og.png`.
+## Marca
 
-## Adding a microapp
+La “A” es un SVG inline (`src/lib/brand-mark.ts`). Versiones estáticas en `public/brand/`. Favicon: `src/app/icon.svg`. Open Graph: `public/og.png`.
 
-Add an entry to `src/data/microapps.ts` with its texts in both languages. The library, filters, tool pages, sitemap and metadata pick it up. Rules enforced by the tests:
+## Agregar una microapp
 
-- Tools that don't exist yet use `status: "COMING_SOON"`, have no `appUrl` and are `noindex`.
-- `price` stays unset until it is confirmed and public.
-- `checkout.enabled` stays `false` until a real checkout exists.
+Sumá una entrada en `src/data/microapps.ts` con textos en ambos idiomas. El catálogo, filtros, páginas, sitemap y metadata la toman solos. Reglas que validan los tests:
 
-## Deployment
+- Herramientas aún no publicadas: `status: "COMING_SOON"`, sin `appUrl`, `noindex`.
+- No setear `price` hasta que esté confirmado y público.
+- `checkout.enabled` en `false` hasta que exista un checkout real.
 
-The site is built for static hosting. See [docs/DEPLOY.md](docs/DEPLOY.md) for Cloudflare Pages and the `atajolab.dev` domain.
+## Deploy
+
+El sitio se construye para hosting estático. Detalle en [`docs/DEPLOY.md`](docs/DEPLOY.md) (Cloudflare Pages + dominio `atajolab.dev`).
+
+---
+
+## Enlaces
+
+- Sitio: [atajolab.dev](https://atajolab.dev)
+- Contacto: [atajolab.tools@gmail.com](mailto:atajolab.tools@gmail.com)
+
+Hecho en Argentina.
