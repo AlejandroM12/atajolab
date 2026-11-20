@@ -8,6 +8,7 @@ import { shop, site } from "@/data/site";
 import { Hero } from "@/components/home/hero";
 import { FeaturedMicroapps } from "@/components/home/featured-microapps";
 import { AgendiaShowcase } from "@/components/home/agendia-showcase";
+import { PresupuestosShowcase } from "@/components/home/presupuestos-showcase";
 import { Benefits } from "@/components/home/benefits";
 import { HowWeWork } from "@/components/home/how-we-work";
 import { CustomDevelopment } from "@/components/home/custom-development";
@@ -68,6 +69,7 @@ export function HomeView({ locale }: { locale: Locale }) {
       <Hero locale={locale} />
       <FeaturedMicroapps locale={locale} />
       <AgendiaShowcase locale={locale} />
+      <PresupuestosShowcase locale={locale} />
       <ShopShowcase locale={locale} />
       <CustomDevelopment locale={locale} />
       <Benefits locale={locale} />

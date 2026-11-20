@@ -75,7 +75,8 @@ export const en: Dictionary = {
       question: "What do you want to solve?",
       reviews: { title: "Get more Google reviews", text: "AtajoLab QR" },
       appointments: { title: "Organize appointments and bookings", text: "Agendia" },
-      planning: { title: "Set prices and write quotes", text: "Tools we're preparing" },
+      quotes: { title: "Create professional quotes", text: "AtajoLab Presupuestos" },
+      planning: { title: "Set prices and rates", text: "Tools we're preparing" },
       custom: { title: "Something that's not on the list", text: "We'll build it around you" },
       footer: "Shortcuts for your business",
     },
@@ -176,6 +177,23 @@ export const en: Dictionary = {
       primary: "Get to know Agendia",
       secondary: "Try it free for 7 days",
       note: "7-day trial with every feature. Agendia opens at agendia.atajolab.dev.",
+    },
+    presupuestos: {
+      eyebrow: "Quotes as PDF",
+      headline: "Create professional quotes in minutes.",
+      intro:
+        "Build quotes with your business details, your logo and your services. Download them as PDF and share them easily with your clients.",
+      benefits: [
+        "No design skills needed.",
+        "Customized with your business's identity.",
+        "Professional quotes as PDF.",
+        "Works on phones and computers.",
+        "You can start for free.",
+      ],
+      primary: "Create a quote for free",
+      secondary: "Get to know AtajoLab Presupuestos",
+      detail: "See the full page",
+      note: "You build and preview without an account. You need a free account to download the PDF. It opens at presupuestos.atajolab.dev.",
     },
     caseStudy: {
       eyebrow: "See what we can build",

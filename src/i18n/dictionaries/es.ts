@@ -80,7 +80,8 @@ export const es = {
       question: "¿Qué querés resolver?",
       reviews: { title: "Conseguir más reseñas en Google", text: "AtajoLab QR" },
       appointments: { title: "Ordenar tus turnos y reservas", text: "Agendia" },
-      planning: { title: "Poner precios y armar presupuestos", text: "Herramientas que estamos preparando" },
+      quotes: { title: "Armar presupuestos profesionales", text: "AtajoLab Presupuestos" },
+      planning: { title: "Poner precios y tarifas", text: "Herramientas que estamos preparando" },
       custom: { title: "Algo que no encontrás en la lista", text: "Lo desarrollamos a tu medida" },
       footer: "Atajos para tu negocio",
     },
@@ -181,6 +182,23 @@ export const es = {
       primary: "Conocer Agendia",
       secondary: "Probar 7 días gratis",
       note: "7 días de prueba con todas las funciones. Agendia se abre en agendia.atajolab.dev.",
+    },
+    presupuestos: {
+      eyebrow: "Presupuestos en PDF",
+      headline: "Creá presupuestos profesionales en minutos.",
+      intro:
+        "Generá presupuestos personalizados con los datos de tu negocio, tu logo y tus servicios. Descargalos en PDF y compartilos fácilmente con tus clientes.",
+      benefits: [
+        "No necesitás conocimientos de diseño.",
+        "Personalización con la identidad de tu negocio.",
+        "Presupuestos profesionales en PDF.",
+        "Compatible con celulares y computadoras.",
+        "Podés comenzar gratuitamente.",
+      ],
+      primary: "Crear un presupuesto gratis",
+      secondary: "Conocer AtajoLab Presupuestos",
+      detail: "Ver la ficha completa",
+      note: "Armás y previsualizás sin cuenta. Para descargar el PDF necesitás una cuenta gratuita. Se abre en presupuestos.atajolab.dev.",
     },
     caseStudy: {
       eyebrow: "Conocé lo que podemos crear",

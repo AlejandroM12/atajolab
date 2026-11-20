@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Calculator, CalendarDays, Command, Star, Wrench, type LucideIcon } from "lucide-react";
+import { ArrowRight, Calculator, CalendarDays, Command, FileText, Star, Wrench, type LucideIcon } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { microappPaths, pagePath } from "@/i18n/routes";
@@ -9,7 +9,7 @@ import { LogoMark } from "@/components/layout/logo";
 import { MARK_VIEWBOX, markParts } from "@/lib/brand-mark";
 
 /**
- * "What do you want to solve?": three real links, worded as needs and not as products.
+ * "What do you want to solve?": real links, worded as needs and not as products.
  * "Atajo" means shortcut, so the panel is the shortcut. The status tag next to each
  * choice comes from the catalog data, so it never claims a tool is ready when it isn't.
  */
@@ -19,6 +19,7 @@ export function HeroVisual({ locale }: { locale: Locale }) {
   const apps = getMicroapps(locale);
   const qr = apps.find((app) => app.id === "atajolab-qr");
   const agendia = apps.find((app) => app.id === "agendia");
+  const quotes = apps.find((app) => app.id === "atajolab-presupuestos");
 
   const choices: { href: string; icon: LucideIcon; title: string; text: string; tag?: { label: string; tone: BadgeTone } }[] = [
     {
@@ -37,6 +38,12 @@ export function HeroVisual({ locale }: { locale: Locale }) {
           : agendia?.status === "COMING_SOON"
             ? { label: dict.labels.status.COMING_SOON, tone: "amber" }
             : undefined,
+    },
+    {
+      href: microappPaths("atajolab-presupuestos")[locale],
+      icon: FileText,
+      ...t.quotes,
+      tag: quotes?.status === "AVAILABLE" ? { label: dict.labels.status.AVAILABLE, tone: "success" } : undefined,
     },
     {
       href: pagePath("microapps", locale),
