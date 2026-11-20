@@ -128,3 +128,32 @@ test("Cloudflare Pages config files are exported", () => {
   assert.ok(existsSync(join(outDir, "_headers")));
   assert.ok(existsSync(join(outDir, "_redirects")));
 });
+
+test("AtajoLab Presupuestos is launched: real links, own social metadata, structured data and sitemap", () => {
+  const product = "https://presupuestos.atajolab.dev";
+  const sitemap = readFileSync(join(outDir, "sitemap.xml"), "utf8");
+  for (const locale of locales) {
+    const path = microappPaths("atajolab-presupuestos")[locale];
+    const full = read(path);
+    const page = full.slice(0, full.indexOf('id="otras"'));
+    assert.ok(page.includes(`href="${product}/crear"`), `create link ${locale}`);
+    assert.ok(page.includes(`href="${product}"`), `official link ${locale}`);
+    assert.match(page, /"@type":"SoftwareApplication"/, `structured data ${locale}`);
+    assert.match(page, /"price":0/, `free offer ${locale}`);
+    assert.doesNotMatch(page, /Próximamente|Coming soon|En desarrollo/i, `coming soon wording ${locale}`);
+    const image = `https://atajolab.dev/og/presupuestos-${locale}.png`;
+    assert.ok(full.includes(`<meta property="og:image" content="${image}"`), `og:image ${locale}`);
+    assert.ok(full.includes(`<meta name="twitter:image" content="${image}"`), `twitter:image ${locale}`);
+    assert.match(full, /<meta property="og:image:width" content="1200"/);
+    assert.match(full, /<meta property="og:image:height" content="630"/);
+    assert.match(full, /<meta name="twitter:card" content="summary_large_image"/);
+    assert.ok(full.includes(`<link rel="canonical" href="https://atajolab.dev${path}"`), `canonical ${locale}`);
+    assert.ok(sitemap.includes(`<loc>https://atajolab.dev${path}</loc>`), `sitemap ${locale}`);
+    assert.ok(existsSync(join(outDir, "og", `presupuestos-${locale}.png`)), `image file ${locale}`);
+    const home = read(`/${locale}/`);
+    assert.ok(home.includes(`href="${product}/crear"`), `home create link ${locale}`);
+  }
+  assert.match(read("/es/"), /Crear un presupuesto gratis/);
+  assert.match(read("/en/"), /Create a quote for free/);
+  assert.match(readFileSync(join(outDir, "_redirects"), "utf8"), /generador-presupuestos\/\s+\/es\/microapps\/atajolab-presupuestos\/\s+301/);
+});

@@ -47,7 +47,7 @@ test("filters in the URL are applied on load", async ({ page }) => {
   await expect(page.getByLabel("Search tools")).toHaveValue("quote");
   await expect(page.getByRole("radio", { name: "Sales & quotes" })).toBeChecked();
   await expect(page.locator(cards)).toHaveCount(1);
-  await expect(page.locator(cards).first()).toContainText("Quote Generator");
+  await expect(page.locator(cards).first()).toContainText("AtajoLab Presupuestos");
 });
 
 test("only the search box and topic chips filter the catalog, without counters", async ({ page }) => {

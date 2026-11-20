@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { microappSources, getMicroapps } from "@/data/microapps";
 import { projectSources } from "@/data/projects";
@@ -134,4 +134,36 @@ test("Agendia never promises features that do not exist and never mentions a car
   assert.doesNotMatch(text, /próximamente|coming soon|en desarrollo|in development/i);
   assert.doesNotMatch(text, /tarjeta de (crédito|débito)|credit card|sin tarjeta|no card/i);
   assert.doesNotMatch(text, /recordatorios?[^.]*whatsapp|whatsapp[^.]*reminders?|dominio propio|custom domain/i);
+});
+
+test("AtajoLab Presupuestos is available, free, opens the real product and sells no paid plan", () => {
+  const app = microappSources.find((item) => item.id === "atajolab-presupuestos");
+  assert.ok(app);
+  assert.equal(app.status, "AVAILABLE");
+  assert.equal(app.pricingModel, "FREE");
+  assert.equal(app.appUrl, "https://presupuestos.atajolab.dev/crear");
+  assert.equal(app.trial?.href, "https://presupuestos.atajolab.dev");
+  assert.equal(app.ctaLabel?.es, "Crear un presupuesto gratis");
+  assert.equal(app.trial?.label.es, "Conocer AtajoLab Presupuestos");
+  assert.equal(app.plans, undefined);
+  assert.equal(app.price, undefined);
+  assert.equal(app.features.es.length, app.features.en.length);
+  for (const link of app.officialLinks ?? []) assert.match(link.href, /^https:\/\/presupuestos\.atajolab\.dev(\/crear)?$/);
+  const text = strings(app).join(" ");
+  assert.doesNotMatch(text, /próximamente|coming soon|en desarrollo|in development/i);
+  assert.doesNotMatch(text, /pack premium|\bpro\b|contratá|suscrib|subscribe|\$ ?\d/i);
+});
+
+test("the social image of every tool that sets one is a 1200 × 630 PNG in both languages", () => {
+  for (const app of microappSources) {
+    if (!app.social) continue;
+    for (const locale of locales) {
+      const file = join(publicDir, app.social.image[locale]);
+      assert.ok(existsSync(file), file);
+      const png = readFileSync(file);
+      assert.equal(png.readUInt32BE(16), 1200, `${app.id} ${locale} width`);
+      assert.equal(png.readUInt32BE(20), 630, `${app.id} ${locale} height`);
+      assert.ok(app.social.alt[locale].length > 10);
+    }
+  }
 });
