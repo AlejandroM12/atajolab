@@ -21,7 +21,7 @@ AtajoLab ofrece dos líneas de trabajo:
 
 | Línea | Qué es | Ejemplo |
 | --- | --- | --- |
-| **Biblioteca de microapps** | Herramientas enfocadas (gratuitas, pago único o suscripción). Cada una vive en su propio subdominio; este sitio las lista y enlaza. | [AtajoLab QR](https://qr.atajolab.dev), [Agendia](https://agendia.atajolab.dev) |
+| **Biblioteca de microapps** | Herramientas enfocadas (gratuitas, pago único o suscripción). Cada una vive en su propio subdominio; este sitio las lista y enlaza. | [AtajoLab QR](https://qr.atajolab.dev), [AtajoLab Presupuestos](https://presupuestos.atajolab.dev), [Agendia](https://agendia.atajolab.dev) |
 | **Desarrollo a medida** | Apps web, sistemas de gestión, automatizaciones, integraciones, paneles e herramientas internas, con casos reales. | [Adhera](https://adhera.atajolab.dev) |
 | **Tienda física** | Productos QR y NFC personalizados (sitio aparte). | [tienda.atajolab.dev](https://tienda.atajolab.dev) |
 
