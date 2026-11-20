@@ -8,3 +8,9 @@
 /en/microapps/appointment-scheduler/  /en/microapps/agendia/  301
 /es/microapps/agenda-turnos  /es/microapps/agendia/  301
 /en/microapps/appointment-scheduler  /en/microapps/agendia/  301
+
+# AtajoLab Presupuestos replaces the former "Generador de presupuestos" placeholder page.
+/es/microapps/generador-presupuestos/  /es/microapps/atajolab-presupuestos/  301
+/en/microapps/quote-generator/  /en/microapps/atajolab-presupuestos/  301
+/es/microapps/generador-presupuestos  /es/microapps/atajolab-presupuestos/  301
+/en/microapps/quote-generator  /en/microapps/atajolab-presupuestos/  301

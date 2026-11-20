@@ -240,45 +240,186 @@ export const microappSources: MicroappSource[] = [
     },
   },
   {
-    id: "generador-presupuestos",
-    slug: { es: "generador-presupuestos", en: "quote-generator" },
+    id: "atajolab-presupuestos",
+    slug: { es: "atajolab-presupuestos", en: "atajolab-presupuestos" },
     icon: "document",
-    name: { es: "Generador de presupuestos", en: "Quote Generator" },
-    headline: { es: "Presentá presupuestos prolijos a tus clientes", en: "Send your clients tidy, professional quotes" },
+    name: { es: "AtajoLab Presupuestos", en: "AtajoLab Presupuestos" },
+    headline: {
+      es: "Creá presupuestos profesionales en minutos",
+      en: "Create professional quotes in minutes",
+    },
     shortDescription: {
-      es: "Armá tus presupuestos con una buena presentación y compartilos con tus clientes.",
-      en: "Put your quotes together with a polished look and share them with your clients.",
+      es: "Generá presupuestos personalizados con los datos de tu negocio, tu logo y tus servicios. Descargalos en PDF y compartilos fácilmente con tus clientes.",
+      en: "Build quotes with your business details, your logo and your services. Download them as PDF and share them easily with your clients.",
     },
     fullDescription: {
       es: [
-        "Estamos preparando una herramienta para crear presupuestos con una presentación profesional y compartirlos con tus clientes.",
-        comingSoonNote.es,
+        "AtajoLab Presupuestos es una herramienta web para armar presupuestos prolijos sin saber de diseño. Cargás los datos de tu negocio y de tu cliente, sumás tus conceptos con cantidad y precio, y el total se calcula solo mientras ves cómo queda el documento.",
+        "Cuando está listo, lo descargás en PDF o lo mandás por WhatsApp. Funciona desde el navegador del celular o de la computadora, y podés empezar gratis.",
       ],
       en: [
-        "We're preparing a tool to create professional-looking quotes and share them with your clients.",
-        comingSoonNote.en,
+        "AtajoLab Presupuestos is a web tool to put together tidy quotes with no design skills. You enter your business and client details, add your items with quantity and price, and the total is worked out for you while you watch the document take shape.",
+        "When it's ready, you download it as a PDF or send it by WhatsApp. It works in the browser of a phone or a computer, and you can start for free.",
       ],
     },
     category: "ventas",
-    pricingModel: "ONE_TIME",
-    status: "COMING_SOON",
-    featured: false,
-    images: [],
+    pricingModel: "FREE",
+    pricingLabel: { es: "Versión gratuita disponible", en: "Free version available" },
+    status: "AVAILABLE",
+    featured: true,
+    images: [
+      {
+        src: "/images/microapps/atajolab-presupuestos/editor.webp",
+        width: 1600,
+        height: 944,
+        alt: {
+          es: "Editor de AtajoLab Presupuestos con los datos del negocio y del cliente a la izquierda y la vista previa del presupuesto a la derecha, con datos de ejemplo.",
+          en: "AtajoLab Presupuestos editor with the business and client details on the left and the quote preview on the right, with sample data.",
+        },
+        caption: {
+          es: "Editor con vista previa en vivo.",
+          en: "Editor with live preview.",
+        },
+      },
+      {
+        src: "/images/microapps/atajolab-presupuestos/presupuesto.webp",
+        width: 900,
+        height: 871,
+        alt: {
+          es: "Presupuesto de ejemplo de un taller mecánico, con cuatro conceptos, subtotal y total en pesos.",
+          en: "Sample quote from a mechanic's workshop, with four items, subtotal and total in pesos.",
+        },
+        caption: { es: "Un presupuesto de ejemplo.", en: "A sample quote." },
+      },
+      {
+        src: "/images/microapps/atajolab-presupuestos/celular.webp",
+        width: 600,
+        height: 974,
+        alt: {
+          es: "AtajoLab Presupuestos en un celular, con las pestañas Editar y Vista previa y el formulario de los datos del negocio.",
+          en: "AtajoLab Presupuestos on a phone, with the Edit and Preview tabs and the business details form.",
+        },
+        caption: { es: "En el celular.", en: "On a phone." },
+      },
+    ],
     features: {
       es: [
-        "Carga de ítems, cantidades y precios.",
-        "Presupuesto con formato profesional.",
-        "Opciones para compartirlo con tus clientes.",
+        "Editor con vista previa del presupuesto mientras lo armás.",
+        "Datos de tu negocio y de tu cliente.",
+        "Tu logo en el encabezado.",
+        "Conceptos con cantidad, unidad, precio y descuento.",
+        "Subtotal, descuentos, recargos, impuestos y total calculados automáticamente.",
+        "Número, fecha, validez, plazo, forma de pago y condiciones.",
+        "PDF en tamaño A4 con texto seleccionable.",
+        "Envío por WhatsApp con un resumen del presupuesto.",
+        "Borrador guardado en tu dispositivo.",
+        "Funciona desde el celular y desde la computadora.",
       ],
-      en: ["Items, quantities and prices.", "Professionally formatted quote.", "Options to share it with your clients."],
+      en: [
+        "Editor with a preview of the quote as you build it.",
+        "Your business and your client's details.",
+        "Your logo in the header.",
+        "Items with quantity, unit, price and discount.",
+        "Subtotal, discounts, surcharges, taxes and total worked out automatically.",
+        "Number, date, validity, delivery time, payment terms and conditions.",
+        "A4 PDF with selectable text.",
+        "Sharing by WhatsApp with a summary of the quote.",
+        "Draft saved on your device.",
+        "Works on a phone and on a computer.",
+      ],
     },
     benefits: {
-      es: ["Presupuestos con una presentación cuidada.", "Menos tiempo armando documentos a mano."],
-      en: ["Quotes with a polished presentation.", "Less time spent building documents by hand."],
+      es: [
+        "No necesitás conocimientos de diseño.",
+        "Personalización con la identidad de tu negocio.",
+        "Presupuestos profesionales en PDF.",
+        "Compatible con celulares y computadoras.",
+        "Podés comenzar gratuitamente.",
+      ],
+      en: [
+        "No design skills needed.",
+        "Customized with your business's identity.",
+        "Professional quotes as PDF.",
+        "Works on phones and computers.",
+        "You can start for free.",
+      ],
     },
     audience: {
-      es: ["Profesionales independientes.", "Oficios y empresas de servicios."],
-      en: ["Independent professionals.", "Trades and service businesses."],
+      es: [
+        "Trabajadores independientes y emprendedores.",
+        "Técnicos, talleres mecánicos y constructores.",
+        "Profesionales y prestadores de servicios.",
+        "Comercios.",
+      ],
+      en: [
+        "Independent workers and entrepreneurs.",
+        "Technicians, mechanic workshops and builders.",
+        "Professionals and service providers.",
+        "Shops.",
+      ],
+    },
+    problems: {
+      es: [
+        "Armar cada presupuesto a mano en un documento de texto o una planilla lleva demasiado tiempo.",
+        "Las cuentas a mano se equivocan, y un error de cálculo sale caro.",
+        "Un presupuesto desprolijo o mandado en un mensaje suelto no transmite confianza.",
+        "Cada vez hay que volver a cargar tus datos y rehacer el formato.",
+      ],
+      en: [
+        "Building every quote by hand in a text document or a spreadsheet takes far too long.",
+        "Sums done by hand go wrong, and a calculation mistake is costly.",
+        "A messy quote, or one sent as a loose message, doesn't inspire trust.",
+        "Every time you have to re-enter your details and redo the layout.",
+      ],
+    },
+    steps: {
+      es: [
+        { title: "Cargá tus datos", text: "Escribí los datos de tu negocio y de tu cliente, y sumá tus conceptos con cantidad y precio." },
+        { title: "Mirá la vista previa", text: "El total se calcula solo y ves cómo queda el presupuesto mientras lo armás." },
+        {
+          title: "Descargá y compartí",
+          text: "Bajá el PDF o mandá un resumen por WhatsApp. Para descargar el PDF necesitás una cuenta gratuita.",
+        },
+      ],
+      en: [
+        { title: "Enter your details", text: "Type in your business and client details, and add your items with quantity and price." },
+        { title: "Watch the preview", text: "The total is worked out for you and you see how the quote looks as you build it." },
+        {
+          title: "Download and share",
+          text: "Download the PDF or send a summary by WhatsApp. You need a free account to download the PDF.",
+        },
+      ],
+    },
+    appUrl: "https://presupuestos.atajolab.dev/crear",
+    ctaLabel: { es: "Crear un presupuesto gratis", en: "Create a quote for free" },
+    trial: {
+      label: { es: "Conocer AtajoLab Presupuestos", en: "Get to know AtajoLab Presupuestos" },
+      href: "https://presupuestos.atajolab.dev",
+    },
+    officialLinks: [
+      {
+        label: { es: "Sitio oficial de AtajoLab Presupuestos", en: "AtajoLab Presupuestos official site" },
+        href: "https://presupuestos.atajolab.dev",
+      },
+      {
+        label: { es: "Crear un presupuesto gratis", en: "Create a quote for free" },
+        href: "https://presupuestos.atajolab.dev/crear",
+      },
+    ],
+    social: {
+      image: { es: "/og/presupuestos-es.png", en: "/og/presupuestos-en.png" },
+      alt: {
+        es: "AtajoLab Presupuestos: creá presupuestos profesionales en minutos, con un presupuesto de ejemplo.",
+        en: "AtajoLab Presupuestos: create professional quotes in minutes, showing a sample quote.",
+      },
+    },
+    seoTitle: {
+      es: "AtajoLab Presupuestos: creá presupuestos profesionales en PDF, gratis",
+      en: "AtajoLab Presupuestos: create professional PDF quotes for free",
+    },
+    seoDescription: {
+      es: "Generá presupuestos personalizados con los datos de tu negocio, tu logo y tus servicios. Descargalos en PDF y compartilos con tus clientes. Podés comenzar gratis.",
+      en: "Build quotes with your business details, your logo and your services. Download them as PDF and share them with your clients. You can start for free.",
     },
   },
   {
@@ -543,6 +684,7 @@ export function resolveMicroapp(source: MicroappSource, locale: Locale): Microap
     })),
     trial: source.trial && { label: source.trial.label[locale], href: source.trial.href },
     officialLinks: source.officialLinks?.map((link) => ({ label: link.label[locale], href: link.href })),
+    social: source.social && { image: source.social.image[locale], alt: source.social.alt[locale] },
     seoTitle: source.seoTitle?.[locale],
     seoDescription: source.seoDescription?.[locale],
   };
