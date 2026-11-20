@@ -28,6 +28,8 @@ interface PageMetadataInput {
   noIndex?: boolean;
   /** Use the title as is, without the "| AtajoLab" template. */
   absoluteTitle?: boolean;
+  /** Social image of this page (1200 × 630). Defaults to the site image. */
+  image?: { url: string; alt: string };
 }
 
 /** Metadata with canonical URL, hreflang alternates, Open Graph and Twitter card. */
@@ -38,9 +40,10 @@ export function pageMetadata({
   paths,
   noIndex = false,
   absoluteTitle = false,
+  image: pageImage,
 }: PageMetadataInput): Metadata {
   const ogTitle = absoluteTitle ? title : `${title} | ${site.name}`;
-  const image = ogImage(locale);
+  const image = pageImage ? { ...pageImage, width: 1200, height: 630 } : ogImage(locale);
   return {
     title: absoluteTitle ? { absolute: title } : title,
     description,

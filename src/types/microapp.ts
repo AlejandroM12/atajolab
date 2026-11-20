@@ -120,6 +120,8 @@ export interface Microapp extends MicroappBase {
   trial?: MicroappLink;
   /** Links to the tool's own site. */
   officialLinks?: MicroappLink[];
+  /** Image shown when the page is shared on social networks (1200 × 630). */
+  social?: { image: string; alt: string };
   seoTitle?: string;
   seoDescription?: string;
 }
@@ -151,6 +153,7 @@ export interface MicroappSource extends MicroappBase {
   plans?: MicroappPlanSource[];
   trial?: { label: Localized<string>; href: string };
   officialLinks?: { label: Localized<string>; href: string }[];
+  social?: { image: Localized<string>; alt: Localized<string> };
   seoTitle?: Localized<string>;
   seoDescription?: Localized<string>;
 }

@@ -50,6 +50,7 @@ export function microappMetadata(slug: string, locale: Locale): Metadata {
     paths: microappPaths(app.id),
     // Upcoming tools stay out of search results (in every language) until they exist.
     noIndex: !isIndexable(app),
+    image: app.social && { url: app.social.image, alt: app.social.alt },
   });
 }
 
@@ -69,7 +70,7 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
     pagePath("microapps", locale) + filtersToSearch({ ...EMPTY_FILTERS, category: app.category }, catalogParams[locale]);
   const host = app.appUrl ? displayHost(app.appUrl) : undefined;
   const staged = app.imageStyle === "stage";
-  const structuredData = app.plans && app.appUrl ? softwareData(app, locale) : null;
+  const structuredData = app.appUrl && (app.plans || app.pricingModel === "FREE") ? softwareData(app, locale) : null;
 
   return (
     <>
@@ -415,15 +416,17 @@ function softwareData(app: Microapp, locale: Locale) {
     operatingSystem: "Web",
     inLanguage: htmlLang[locale],
     featureList: app.features,
-    image: app.images[0] ? absoluteUrl(app.images[0].src) : undefined,
+    image: app.social ? absoluteUrl(app.social.image) : app.images[0] ? absoluteUrl(app.images[0].src) : undefined,
     publisher: { "@id": `${site.url}/#organization` },
-    offers: app.plans?.map((plan) => ({
-      "@type": "Offer",
-      name: plan.name,
-      price: plan.price,
-      priceCurrency: plan.currency,
-      url: app.appUrl,
-      availability: "https://schema.org/InStock",
-    })),
+    offers: app.plans
+      ? app.plans.map((plan) => ({
+          "@type": "Offer",
+          name: plan.name,
+          price: plan.price,
+          priceCurrency: plan.currency,
+          url: app.appUrl,
+          availability: "https://schema.org/InStock",
+        }))
+      : { "@type": "Offer", price: 0, priceCurrency: "ARS", url: app.appUrl, availability: "https://schema.org/InStock" },
   };
 }
