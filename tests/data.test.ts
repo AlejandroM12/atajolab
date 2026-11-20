@@ -113,12 +113,13 @@ test("Agendia is available, links to its official site and only shows prices tha
   const agendia = microappSources.find((app) => app.id === "agendia");
   assert.ok(agendia);
   assert.equal(agendia.status, "AVAILABLE");
-  assert.equal(agendia.appUrl, "https://agendia.atajolab.dev");
-  assert.equal(agendia.trial?.href, "https://agendia.atajolab.dev/registro");
-  assert.equal(agendia.trial?.label.es, "Probar 7 días gratis");
+  assert.equal(agendia.appUrl, "https://agendia.atajolab.dev/registro");
+  assert.equal(agendia.ctaLabel?.es, "Probar Agendia gratis");
+  assert.equal(agendia.trial?.href, "https://agendia.atajolab.dev");
+  assert.equal(agendia.trial?.label.es, "Conocer Agendia");
   assert.deepEqual(agendia.plans?.map((plan) => [plan.id, plan.price, plan.billingPeriod]), [
-    ["profesional", 14000, "MONTHLY"],
-    ["licencia", 199000, undefined],
+    ["profesional", 9900, "MONTHLY"],
+    ["equipo", 19900, "MONTHLY"],
   ]);
   for (const key of ["problems", "steps", "features", "audience", "benefits"] as const) {
     assert.equal(agendia[key]?.es.length, agendia[key]?.en.length, key);
@@ -134,6 +135,9 @@ test("Agendia never promises features that do not exist and never mentions a car
   assert.doesNotMatch(text, /próximamente|coming soon|en desarrollo|in development/i);
   assert.doesNotMatch(text, /tarjeta de (crédito|débito)|credit card|sin tarjeta|no card/i);
   assert.doesNotMatch(text, /recordatorios?[^.]*whatsapp|whatsapp[^.]*reminders?|dominio propio|custom domain/i);
+  // The trial lasts 14 days; earlier figures must not come back.
+  assert.doesNotMatch(text, /7 días|7 days|14\.000|199\.000/);
+  assert.match(text, /14 días|14 days/);
 });
 
 test("AtajoLab Presupuestos is available, free, opens the real product and sells no paid plan", () => {

@@ -44,19 +44,19 @@ export function AgendiaShowcase({ locale }: { locale: Locale }) {
             ))}
           </ul>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink
-              href={microappPath(app.slug, locale)}
-              locale={locale}
-              size="lg"
-              icon={<ArrowRight aria-hidden="true" className="size-4" />}
-            >
-              {t.primary}
-            </ButtonLink>
-            {app.trial && (
-              <ButtonLink href={app.trial.href} locale={locale} size="lg" variant="secondary">
-                {t.secondary}
+            {app.appUrl && (
+              <ButtonLink
+                href={app.appUrl}
+                locale={locale}
+                size="lg"
+                icon={<ArrowRight aria-hidden="true" className="size-4" />}
+              >
+                {t.primary}
               </ButtonLink>
             )}
+            <ButtonLink href={microappPath(app.slug, locale)} locale={locale} size="lg" variant="secondary">
+              {t.secondary}
+            </ButtonLink>
           </div>
           <p className="mt-3 text-sm leading-relaxed text-muted">{t.note}</p>
         </div>

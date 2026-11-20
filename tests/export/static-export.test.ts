@@ -89,6 +89,7 @@ test("Agendia is launched: official links, structured data and no coming-soon wo
     const page = full.slice(0, full.indexOf('id="otras"'));
     assert.ok(page.includes(`${official}"`) || page.includes(`${official}/"`), `official link ${locale}`);
     assert.ok(page.includes(`${official}/registro"`), `trial link ${locale}`);
+    assert.ok(page.includes(`${official}"`), `official site link ${locale}`);
     assert.ok(page.includes(`${official}/precios"`), `pricing link ${locale}`);
     assert.match(page, /"@type":"SoftwareApplication"/, `structured data ${locale}`);
     assert.match(page, /"priceCurrency":"ARS"/, `offers ${locale}`);
@@ -97,8 +98,8 @@ test("Agendia is launched: official links, structured data and no coming-soon wo
   }
   assert.match(read("/es/"), /Conocer Agendia/);
   assert.match(read("/en/"), /Get to know Agendia/);
-  assert.match(read("/es/"), /Probar 7 días gratis/);
-  assert.match(read("/en/"), /Try it free for 7 days/);
+  assert.match(read("/es/"), /Probar Agendia gratis/);
+  assert.match(read("/en/"), /Try Agendia for free/);
 });
 
 test("robots.txt points to the sitemap", () => {
