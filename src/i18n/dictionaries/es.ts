@@ -350,7 +350,7 @@ export const es = {
   projects: {
     metaTitle: "Proyectos",
     metaDescription:
-      "Proyectos de AtajoLab: Adhera, una plataforma de preentrevistas para procesos de afiliación, y AtajoLab QR, una herramienta para conseguir reseñas en Google con carteles QR.",
+      "Proyectos de AtajoLab: Adhera, una plataforma de preentrevistas para procesos de afiliación, y AtajoLab QR, una herramienta para crear códigos QR con diseño listo para usar.",
     eyebrow: "Proyectos",
     title: "Lo que ya construimos",
     description:

@@ -171,3 +171,19 @@ test("the social image of every tool that sets one is a 1200 × 630 PNG in both 
     }
   }
 });
+
+test("AtajoLab QR opens the real guided flow, lists the current formats and does not hard-code a price", () => {
+  const qr = microappSources.find((app) => app.id === "atajolab-qr");
+  assert.ok(qr);
+  assert.equal(qr.status, "AVAILABLE");
+  assert.equal(qr.appUrl, "https://qr.atajolab.dev/empezar");
+  assert.equal(qr.price, undefined);
+  assert.equal(qr.plans, undefined);
+  assert.equal(qr.steps?.es.length, 3);
+  assert.equal(qr.steps?.es.length, qr.steps?.en.length);
+  for (const link of qr.officialLinks ?? []) assert.match(link.href, /^https:\/\/qr\.atajolab\.dev(\/|$)/);
+  const text = strings(qr).join(" ");
+  assert.match(text, /primer QR es gratis|first QR is free/i);
+  assert.match(text, /Google Maps/);
+  assert.doesNotMatch(text, /4\.900|4,900|próximamente|coming soon/i);
+});

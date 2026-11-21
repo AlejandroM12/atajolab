@@ -344,7 +344,7 @@ export const en: Dictionary = {
   projects: {
     metaTitle: "Projects",
     metaDescription:
-      "AtajoLab projects: Adhera, a pre-interview platform for membership enrollment, and AtajoLab QR, a tool that helps businesses get Google reviews with QR code signs.",
+      "AtajoLab projects: Adhera, a pre-interview platform for membership enrollment, and AtajoLab QR, a tool to create QR codes with a ready-to-use design.",
     eyebrow: "Projects",
     title: "What we've built",
     description:

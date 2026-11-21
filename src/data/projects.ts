@@ -138,19 +138,19 @@ export const projectSources: ProjectSource[] = [
     name: "AtajoLab QR",
     kind: "OWN_PRODUCT",
     summary: {
-      es: "Producto propio: un editor web de carteles con código QR para reseñas de Google y ubicaciones de Google Maps.",
-      en: "Our own product: a web editor for QR code signs that link to Google reviews and Google Maps locations.",
+      es: "Producto propio: un generador web de códigos QR con diseño listo para imprimir o publicar.",
+      en: "Our own product: a web generator of QR codes with a design ready to print or post.",
     },
     description: {
-      es: "AtajoLab QR es la primera herramienta de AtajoLab: sirve para armar carteles con código QR que llevan a las reseñas de Google o a la ubicación de un negocio en Google Maps.",
-      en: "AtajoLab QR is AtajoLab's first tool: a web tool for building QR code signs that link to a business's Google reviews or its location on Google Maps.",
+      es: "AtajoLab QR es la primera herramienta de AtajoLab: sirve para armar códigos QR con diseño que llevan a un enlace, las redes, WhatsApp, el menú, el Wi-Fi o las reseñas y la ubicación de un negocio en Google.",
+      en: "AtajoLab QR is AtajoLab's first tool: a web tool for building designed QR codes that lead to a link, social media, WhatsApp, a menu, Wi-Fi or a business's Google reviews and location.",
     },
     sections: {
       es: [
         {
           title: "Qué construimos",
           paragraphs: [
-            "Un editor visual que trabaja sobre un cartel A6, con estilos sugeridos y edición directa de textos, colores, tipografías e imágenes.",
+            "Una creación guiada en pasos y un editor avanzado con plantillas, en siete formatos, con edición directa de textos, colores e imágenes.",
             "Los archivos finales (PNG, SVG y PDF) se generan en el servidor. La compra no requiere crear una cuenta, y el acceso a los archivos se puede recuperar con el correo desde otro dispositivo.",
           ],
         },
@@ -159,7 +159,7 @@ export const projectSources: ProjectSource[] = [
         {
           title: "What we built",
           paragraphs: [
-            "A visual editor that works on an A6 sign, with suggested styles and direct editing of text, colors, fonts and images.",
+            "A guided creation in steps and an advanced editor with templates, in seven formats, with direct editing of text, colors and images.",
             "Final files (PNG, SVG and PDF) are generated on the server. Buying doesn't require an account, and access to the files can be recovered by email from another device.",
           ],
         },
@@ -168,14 +168,14 @@ export const projectSources: ProjectSource[] = [
     features: {
       es: [
         "Validación de enlaces de Google Maps y de reseñas.",
-        "Editor visual sobre lienzo A6.",
+        "Creación guiada y editor visual con plantillas, en siete formatos.",
         "Generación de PNG, SVG y PDF en el servidor.",
         "Integración con Mercado Pago Checkout Pro.",
         "Recuperación de acceso por correo.",
       ],
       en: [
         "Validation of Google Maps and review links.",
-        "Visual editor on an A6 canvas.",
+        "Guided creation and a visual editor with templates, in seven formats.",
         "Server-side PNG, SVG and PDF generation.",
         "Mercado Pago Checkout Pro integration.",
         "Access recovery by email.",
@@ -184,12 +184,12 @@ export const projectSources: ProjectSource[] = [
     stack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Mercado Pago"],
     images: [
       {
-        src: "/images/microapps/atajolab-qr/editor.webp",
-        width: 880,
-        height: 600,
+        src: "/images/microapps/atajolab-qr/editor-avanzado.webp",
+        width: 1400,
+        height: 875,
         alt: {
-          es: "Editor de AtajoLab QR con un cartel de ejemplo para una cafetería.",
-          en: "AtajoLab QR editor with a sample sign for a café.",
+          es: "Editor avanzado de AtajoLab QR con plantillas para empezar a diseñar.",
+          en: "AtajoLab QR advanced editor with templates to start designing.",
         },
       },
     ],
@@ -198,8 +198,8 @@ export const projectSources: ProjectSource[] = [
     disclaimers: { es: [], en: [] },
     featured: false,
     seoDescription: {
-      es: "Caso de estudio: AtajoLab QR, editor web de carteles con código QR para reseñas de Google y ubicaciones de Google Maps.",
-      en: "Case study: AtajoLab QR, a web editor for QR code signs that link to Google reviews and Google Maps locations.",
+      es: "Caso de estudio: AtajoLab QR, generador web de códigos QR con diseño listo para imprimir o publicar.",
+      en: "Case study: AtajoLab QR, a web generator of QR codes with a design ready to print or post.",
     },
   },
 ];
