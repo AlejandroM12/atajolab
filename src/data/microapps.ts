@@ -22,140 +22,561 @@ export const microappSources: MicroappSource[] = [
     slug: { es: "atajolab-qr", en: "atajolab-qr" },
     icon: "qr",
     name: { es: "AtajoLab QR", en: "AtajoLab QR" },
-    headline: { es: "Creá códigos QR con diseño listo para usar", en: "Create QR codes with a ready-to-use design" },
+    headline: {
+      es: "Creá códigos QR con el diseño de tu negocio",
+      en: "Create QR codes in your business's own design",
+    },
     shortDescription: {
-      es: "Elegí qué compartir (tu web, tus redes, WhatsApp, tu menú o tus reseñas de Google) y llevate el diseño listo para imprimir o publicar.",
-      en: "Pick what to share (your website, social media, WhatsApp, your menu or your Google reviews) and get a design ready to print or post.",
+      es: "Elegí a dónde llevar a tus clientes, personalizá el diseño con tu marca y descargalo listo para imprimir o compartir.",
+      en: "Choose where to send your customers, customize the design with your brand and download it ready to print or share.",
     },
     fullDescription: {
       es: [
-        "AtajoLab QR arma códigos QR con un diseño listo para usar. Elegís qué querés compartir (un enlace, tus redes, WhatsApp, tu ubicación en Google Maps, las reseñas de Google, tu menú, un evento, el Wi-Fi, un contacto o un texto) y la herramienta te muestra diseños con tu código, que podés ajustar al estilo de tu negocio.",
-        "Descargás el resultado en el formato que necesites, desde un cartel A6 para el mostrador hasta una historia para redes, en PNG, SVG y PDF. No hace falta crear una cuenta y tu primer QR es gratis.",
-        "Los siguientes son de pago único, sin suscripción. El precio vigente y las condiciones se muestran dentro de la herramienta.",
+        "Tus ideas, listas para escanear. AtajoLab QR va más allá de generar un código: te acompaña desde el destino hasta una pieza visual lista para usar. Elegís qué compartir (un enlace, tus redes, WhatsApp, tu ubicación en Google Maps, las reseñas de Google, tu menú o catálogo, un evento, el Wi-Fi, un contacto o un texto) y la herramienta te propone diseños con tu código.",
+        "Podés seguir un camino guiado, pensado para quien nunca usó una herramienta de diseño, o abrir el editor y armar el cartel a tu manera: cambiar textos, tipografías y colores, sumar tu logo y mover cada elemento. Tu primer QR es gratis. Si se habilitan más, sus condiciones se informan en la herramienta.",
       ],
       en: [
-        "AtajoLab QR builds QR codes with a ready-to-use design. You pick what you want to share (a link, your social media, WhatsApp, your location on Google Maps, your Google reviews, your menu, an event, your Wi-Fi, a contact or a text) and the tool shows you designs with your code, which you can adjust to your business's style.",
-        "You download the result in the format you need, from an A6 sign for the counter to a story for social media, as PNG, SVG and PDF. No account is needed and your first QR is free.",
-        "The following ones are a one-time payment, with no subscription. The current price and terms are shown inside the tool.",
+        "Your ideas, ready to scan. AtajoLab QR goes beyond generating a code: it takes you from the destination to a visual piece ready to use. You choose what to share (a link, your social media, WhatsApp, your location on Google Maps, your Google reviews, your menu or catalog, an event, your Wi-Fi, a contact or a text) and the tool proposes designs with your code.",
+        "You can follow a guided path, made for people who have never used a design tool, or open the editor and build the sign your way: change text, fonts and colors, add your logo and move every element. Your first QR is free. If more become available, their terms are announced in the tool.",
       ],
     },
     category: "marketing",
     pricingModel: "ONE_TIME",
-    pricingLabel: { es: "Primer QR gratis, luego pago único", en: "First QR free, then one-time payment" },
+    pricingLabel: { es: "Primer QR gratis", en: "First QR free" },
+    pricingNote: {
+      es: "Hoy se puede crear y descargar tu primer QR sin costo. Si se habilitan más, sus condiciones se informan en la propia herramienta.",
+      en: "Today you can create and download your first QR at no cost. If more become available, their terms are announced in the tool itself.",
+    },
+    priceInfo: { es: "Primer QR sin costo", en: "First QR at no cost" },
     status: "AVAILABLE",
     featured: true,
     images: [
       {
-        src: "/images/microapps/atajolab-qr/empezar.webp",
-        width: 1400,
-        height: 671,
+        src: "/images/microapps/atajolab-qr/editor-plantillas.webp",
+        width: 1500,
+        height: 938,
         alt: {
-          es: "Primer paso de la creación guiada de AtajoLab QR: ¿Qué querés compartir? con diez opciones, entre ellas WhatsApp, reseñas de Google, Google Maps, menú y Wi-Fi.",
-          en: "First step of AtajoLab QR's guided creation: What do you want to share? with ten options, including WhatsApp, Google reviews, Google Maps, menu and Wi-Fi.",
+          es: "Editor de AtajoLab QR con un cartel de reseñas de Google en el centro, plantillas y formatos a la izquierda y herramientas para agregar elementos.",
+          en: "AtajoLab QR editor with a Google reviews sign in the center, templates and formats on the left and tools to add elements.",
         },
-        caption: { es: "Creación guiada: elegís qué compartir.", en: "Guided creation: you choose what to share." },
-      },
-      {
-        src: "/images/microapps/atajolab-qr/editor-avanzado.webp",
-        width: 1400,
-        height: 875,
-        alt: {
-          es: "Editor avanzado de AtajoLab QR con plantillas como Clásico, Vivo y Nocturno para empezar a diseñar.",
-          en: "AtajoLab QR advanced editor with templates such as Classic, Vivid and Night to start designing.",
-        },
-        caption: { es: "Editor avanzado con plantillas.", en: "Advanced editor with templates." },
-      },
-      {
-        src: "/images/microapps/atajolab-qr/cartel-whatsapp.webp",
-        width: 640,
-        height: 871,
-        alt: {
-          es: "Cartel de ejemplo «Hacé tu pedido por WhatsApp» con un código QR, hecho con AtajoLab QR.",
-          en: "Sample sign “Place your order on WhatsApp” with a QR code, made with AtajoLab QR.",
-        },
-        caption: { es: "Ejemplo: pedidos por WhatsApp.", en: "Example: orders by WhatsApp." },
-      },
-      {
-        src: "/images/microapps/atajolab-qr/cartel-carta.webp",
-        width: 640,
-        height: 871,
-        alt: {
-          es: "Cartel de ejemplo «Mirá nuestra carta» con un código QR sobre fondo oscuro, hecho con AtajoLab QR.",
-          en: "Sample sign “See our menu” with a QR code on a dark background, made with AtajoLab QR.",
-        },
-        caption: { es: "Ejemplo: carta del restaurante.", en: "Example: restaurant menu." },
-      },
-      {
-        src: "/images/microapps/atajolab-qr/cartel-resenas.webp",
-        width: 640,
-        height: 869,
-        alt: {
-          es: "Cartel de ejemplo «Tu opinión nos importa» con un código QR para dejar una reseña en Google, hecho con AtajoLab QR.",
-          en: "Sample sign “Your opinion matters” with a QR code to leave a Google review, made with AtajoLab QR.",
-        },
-        caption: { es: "Ejemplo: reseñas de Google.", en: "Example: Google reviews." },
+        caption: { es: "El editor de AtajoLab QR.", en: "The AtajoLab QR editor." },
       },
     ],
-    features: {
+    capabilities: {
       es: [
-        "Códigos QR para un enlace, tus redes, WhatsApp, Google Maps, reseñas de Google, menú, evento, Wi-Fi, contacto o texto.",
-        "Creación guiada en pasos, con diseños listos que muestran tu código.",
-        "Editor avanzado con plantillas para cambiar textos, colores e imágenes.",
-        "Siete formatos: cartel A6, flyer A5, afiche A4, tarjeta, etiqueta, post cuadrado e historia.",
-        "Descarga en PNG, SVG y PDF, en tamaño real y listos para imprimir o publicar.",
-        "Código estático: no vence ni depende de AtajoLab, pero no se puede cambiar su destino después de descargarlo.",
-        "No hace falta crear una cuenta. Si cambiás de dispositivo, recuperás tus descargas con tu correo.",
+        {
+          title: "Un QR para cada destino",
+          text: "Tu web, tus redes, WhatsApp, Google Maps, las reseñas de Google, tu menú, un evento, el Wi-Fi, un contacto o un texto.",
+        },
+        {
+          title: "Diseños listos para tu negocio",
+          text: "Elegís un estilo y la herramienta te muestra propuestas con tu código y el nombre de tu negocio.",
+        },
+        {
+          title: "Tu identidad visual",
+          text: "Cambiá textos, tipografías y colores, y sumá tu logo o una imagen.",
+        },
+        {
+          title: "Listo para imprimir",
+          text: "Carteles, flyers, afiches, tarjetas y etiquetas, con descarga en PNG, SVG y PDF.",
+        },
+        {
+          title: "Pensado para tus redes",
+          text: "Posts cuadrados e historias con el tamaño que piden las redes sociales.",
+        },
+        {
+          title: "Sin saber de diseño",
+          text: "Un camino guiado en cinco pasos, y la posibilidad de ajustar todo después.",
+        },
       ],
       en: [
-        "QR codes for a link, your social media, WhatsApp, Google Maps, Google reviews, menu, event, Wi-Fi, contact or text.",
-        "Guided creation in steps, with ready-made designs that show your code.",
-        "Advanced editor with templates to change text, colors and images.",
-        "Seven formats: A6 sign, A5 flyer, A4 poster, card, label, square post and story.",
-        "PNG, SVG and PDF downloads, at real size and ready to print or post.",
+        {
+          title: "A QR for every destination",
+          text: "Your website, social media, WhatsApp, Google Maps, Google reviews, your menu, an event, Wi-Fi, a contact or a text.",
+        },
+        {
+          title: "Designs ready for your business",
+          text: "Pick a style and the tool shows you proposals with your code and your business name.",
+        },
+        {
+          title: "Your visual identity",
+          text: "Change text, fonts and colors, and add your logo or an image.",
+        },
+        {
+          title: "Ready to print",
+          text: "Signs, flyers, posters, cards and labels, downloaded as PNG, SVG and PDF.",
+        },
+        {
+          title: "Made for social media",
+          text: "Square posts and stories at the size social networks ask for.",
+        },
+        {
+          title: "No design skills needed",
+          text: "A guided path in five steps, and the option to adjust everything afterwards.",
+        },
+      ],
+    },
+    steps: {
+      es: [
+        {
+          title: "Elegí a dónde querés llevar a tus clientes",
+          text: "Un enlace, tus redes, WhatsApp, reseñas de Google, tu menú o el Wi-Fi. Cargás los datos y el código se arma solo.",
+          image: {
+            src: "/images/microapps/atajolab-qr/empezar.webp",
+            width: 1400,
+            height: 671,
+            alt: "Primer paso de AtajoLab QR: ¿Qué querés compartir? con diez opciones, entre ellas WhatsApp, reseñas de Google, Google Maps, menú y Wi-Fi.",
+          },
+        },
+        {
+          title: "Elegí un estilo y un formato",
+          text: "Clásico, Vivo, Nocturno o Profesional, y un tamaño para imprimir o para tus redes.",
+          image: {
+            src: "/images/microapps/atajolab-qr/paso-estilo.webp",
+            width: 1040,
+            height: 720,
+            alt: "Paso de estilo de AtajoLab QR con cuatro opciones (Clásico, Vivo, Nocturno y Profesional) aplicadas a un cartel de ejemplo.",
+          },
+        },
+        {
+          title: "Elegí un diseño y personalizalo",
+          text: "Mirá propuestas con tu código y tocá la que más te guste. Después podés cambiar todo en el editor.",
+          image: {
+            src: "/images/microapps/atajolab-qr/paso-diseno.webp",
+            width: 1040,
+            height: 960,
+            alt: "Paso de diseño de AtajoLab QR con seis propuestas de cartel para WhatsApp y una vista grande del diseño elegido.",
+          },
+        },
+        {
+          title: "Descargá y usalo",
+          text: "Bajá tu diseño en PNG, SVG y PDF, listo para imprimir o publicar. No hace falta crear una cuenta.",
+        },
+      ],
+      en: [
+        {
+          title: "Choose where to send your customers",
+          text: "A link, your social media, WhatsApp, Google reviews, your menu or Wi-Fi. You enter the details and the code builds itself.",
+          image: {
+            src: "/images/microapps/atajolab-qr/empezar.webp",
+            width: 1400,
+            height: 671,
+            alt: "First step of AtajoLab QR: What do you want to share? with ten options, including WhatsApp, Google reviews, Google Maps, menu and Wi-Fi.",
+          },
+        },
+        {
+          title: "Pick a style and a format",
+          text: "Classic, Vivid, Night or Professional, and a size to print or for your social media.",
+          image: {
+            src: "/images/microapps/atajolab-qr/paso-estilo.webp",
+            width: 1040,
+            height: 720,
+            alt: "Style step of AtajoLab QR with four options (Classic, Vivid, Night and Professional) applied to a sample sign.",
+          },
+        },
+        {
+          title: "Choose a design and customize it",
+          text: "See proposals with your code and tap the one you like. Then you can change everything in the editor.",
+          image: {
+            src: "/images/microapps/atajolab-qr/paso-diseno.webp",
+            width: 1040,
+            height: 960,
+            alt: "Design step of AtajoLab QR with six WhatsApp sign proposals and a large view of the chosen design.",
+          },
+        },
+        {
+          title: "Download and use it",
+          text: "Get your design as PNG, SVG and PDF, ready to print or post. No account needed.",
+        },
+      ],
+    },
+    spotlight: {
+      es: {
+        title: "Un editor para hacerlo a tu manera",
+        text: "Si querés ir más allá de las propuestas, el editor te deja diseñar tu pieza sobre el mismo lienzo que se descarga.",
+        points: [
+          "Tocás un elemento y lo editás: texto, tipografía, tamaño, color y alineación.",
+          "Sumás textos, formas, tu logo o una imagen, y cambiás el color de fondo.",
+          "Movés, agrandás o rotás cada elemento, o escribís las medidas exactas en milímetros.",
+          "Partís de seis plantillas (Clásico, Vivo, Nocturno, Mi negocio, Corporativo y Creativo): son un punto de partida, no un molde.",
+          "Cambiás de formato sin empezar de nuevo, deshacés y rehacés cambios, duplicás o eliminás elementos y mirás una vista previa antes de descargar.",
+          "El editor cuida que el código se pueda leer: lo mantiene cuadrado, con buen contraste y de un tamaño mínimo, y te avisa si algo lo tapa.",
+        ],
+        image: {
+          src: "/images/microapps/atajolab-qr/editor-edicion.webp",
+          width: 1500,
+          height: 938,
+          alt: "Editor de AtajoLab QR con un título seleccionado y el panel de edición con texto, tipografía, tamaño, color, alineación, posición, medidas y rotación.",
+        },
+        phone: {
+          src: "/images/microapps/atajolab-qr/editor-celular.webp",
+          width: 600,
+          height: 1103,
+          alt: "Editor de AtajoLab QR en un celular, con el cartel, los botones Deshacer y Rehacer y las pestañas Editar, Plantilla, Formato y Agregar.",
+        },
+      },
+      en: {
+        title: "An editor to do it your way",
+        text: "If you want to go beyond the proposals, the editor lets you design your piece on the same canvas that gets downloaded.",
+        points: [
+          "Tap an element and edit it: text, font, size, color and alignment.",
+          "Add text, shapes, your logo or an image, and change the background color.",
+          "Move, resize or rotate each element, or type exact measurements in millimeters.",
+          "Start from six templates (Classic, Vivid, Night, My business, Corporate and Creative): they are a starting point, not a mold.",
+          "Switch formats without starting over, undo and redo changes, duplicate or delete elements and see a preview before downloading.",
+          "The editor looks after readability: it keeps the code square, with good contrast and a minimum size, and warns you if something covers it.",
+        ],
+        image: {
+          src: "/images/microapps/atajolab-qr/editor-edicion.webp",
+          width: 1500,
+          height: 938,
+          alt: "AtajoLab QR editor with a title selected and the editing panel with text, font, size, color, alignment, position, measurements and rotation.",
+        },
+        phone: {
+          src: "/images/microapps/atajolab-qr/editor-celular.webp",
+          width: 600,
+          height: 1103,
+          alt: "AtajoLab QR editor on a phone, with the sign, the Undo and Redo buttons and the Edit, Template, Format and Add tabs.",
+        },
+      },
+    },
+    formats: {
+      es: {
+        title: "Formatos para cada necesidad",
+        intro:
+          "Elegís el tamaño según dónde lo vas a usar. Los archivos salen en tamaño real, y los de redes con la medida en píxeles que piden las plataformas.",
+        image: {
+          src: "/images/microapps/atajolab-qr/paso-formato.webp",
+          width: 1040,
+          height: 800,
+          alt: "Paso de formato de AtajoLab QR con cinco formatos para imprimir y dos para redes, cada uno con su medida.",
+        },
+        groups: [
+          {
+            title: "Para imprimir",
+            items: [
+              { name: "Cartel A6", size: "105 × 148 mm", use: "Mostradores y mesas" },
+              { name: "Flyer A5", size: "148 × 210 mm", use: "Flyers y mostradores" },
+              { name: "Afiche A4", size: "210 × 297 mm", use: "Vidrieras y paredes" },
+              { name: "Tarjeta", size: "85 × 55 mm", use: "Tarjetas personales" },
+              { name: "Etiqueta", size: "60 × 60 mm", use: "Etiquetas y stickers" },
+            ],
+          },
+          {
+            title: "Para compartir",
+            items: [
+              { name: "Post cuadrado", size: "1080 × 1080 px", use: "Publicaciones en redes" },
+              { name: "Historia", size: "1080 × 1920 px", use: "Historias y estados" },
+            ],
+          },
+        ],
+      },
+      en: {
+        title: "Formats for every need",
+        intro:
+          "You pick the size according to where you'll use it. Files come out at real size, and the social ones at the pixel size platforms ask for.",
+        image: {
+          src: "/images/microapps/atajolab-qr/paso-formato.webp",
+          width: 1040,
+          height: 800,
+          alt: "Format step of AtajoLab QR with five print formats and two for social media, each with its size.",
+        },
+        groups: [
+          {
+            title: "To print",
+            items: [
+              { name: "A6 sign", size: "105 × 148 mm", use: "Counters and tables" },
+              { name: "A5 flyer", size: "148 × 210 mm", use: "Flyers and counters" },
+              { name: "A4 poster", size: "210 × 297 mm", use: "Shop windows and walls" },
+              { name: "Card", size: "85 × 55 mm", use: "Business cards" },
+              { name: "Label", size: "60 × 60 mm", use: "Labels and stickers" },
+            ],
+          },
+          {
+            title: "To share",
+            items: [
+              { name: "Square post", size: "1080 × 1080 px", use: "Social media posts" },
+              { name: "Story", size: "1080 × 1920 px", use: "Stories and status" },
+            ],
+          },
+        ],
+      },
+    },
+    examples: {
+      es: [
+        {
+          title: "Un taller que pide reseñas",
+          text: "Cartel A6 con un QR que lleva al formulario de reseñas de Google, con la identidad de un taller.",
+          image: {
+            src: "/images/microapps/atajolab-qr/ejemplo-resenas.webp",
+            width: 700,
+            height: 985,
+            alt: "Cartel de ejemplo de Electromecánica Morel, con fondo oscuro y detalles ámbar, con el texto «Tu opinión nos importa» y un código QR para dejar una reseña en Google.",
+          },
+        },
+        {
+          title: "Una carnicería con su catálogo",
+          text: "Afiche A4 con un QR que abre el catálogo online.",
+          image: {
+            src: "/images/microapps/atajolab-qr/ejemplo-catalogo.webp",
+            width: 700,
+            height: 989,
+            alt: "Afiche de ejemplo de una carnicería con el texto «Mirá nuestro catálogo» y un código QR sobre fondo oscuro.",
+          },
+        },
+        {
+          title: "Un comercio que atiende por WhatsApp",
+          text: "Cartel A6 con un QR que abre el chat con el mensaje ya escrito.",
+          image: {
+            src: "/images/microapps/atajolab-qr/ejemplo-whatsapp.webp",
+            width: 700,
+            height: 985,
+            alt: "Cartel de ejemplo de Electromecánica Morel con el texto «Escribinos por WhatsApp» y un código QR dentro de un círculo verde.",
+          },
+        },
+        {
+          title: "Una tarjeta para que te agenden",
+          text: "Tarjeta de 85 × 55 mm con un QR que guarda tus datos de contacto.",
+          image: {
+            src: "/images/microapps/atajolab-qr/ejemplo-tarjeta.webp",
+            width: 700,
+            height: 453,
+            alt: "Tarjeta de ejemplo de un profesional con su nombre, el texto «Escaneá y agendame» y un código QR de contacto.",
+          },
+        },
+        {
+          title: "Una publicación para tus redes",
+          text: "Post cuadrado con un QR que lleva a tu perfil de Instagram (el usuario es de ejemplo).",
+          image: {
+            src: "/images/microapps/atajolab-qr/ejemplo-post.webp",
+            width: 700,
+            height: 700,
+            alt: "Publicación cuadrada de ejemplo con el texto «Seguinos en Instagram», un código QR y un botón sobre fondo naranja.",
+          },
+        },
+      ],
+      en: [
+        {
+          title: "A workshop asking for reviews",
+          text: "A6 sign with a QR that opens the Google review form, with a workshop's identity.",
+          image: {
+            src: "/images/microapps/atajolab-qr/ejemplo-resenas.webp",
+            width: 700,
+            height: 985,
+            alt: "Sample sign from Electromecánica Morel, with a dark background and amber details, with the text “Your opinion matters” and a QR code to leave a Google review.",
+          },
+        },
+        {
+          title: "A butcher shop with its catalog",
+          text: "A4 poster with a QR that opens the online catalog.",
+          image: {
+            src: "/images/microapps/atajolab-qr/ejemplo-catalogo.webp",
+            width: 700,
+            height: 989,
+            alt: "Sample poster for a butcher shop with the text “See our catalog” and a QR code on a dark background.",
+          },
+        },
+        {
+          title: "A shop that serves customers on WhatsApp",
+          text: "A6 sign with a QR that opens the chat with the message already written.",
+          image: {
+            src: "/images/microapps/atajolab-qr/ejemplo-whatsapp.webp",
+            width: 700,
+            height: 985,
+            alt: "Sample sign from Electromecánica Morel with the text “Message us on WhatsApp” and a QR code inside a green circle.",
+          },
+        },
+        {
+          title: "A card so people can save your details",
+          text: "85 × 55 mm card with a QR that saves your contact details.",
+          image: {
+            src: "/images/microapps/atajolab-qr/ejemplo-tarjeta.webp",
+            width: 700,
+            height: 453,
+            alt: "Sample business card with a name, the text “Scan and add me” and a contact QR code.",
+          },
+        },
+        {
+          title: "A post for your social media",
+          text: "Square post with a QR that leads to your Instagram profile (the username is made up).",
+          image: {
+            src: "/images/microapps/atajolab-qr/ejemplo-post.webp",
+            width: 700,
+            height: 700,
+            alt: "Sample square post with the text “Follow us on Instagram”, a QR code and a button on an orange background.",
+          },
+        },
+      ],
+    },
+    features: {
+      es: [
+        "Descarga en PNG a 300 dpi, SVG vectorial y PDF.",
+        "Avisos antes de descargar si algo se sale del área imprimible o si una imagen queda con poca resolución.",
+        "Código estático: no vence ni depende de AtajoLab, pero no se puede cambiar su destino después de descargarlo.",
+        "Tu primer QR es gratis (uno por navegador y por correo). Si se habilitan más, sus condiciones se informan en la herramienta.",
+        "No hace falta crear una cuenta: te pedimos un correo para que puedas recuperar tus archivos.",
+        "Mientras trabajás, tu diseño se conserva en este navegador si recargás la página; no se guarda en una cuenta.",
+        "Funciona desde el celular y desde la computadora.",
+      ],
+      en: [
+        "Download as 300 dpi PNG, vector SVG and PDF.",
+        "Warnings before downloading if something goes outside the printable area or an image has low resolution.",
         "Static code: it doesn't expire or depend on AtajoLab, but its destination can't be changed after downloading it.",
-        "No account needed. If you switch devices, you can recover your downloads with your email.",
+        "Your first QR is free (one per browser and per email). If more become available, their terms are announced in the tool.",
+        "No account needed: we ask for an email so you can recover your files.",
+        "While you work, your design is kept in this browser if you reload the page; it isn't saved to an account.",
+        "Works on a phone and on a computer.",
       ],
     },
     benefits: {
       es: [
         "Con un escaneo, tus clientes llegan a donde vos quieras: tu web, tu menú, tu WhatsApp o tus reseñas.",
-        "Un diseño con el estilo de tu negocio, sin necesidad de saber diseño.",
+        "Un diseño con la identidad de tu negocio, sin necesidad de saber diseño.",
         "Archivos listos para imprimir en tu casa o en una imprenta, o para publicar en redes.",
       ],
       en: [
         "With one scan, your customers reach wherever you want: your website, your menu, your WhatsApp or your reviews.",
-        "A design in your business's style, no design skills needed.",
+        "A design with your business's identity, no design skills needed.",
         "Files ready to print at home or at a print shop, or to post on social media.",
       ],
     },
     audience: {
       es: [
         "Comercios con atención al público.",
-        "Restaurantes, cafés, peluquerías, talleres y servicios.",
+        "Talleres, restaurantes, cafés, peluquerías y servicios.",
         "Profesionales y emprendedores que quieren compartir su web, sus redes o su WhatsApp.",
       ],
       en: [
         "Businesses that serve customers in person.",
-        "Restaurants, cafés, hair salons, repair shops and services.",
+        "Repair shops, restaurants, cafés, hair salons and services.",
         "Professionals and entrepreneurs who want to share their website, social media or WhatsApp.",
       ],
     },
-    steps: {
+    faq: {
       es: [
-        { title: "Contanos qué compartir", text: "Un enlace, tus redes, WhatsApp, Wi-Fi, un contacto o un texto. Cargás los datos y armamos el código." },
-        { title: "Elegí y personalizá", text: "Mirá propuestas con tu código, elegí una y cambiá textos, colores e imágenes en el editor." },
-        { title: "Descargá", text: "Bajá PNG, SVG y PDF en tamaño real, listos para imprimir o publicar." },
+        {
+          question: "¿Necesito saber diseñar?",
+          answer:
+            "No. Podés seguir el camino guiado: elegís qué compartir, un estilo y un formato, y la herramienta te propone diseños con tu código. Si querés, después ajustás lo que quieras en el editor.",
+        },
+        {
+          question: "¿Puedo agregar mi logo?",
+          answer:
+            "Sí. En el editor, con «+ Imagen o logo», subís una imagen PNG, JPG o WebP de hasta 8 MB y la ubicás en el diseño.",
+        },
+        {
+          question: "¿Puedo cambiar los colores?",
+          answer:
+            "Sí. Podés cambiar el color de los textos, de las formas y del fondo, y también el del código QR, siempre que quede oscuro sobre un fondo claro para que se pueda leer.",
+        },
+        {
+          question: "¿Qué formatos puedo crear?",
+          answer:
+            "Cartel A6, flyer A5, afiche A4, tarjeta de 85 × 55 mm y etiqueta de 60 × 60 mm para imprimir, y post cuadrado e historia para redes. Por ahora no hay medidas personalizadas.",
+        },
+        {
+          question: "¿Puedo imprimir el diseño?",
+          answer:
+            "Sí. Descargás un PDF para llevar a una imprenta o un PNG para imprimirlo en casa. Imprimilo a tamaño real y sin estirarlo para que el código se lea bien. AtajoLab QR es un producto digital: no incluye impresión ni envío.",
+        },
+        {
+          question: "¿Puedo compartirlo por redes?",
+          answer:
+            "Sí. Con los formatos Post cuadrado (1080 × 1080 px) e Historia (1080 × 1920 px) obtenés la imagen con la medida que piden las redes.",
+        },
+        {
+          question: "¿Es gratis?",
+          answer:
+            "Tu primer QR es gratis y se descarga completo, en PNG, SVG y PDF. Es uno por navegador y por correo, y depende de la disponibilidad: si tu QR gratis no está disponible, la herramienta te lo indica. Por ahora, el primer QR es la opción disponible; si se habilitan más, sus condiciones se informan en la propia herramienta.",
+        },
+        {
+          question: "¿Necesito crear una cuenta?",
+          answer:
+            "No. Para descargar te pedimos un correo, que usamos para que puedas recuperar tus archivos desde otro dispositivo.",
+        },
+        {
+          question: "¿El código vence o se puede cambiar después?",
+          answer:
+            "No vence: es un código estático que guarda directamente el enlace, el Wi-Fi, el contacto o el texto, y no depende de AtajoLab para funcionar. Por eso mismo no se puede cambiar a dónde lleva después de descargarlo; si cambia tu enlace, creás uno nuevo.",
+        },
+        {
+          question: "¿Puedo usarlo con un producto NFC?",
+          answer:
+            "AtajoLab QR crea el código QR y el diseño para imprimir; no programa chips NFC. Una etiqueta o tarjeta NFC es un producto físico aparte, como los de AtajoLab Shop, y su destino se configura por separado.",
+        },
       ],
       en: [
-        { title: "Tell us what to share", text: "A link, your social media, WhatsApp, Wi-Fi, a contact or a text. You enter the details and we build the code." },
-        { title: "Choose and customize", text: "See proposals with your code, pick one and change text, colors and images in the editor." },
-        { title: "Download", text: "Get PNG, SVG and PDF at real size, ready to print or post." },
+        {
+          question: "Do I need to know how to design?",
+          answer:
+            "No. You can follow the guided path: you choose what to share, a style and a format, and the tool proposes designs with your code. If you want, you can then adjust whatever you like in the editor.",
+        },
+        {
+          question: "Can I add my logo?",
+          answer:
+            "Yes. In the editor, with “+ Image or logo”, you upload a PNG, JPG or WebP image of up to 8 MB and place it in the design.",
+        },
+        {
+          question: "Can I change the colors?",
+          answer:
+            "Yes. You can change the color of the text, shapes and background, and also the QR code's, as long as it stays dark on a light background so it can be read.",
+        },
+        {
+          question: "Which formats can I create?",
+          answer:
+            "A6 sign, A5 flyer, A4 poster, 85 × 55 mm card and 60 × 60 mm label to print, and square post and story for social media. There are no custom sizes for now.",
+        },
+        {
+          question: "Can I print the design?",
+          answer:
+            "Yes. You download a PDF to take to a print shop or a PNG to print at home. Print it at real size without stretching it so the code reads well. AtajoLab QR is a digital product: it doesn't include printing or shipping.",
+        },
+        {
+          question: "Can I share it on social media?",
+          answer:
+            "Yes. With the Square post (1080 × 1080 px) and Story (1080 × 1920 px) formats you get the image at the size social networks ask for.",
+        },
+        {
+          question: "Is it free?",
+          answer:
+            "Your first QR is free and downloads in full, as PNG, SVG and PDF. It's one per browser and per email, and depends on availability: if your free QR isn't available, the tool tells you. For now, the first QR is the available option; if more become available, their terms are announced in the tool itself.",
+        },
+        {
+          question: "Do I need to create an account?",
+          answer:
+            "No. To download we ask for an email, which we use so you can recover your files from another device.",
+        },
+        {
+          question: "Does the code expire, or can it be changed later?",
+          answer:
+            "It doesn't expire: it's a static code that stores the link, the Wi-Fi, the contact or the text directly, and doesn't depend on AtajoLab to work. For that same reason its destination can't be changed after downloading it; if your link changes, you create a new one.",
+        },
+        {
+          question: "Can I use it with an NFC product?",
+          answer:
+            "AtajoLab QR creates the QR code and the design to print; it doesn't program NFC chips. An NFC tag or card is a separate physical product, like the ones from AtajoLab Shop, and its destination is set up separately.",
+        },
       ],
     },
-    appUrl: "https://qr.atajolab.dev/empezar",
-    ctaLabel: { es: "Crear mi QR", en: "Create my QR" },
+    closing: {
+      es: {
+        title: "Tu próximo diseño empieza con un QR.",
+        text: "Elegí a dónde llevar a tus clientes y armá tu pieza en pocos pasos. Tu primer QR es gratis.",
+        cta: "Crear mi QR",
+      },
+      en: {
+        title: "Your next design starts with a QR.",
+        text: "Choose where to send your customers and build your piece in a few steps. Your first QR is free.",
+        cta: "Create my QR",
+      },
+    },
+    appUrl: "https://qr.atajolab.dev",
+    ctaLabel: { es: "Crear mi QR gratis", en: "Create my QR for free" },
+    trial: {
+      label: { es: "Descubrir cómo funciona", en: "See how it works" },
+      href: "#como-funciona",
+    },
     checkout: { provider: "mercadopago", enabled: false },
-    hosting: { coldStart: true },
     projectId: "atajolab-qr",
     officialLinks: [
       { label: { es: "Sitio oficial de AtajoLab QR", en: "AtajoLab QR official site" }, href: "https://qr.atajolab.dev" },
@@ -165,13 +586,20 @@ export const microappSources: MicroappSource[] = [
         href: "https://qr.atajolab.dev/preguntas-frecuentes",
       },
     ],
+    social: {
+      image: { es: "/og/qr-es.png", en: "/og/qr-en.png" },
+      alt: {
+        es: "AtajoLab QR: tus ideas, listas para escanear, con carteles de ejemplo con código QR.",
+        en: "AtajoLab QR: your ideas, ready to scan, with sample signs with a QR code.",
+      },
+    },
     seoTitle: {
-      es: "AtajoLab QR: códigos QR con diseño listo para imprimir",
-      en: "AtajoLab QR: QR codes with a ready-to-use design",
+      es: "AtajoLab QR: creá códigos QR con diseño para tu negocio",
+      en: "AtajoLab QR: create QR codes with a design for your business",
     },
     seoDescription: {
-      es: "Creá códigos QR con diseño para tu web, redes, WhatsApp, Wi-Fi, menú o reseñas de Google. Siete formatos y archivos PNG, SVG y PDF. Tu primer QR es gratis.",
-      en: "Create QR codes with a design for your website, social media, WhatsApp, Wi-Fi, menu or Google reviews. Seven formats and PNG, SVG and PDF files. Your first QR is free.",
+      es: "Creá códigos QR para tu web, redes, WhatsApp, Google Maps o reseñas de Google y diseñá tu cartel, tarjeta o publicación en un editor visual. Tu primer QR es gratis.",
+      en: "Create QR codes for your website, social media, WhatsApp, Google Maps or Google reviews and design your sign, card or post in a visual editor. Your first QR is free.",
     },
   },
   {
@@ -708,9 +1136,16 @@ export function resolveMicroapp(source: MicroappSource, locale: Locale): Microap
     audience: source.audience[locale],
     pricingLabel: source.pricingLabel?.[locale],
     pricingNote: source.pricingNote?.[locale],
+    priceInfo: source.priceInfo?.[locale],
     ctaLabel: source.ctaLabel?.[locale],
     problems: source.problems?.[locale],
     steps: source.steps?.[locale],
+    capabilities: source.capabilities?.[locale],
+    spotlight: source.spotlight?.[locale],
+    formats: source.formats?.[locale],
+    examples: source.examples?.[locale],
+    faq: source.faq?.[locale],
+    closing: source.closing?.[locale],
     plans: source.plans?.map((plan) => ({
       ...plan,
       name: plan.name[locale],
