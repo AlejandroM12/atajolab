@@ -158,3 +158,25 @@ test("AtajoLab Presupuestos is launched: real links, own social metadata, struct
   assert.match(read("/en/"), /Create a quote for free/);
   assert.match(readFileSync(join(outDir, "_redirects"), "utf8"), /generador-presupuestos\/\s+\/es\/microapps\/atajolab-presupuestos\/\s+301/);
 });
+
+test("AtajoLab QR page: sections, real links, own social metadata and FAQ structured data in both languages", () => {
+  const sections = {
+    es: ["Qué podés hacer", "Cómo funciona", "Un editor para hacerlo a tu manera", "Formatos para cada necesidad", "Ejemplos de lo que podés crear", "Preguntas frecuentes"],
+    en: ["What you can do", "How it works", "An editor to do it your way", "Formats for every need", "Examples of what you can create", "Frequently asked questions"],
+  } as const;
+  for (const locale of locales) {
+    const path = microappPaths("atajolab-qr")[locale];
+    const full = read(path);
+    const page = full.slice(0, full.indexOf('id="otras"'));
+    for (const title of sections[locale]) assert.ok(page.includes(title), `${title} (${locale})`);
+    assert.ok(page.includes('href="https://qr.atajolab.dev"'), `product link ${locale}`);
+    assert.ok(page.includes('href="#como-funciona"'), `anchor ${locale}`);
+    assert.match(page, /"@type":"FAQPage"/, `faq data ${locale}`);
+    assert.doesNotMatch(page, /Próximamente|Coming soon|En desarrollo/i);
+    const image = `https://atajolab.dev/og/qr-${locale}.png`;
+    assert.ok(full.includes(`<meta property="og:image" content="${image}"`), `og:image ${locale}`);
+    assert.ok(full.includes(`<meta name="twitter:image" content="${image}"`), `twitter:image ${locale}`);
+    assert.ok(full.includes(`<link rel="canonical" href="https://atajolab.dev${path}"`), `canonical ${locale}`);
+    assert.ok(existsSync(join(outDir, "og", `qr-${locale}.png`)), `image file ${locale}`);
+  }
+});

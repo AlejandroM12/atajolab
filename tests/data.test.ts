@@ -172,18 +172,65 @@ test("the social image of every tool that sets one is a 1200 × 630 PNG in both 
   }
 });
 
-test("AtajoLab QR opens the real guided flow, lists the current formats and does not hard-code a price", () => {
+test("AtajoLab QR opens the real product, lists the verified formats and does not hard-code a price", () => {
   const qr = microappSources.find((app) => app.id === "atajolab-qr");
   assert.ok(qr);
   assert.equal(qr.status, "AVAILABLE");
-  assert.equal(qr.appUrl, "https://qr.atajolab.dev/empezar");
+  assert.equal(qr.appUrl, "https://qr.atajolab.dev");
+  assert.equal(qr.ctaLabel?.es, "Crear mi QR gratis");
+  assert.equal(qr.trial?.href, "#como-funciona");
   assert.equal(qr.price, undefined);
   assert.equal(qr.plans, undefined);
-  assert.equal(qr.steps?.es.length, 3);
-  assert.equal(qr.steps?.es.length, qr.steps?.en.length);
+  // Paid sales are closed: the price cell says what is true today instead of promising a price in the tool.
+  assert.equal(qr.priceInfo?.es, "Primer QR sin costo");
+  // The server stays awake (checked after 18 idle minutes), so the slow-start notice does not apply.
+  assert.equal(qr.hosting?.coldStart, undefined);
+  assert.equal(qr.steps?.es.length, 4);
   for (const link of qr.officialLinks ?? []) assert.match(link.href, /^https:\/\/qr\.atajolab\.dev(\/|$)/);
+  const formats = qr.formats?.es.groups.flatMap((group) => group.items.map((item) => `${item.name} ${item.size}`));
+  assert.deepEqual(formats, [
+    "Cartel A6 105 × 148 mm",
+    "Flyer A5 148 × 210 mm",
+    "Afiche A4 210 × 297 mm",
+    "Tarjeta 85 × 55 mm",
+    "Etiqueta 60 × 60 mm",
+    "Post cuadrado 1080 × 1080 px",
+    "Historia 1080 × 1920 px",
+  ]);
+  assert.equal(qr.examples?.es.length, 5);
+  assert.equal(qr.faq?.es.length, 10);
   const text = strings(qr).join(" ");
   assert.match(text, /primer QR es gratis|first QR is free/i);
   assert.match(text, /Google Maps/);
   assert.doesNotMatch(text, /4\.900|4,900|próximamente|coming soon/i);
+  // Paid sales are closed in the tool today: the page promises only the free QR and points to the tool for the rest.
+  assert.doesNotMatch(text, /pago único|one-time|sin suscripción|no subscription/i);
+  assert.match(text, /Tus ideas, listas para escanear|Your ideas, ready to scan/);
+  // NFC: the tool makes the QR and the design, it does not program chips.
+  assert.match(strings(qr.faq).join(" "), /no programa chips NFC|doesn't program NFC chips/);
 });
+
+test("the sections of AtajoLab QR have the same structure in both languages and use existing images with alt text", () => {
+  const qr = microappSources.find((app) => app.id === "atajolab-qr");
+  assert.ok(qr);
+  for (const key of ["capabilities", "steps", "examples", "faq"] as const) {
+    assert.equal(qr[key]?.es.length, qr[key]?.en.length, key);
+  }
+  assert.equal(qr.spotlight?.es.points.length, qr.spotlight?.en.points.length);
+  assert.equal(qr.formats?.es.groups.length, qr.formats?.en.groups.length);
+  for (const locale of locales) {
+    const images = [
+      ...(qr.steps?.[locale] ?? []).map((step) => step.image),
+      qr.spotlight?.[locale].image,
+      qr.spotlight?.[locale].phone,
+      qr.formats?.[locale].image,
+      ...(qr.examples?.[locale] ?? []).map((example) => example.image),
+    ].filter((image) => image !== undefined);
+    assert.ok(images.length >= 9, locale);
+    for (const image of images) {
+      assert.ok(existsSync(join(publicDir, image.src)), image.src);
+      assert.ok(image.alt.length > 20, `${image.src} alt ${locale}`);
+    }
+  }
+});
+
