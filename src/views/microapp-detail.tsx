@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AlertCircle, ArrowRight, ArrowUpRight, Check, Clock, Sparkles, Users } from "lucide-react";
@@ -30,6 +31,14 @@ import { MicroappCtaButton } from "@/components/microapps/microapp-cta-button";
 import { MicroappGallery } from "@/components/microapps/microapp-gallery";
 import { ProductStage, StageGallery } from "@/components/microapps/product-stage";
 import { MicroappCard } from "@/components/microapps/microapp-card";
+import {
+  CapabilityCards,
+  ClosingSection,
+  ExamplesGrid,
+  FormatsSection,
+  SpotlightSection,
+} from "@/components/microapps/microapp-sections";
+import { FaqList } from "@/components/shared/faq-list";
 
 /** Static params for `/[lang]/microapps/[slug]`: every tool in every language, with its localized slug. */
 export function microappStaticParams() {
@@ -71,10 +80,12 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
   const host = app.appUrl ? displayHost(app.appUrl) : undefined;
   const staged = app.imageStyle === "stage";
   const structuredData = app.appUrl && (app.plans || app.pricingModel === "FREE") ? softwareData(app, locale) : null;
+  const faqItems = app.faq?.map((item, index) => ({ ...item, id: `pregunta-${index + 1}`, group: "microapps" as const }));
 
   return (
     <>
       {structuredData && <JsonLd data={structuredData} />}
+      {faqItems && <JsonLd data={faqData(app.faq ?? [])} />}
       <header className="relative overflow-hidden border-b border-line bg-paper">
         <div aria-hidden="true" className="bg-grid mask-fade absolute inset-0 opacity-70" />
         <Container className="relative grid gap-10 py-10 sm:py-14 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:py-16">
@@ -178,6 +189,15 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
             </div>
           </section>
 
+          {app.capabilities && (
+            <section aria-labelledby="capacidades" className="scroll-mt-24">
+              <h2 id="capacidades" className="text-2xl font-semibold text-ink sm:text-3xl">
+                {m.capabilities}
+              </h2>
+              <CapabilityCards cards={app.capabilities} />
+            </section>
+          )}
+
           {app.problems && (
             <section aria-labelledby="problemas">
               <h2 id="problemas" className="text-2xl font-semibold text-ink sm:text-3xl">
@@ -198,21 +218,45 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
           )}
 
           {app.steps && (
-            <section aria-labelledby="como-funciona">
+            <section aria-labelledby="como-funciona" className="scroll-mt-24">
               <h2 id="como-funciona" className="text-2xl font-semibold text-ink sm:text-3xl">
                 {m.howItWorks}
               </h2>
-              <ol className="mt-6 grid gap-4 sm:grid-cols-3">
+              <ol className={`mt-6 grid gap-4 ${app.steps.some((step) => step.image) ? "sm:grid-cols-2" : "sm:grid-cols-3"}`}>
                 {app.steps.map((step, index) => (
-                  <li key={step.title} className="rounded-2xl border border-line bg-card p-5 shadow-card">
+                  <li key={step.title} className="flex flex-col rounded-2xl border border-line bg-card p-5 shadow-card">
                     <span className="font-display text-sm font-semibold text-brand-600 tabular-nums">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <h3 className="mt-2 text-lg font-semibold text-ink">{step.title}</h3>
                     <p className="mt-1.5 leading-relaxed text-muted">{step.text}</p>
+                    {step.image && (
+                      <Image
+                        src={step.image.src}
+                        alt={step.image.alt}
+                        width={step.image.width}
+                        height={step.image.height}
+                        sizes="(min-width: 1024px) 340px, (min-width: 640px) 45vw, 90vw"
+                        className="mt-4 h-auto w-full rounded-lg border border-line"
+                      />
+                    )}
                   </li>
                 ))}
               </ol>
+            </section>
+          )}
+
+          {app.spotlight && <SpotlightSection spotlight={app.spotlight} host={host} />}
+
+          {app.formats && <FormatsSection formats={app.formats} host={host} />}
+
+          {app.examples && (
+            <section aria-labelledby="ejemplos" className="scroll-mt-24">
+              <h2 id="ejemplos" className="text-2xl font-semibold text-ink sm:text-3xl">
+                {m.examples}
+              </h2>
+              <p className="mt-2 text-muted">{m.examplesNote}</p>
+              <ExamplesGrid examples={app.examples} />
             </section>
           )}
 
@@ -280,6 +324,17 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
               {app.pricingNote && <p className="mt-4 text-sm leading-relaxed text-muted">{app.pricingNote}</p>}
             </section>
           )}
+
+          {faqItems && (
+            <section aria-labelledby="preguntas" className="scroll-mt-24">
+              <h2 id="preguntas" className="text-2xl font-semibold text-ink sm:text-3xl">
+                {m.faq}
+              </h2>
+              <div className="mt-6">
+                <FaqList items={faqItems} />
+              </div>
+            </section>
+          )}
         </div>
 
         <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
@@ -329,7 +384,7 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
                     {m.seePlans}
                   </a>
                 ) : (
-                  (price ?? (available ? m.priceInApp : m.priceTbd))
+                  (price ?? app.priceInfo ?? (available ? m.priceInApp : m.priceTbd))
                 )}
               </dd>
             </div>
@@ -377,6 +432,8 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
         </aside>
       </Container>
 
+      {app.closing && app.appUrl && <ClosingSection closing={app.closing} href={app.appUrl} locale={locale} />}
+
       {others.length > 0 && (
         <section aria-labelledby="otras" className="border-t border-line bg-surface py-14 sm:py-20">
           <Container>
@@ -397,6 +454,19 @@ export function MicroappDetailView({ slug, locale }: { slug: string; locale: Loc
       <CtaBanner locale={locale} />
     </>
   );
+}
+
+/** FAQPage structured data. The questions and answers are the ones shown on the page. */
+function faqData(items: { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
 }
 
 function planPrice(amount: number, currency: "ARS" | "USD", locale: Locale): string {

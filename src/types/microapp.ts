@@ -57,6 +57,54 @@ export interface MicroappPlan {
 export interface MicroappStep {
   title: string;
   text: string;
+  /** Real screen of the step, with its text in the page's language. */
+  image?: MicroappImage;
+}
+
+/** A short benefit with a title, shown as a card. */
+export interface MicroappCard {
+  title: string;
+  text: string;
+}
+
+/** A feature worth its own section: what it lets you do, with the real screens. */
+export interface MicroappSpotlight {
+  title: string;
+  text: string;
+  points: string[];
+  image: MicroappImage;
+  /** Phone screen shown over the main one. */
+  phone?: MicroappImage;
+}
+
+export interface MicroappFormatGroup {
+  title: string;
+  items: { name: string; size: string; use: string }[];
+}
+
+export interface MicroappFormats {
+  title: string;
+  intro: string;
+  image?: MicroappImage;
+  groups: MicroappFormatGroup[];
+}
+
+export interface MicroappExample {
+  title: string;
+  text: string;
+  image: MicroappImage;
+}
+
+export interface MicroappFaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface MicroappClosing {
+  title: string;
+  text: string;
+  /** Label of the button that opens the tool. */
+  cta: string;
 }
 
 export interface MicroappLink {
@@ -108,6 +156,8 @@ export interface Microapp extends MicroappBase {
   pricingLabel?: string;
   /** Extra commercial detail for the detail page. Never a price. */
   pricingNote?: string;
+  /** Replaces "shown inside the tool" in the price cell when the tool shows no price to rely on. */
+  priceInfo?: string;
   /** Replaces the label of the main button when it opens the tool. */
   ctaLabel?: string;
   /** Problems the tool solves, in the customer's words. */
@@ -120,6 +170,17 @@ export interface Microapp extends MicroappBase {
   trial?: MicroappLink;
   /** Links to the tool's own site. */
   officialLinks?: MicroappLink[];
+  /** Benefits shown as cards under the description. */
+  capabilities?: MicroappCard[];
+  /** The tool's main differentiator, with its own section. */
+  spotlight?: MicroappSpotlight;
+  /** Sizes or formats the tool produces. */
+  formats?: MicroappFormats;
+  /** Real examples of what can be made with the tool. */
+  examples?: MicroappExample[];
+  faq?: MicroappFaqItem[];
+  /** Closing invitation at the end of the page. */
+  closing?: MicroappClosing;
   /** Image shown when the page is shared on social networks (1200 × 630). */
   social?: { image: string; alt: string };
   seoTitle?: string;
@@ -147,12 +208,19 @@ export interface MicroappSource extends MicroappBase {
   audience: Localized<string[]>;
   pricingLabel?: Localized<string>;
   pricingNote?: Localized<string>;
+  priceInfo?: Localized<string>;
   ctaLabel?: Localized<string>;
   problems?: Localized<string[]>;
   steps?: Localized<MicroappStep[]>;
   plans?: MicroappPlanSource[];
   trial?: { label: Localized<string>; href: string };
   officialLinks?: { label: Localized<string>; href: string }[];
+  capabilities?: Localized<MicroappCard[]>;
+  spotlight?: Localized<MicroappSpotlight>;
+  formats?: Localized<MicroappFormats>;
+  examples?: Localized<MicroappExample[]>;
+  faq?: Localized<MicroappFaqItem[]>;
+  closing?: Localized<MicroappClosing>;
   social?: { image: Localized<string>; alt: Localized<string> };
   seoTitle?: Localized<string>;
   seoDescription?: Localized<string>;
